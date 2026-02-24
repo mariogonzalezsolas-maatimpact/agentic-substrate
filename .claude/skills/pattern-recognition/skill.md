@@ -12,11 +12,15 @@ This skill provides systematic methodology for identifying reusable patterns fro
 ## When Claude Should Use This Skill
 
 Claude will automatically invoke this skill when:
-- Implementation successfully completed (tests passing)
-- @code-implementer finishes major feature work
-- Chief-architect synthesizes results from multiple agents
-- User explicitly requests pattern documentation
-- Stop hook triggers (end of session)
+- @code-implementer completes with all tests passing (circuit breaker CLOSED)
+- `/do` FEATURE or IMPLEMENT route completes successfully
+- User explicitly requests "capture pattern" or "document pattern"
+
+**Do NOT invoke when:**
+- Implementation failed or tests are failing
+- Circuit breaker is OPEN
+- Task was research-only, review-only, or planning-only (no code changes)
+- Minor fix or typo correction (not a reusable pattern)
 
 ## Core Principles (BRAHMA Constitution)
 

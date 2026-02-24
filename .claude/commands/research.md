@@ -5,6 +5,8 @@ description: Quick command to invoke docs-researcher for rapid documentation res
 
 # /research Command
 
+> **Prefer `/do research [topic]` instead.** This command invokes `@docs-researcher` directly. `/do` adds mandatory planning, quality gate enforcement, and context discovery.
+
 Execute documentation research using the docs-researcher agent.
 
 ## Usage

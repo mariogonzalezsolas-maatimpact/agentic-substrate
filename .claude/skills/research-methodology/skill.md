@@ -12,11 +12,15 @@ This skill provides a systematic methodology for conducting rapid, accurate docu
 ## When Claude Should Use This Skill
 
 Claude will automatically invoke this skill when:
-- User mentions implementing/using a specific library or API
-- User asks about current documentation for a technology
-- User requests verification of API signatures or methods
-- Task requires external dependencies or third-party integrations
-- Updating/upgrading to new versions of frameworks
+- `/do` routes to RESEARCH or FEATURE (research phase)
+- User explicitly invokes `/research [topic]`
+- @docs-researcher agent is spawned
+- Task requires external library/API docs not already in a ResearchPack
+
+**Do NOT invoke when:**
+- ResearchPack already exists and is current (score >= 80)
+- Task is purely internal code (no external dependencies)
+- `/do` routes to SIMPLE, REVIEW, or DEBUG
 
 ## Core Principles (BRAHMA Constitution)
 

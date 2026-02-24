@@ -20,11 +20,16 @@ This skill provides a systematic methodology for active context curation - the a
 ## When Claude Should Use This Skill
 
 Claude will automatically invoke this skill when:
-- Conversation starts (optimize CLAUDE.md and knowledge-core.md relevance)
-- During long sessions exceeding 50 messages (context rot likely)
-- Before complex operations (ensure high-signal, minimal-token context)
-- After tool use (update context with learnings, remove obsolete info)
-- Task switching (archive old task context, load new task context)
+- Session starts (SessionStart hook fires)
+- Message count exceeds 50 in current session
+- User invokes `/context analyze` or `/context optimize`
+- `/do` routes to CONTEXT
+- PreCompact hook fires (context about to be compressed)
+
+**Do NOT invoke when:**
+- Mid-task execution (would interrupt workflow)
+- Every single tool use (too frequent, wastes tokens)
+- Session is under 20 messages with no context issues
 
 ## Core Principles
 

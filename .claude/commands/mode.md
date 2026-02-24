@@ -47,6 +47,18 @@ Restore standard behavior. All mode modifications are cleared.
 
 **Activate:** `/mode default`
 
+## Integration with /do Workflow
+
+**token-efficiency mode**:
+- `/do` plan output uses compact format (no examples)
+- Quality gate reports show pass/fail only (not full breakdown)
+- Agent reports use 1-line status instead of full summary
+
+**introspection mode**:
+- `/do` classification includes confidence assessment
+- Quality validations include reasoning transparency
+- Agent decisions include assumption assessment
+
 ---
 
 **Executing command...**

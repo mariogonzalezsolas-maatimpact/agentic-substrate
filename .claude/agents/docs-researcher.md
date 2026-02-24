@@ -154,10 +154,4 @@ Before delivering ResearchPack:
 
 ## Output Protocol
 
-When completing any task, you MUST format your final response using the
-Agent Report Protocol defined in AGENT-REPORT-PROTOCOL.md:
-
 @.claude/templates/AGENT-REPORT-PROTOCOL.md
-
-Do NOT dump raw output. Summarize your work in the standard report format.
-The lead can request details for any specific finding if needed.

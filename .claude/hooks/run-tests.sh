@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 # run-tests.sh
 # PostToolUse hook: Run tests after code implementation
-# Disabled by default (enable in settings.json when test suite is fast)
+# OPT-IN: Not registered in settings.json by default.
+# To enable, add to settings.json under hooks.PostToolUse:
+#   { "matcher": "Write|Edit",
+#     "hooks": [{ "type": "command",
+#       "command": "bash \"$HOME/.claude/hooks/run-tests.sh\"",
+#       "timeout": 60 }] }
+# WARNING: Only enable when your test suite runs in <30 seconds
 
 set -e
 

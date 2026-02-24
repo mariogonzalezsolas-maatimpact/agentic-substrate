@@ -5,6 +5,8 @@ description: Quick command to invoke code-implementer to execute implementation 
 
 # /implement Command
 
+> **Prefer `/do implement` instead.** This command invokes `@code-implementer` directly. `/do` adds mandatory planning, circuit breaker checks, and quality gate enforcement.
+
 Execute implementation plan using the code-implementer agent with automatic self-correction.
 
 ## Usage

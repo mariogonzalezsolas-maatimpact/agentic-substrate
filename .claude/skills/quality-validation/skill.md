@@ -12,10 +12,15 @@ This skill provides systematic validation methodology to ensure ResearchPacks an
 ## When Claude Should Use This Skill
 
 Claude will automatically invoke this skill when:
-- ResearchPack completed and needs validation before planning
-- Implementation Plan completed and needs validation before coding
-- User explicitly requests quality check ("validate this", "is this complete?")
-- About to proceed to next workflow phase (quality gate trigger)
+- ResearchPack delivered by @docs-researcher (score before Plan phase)
+- Implementation Plan delivered by @implementation-planner (score before Implement phase)
+- Analysis Report delivered by @brahma-analyzer (score before Implement phase)
+- `/do` transitions between workflow phases (gate evaluation)
+
+**Do NOT invoke when:**
+- No deliverable has been produced yet (nothing to score)
+- Route is SIMPLE, REVIEW, or DEPLOY (no scoring gates)
+- User asks a general quality question unrelated to workflow artifacts
 
 ## Core Principles (BRAHMA Constitution)
 

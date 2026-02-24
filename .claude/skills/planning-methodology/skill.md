@@ -12,11 +12,15 @@ This skill provides a systematic methodology for creating implementation plans t
 ## When Claude Should Use This Skill
 
 Claude will automatically invoke this skill when:
-- ResearchPack is ready and implementation planning is needed
-- User asks "how should we implement...", "create a plan for..."
-- Complex feature requires structured approach
-- Need to break down requirements into executable steps
-- Transforming research into actionable blueprint
+- `/do` routes to PLAN or FEATURE (plan phase)
+- User explicitly invokes `/plan [feature]`
+- @implementation-planner agent is spawned
+- ResearchPack exists (score >= 80) and implementation planning starts
+
+**Do NOT invoke when:**
+- No ResearchPack exists yet (research must come first)
+- `/do` routes to SIMPLE, REVIEW, or DEBUG (no planning needed)
+- User is asking about planning concepts, not requesting a plan
 
 ## Core Principles (BRAHMA Constitution)
 

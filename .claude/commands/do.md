@@ -75,6 +75,19 @@ When keywords match multiple routes, use this priority:
 5. **ROLLBACK** takes priority over DEBUG (user wants to undo, not investigate)
 6. **"fix"** routes to DEBUG (not IMPLEMENT) unless preceded by "implement the fix"
 
+### Skill-to-Route Mapping
+
+| Route | Agent | Auto-Invoked Skills |
+|-------|-------|-------------------|
+| FEATURE | `/workflow` | research-methodology, planning-methodology, quality-validation, pattern-recognition |
+| RESEARCH | `@docs-researcher` | research-methodology, quality-validation |
+| PLAN | `@implementation-planner` | planning-methodology, quality-validation |
+| IMPLEMENT | `@code-implementer` | pattern-recognition (on success) |
+| DEBUG | `@brahma-investigator` | quality-validation |
+| REFACTOR | `@code-implementer` | pattern-recognition (on success) |
+| TEST | `@code-implementer` | (none) |
+| MIGRATE | `/workflow` | research-methodology, planning-methodology, quality-validation |
+
 ### Complexity Detection
 - **Simple** (1-2 files): Direct execution, minimal plan
 - **Medium** (3-5 files): Agent Team (default) or sequential workflow

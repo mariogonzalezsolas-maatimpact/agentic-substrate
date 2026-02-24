@@ -103,15 +103,23 @@ CURRENT_VERSION=$(grep "^Version:" "$KNOWLEDGE_FILE" | awk '{print $2}' || true)
 CURRENT_VERSION="${CURRENT_VERSION:-1.0}"
 NEW_VERSION=$(echo "$CURRENT_VERSION" | awk -F. '{print $1"."$2+1}')
 
-# Update timestamp and version - use gsed if available (macOS via Homebrew)
+# Update timestamp and version - cross-platform sed
+TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 if command -v gsed &> /dev/null; then
-    gsed -i "s/^Last Updated:.*/Last Updated: $(date -u +"%Y-%m-%dT%H:%M:%SZ")/" "$KNOWLEDGE_FILE"
+    # macOS with GNU sed via Homebrew
+    gsed -i "s/^Last Updated:.*/Last Updated: $TIMESTAMP/" "$KNOWLEDGE_FILE"
     gsed -i "s/^Version:.*/Version: $NEW_VERSION/" "$KNOWLEDGE_FILE"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    sed -i '' "s/^Last Updated:.*/Last Updated: $(date -u +"%Y-%m-%dT%H:%M:%SZ")/" "$KNOWLEDGE_FILE"
+    # macOS native BSD sed
+    sed -i '' "s/^Last Updated:.*/Last Updated: $TIMESTAMP/" "$KNOWLEDGE_FILE"
     sed -i '' "s/^Version:.*/Version: $NEW_VERSION/" "$KNOWLEDGE_FILE"
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
+    # Windows (Git Bash, MSYS2, Cygwin)
+    sed -i "s/^Last Updated:.*/Last Updated: $TIMESTAMP/" "$KNOWLEDGE_FILE"
+    sed -i "s/^Version:.*/Version: $NEW_VERSION/" "$KNOWLEDGE_FILE"
 else
-    sed -i "s/^Last Updated:.*/Last Updated: $(date -u +"%Y-%m-%dT%H:%M:%SZ")/" "$KNOWLEDGE_FILE"
+    # Linux / WSL
+    sed -i "s/^Last Updated:.*/Last Updated: $TIMESTAMP/" "$KNOWLEDGE_FILE"
     sed -i "s/^Version:.*/Version: $NEW_VERSION/" "$KNOWLEDGE_FILE"
 fi
 

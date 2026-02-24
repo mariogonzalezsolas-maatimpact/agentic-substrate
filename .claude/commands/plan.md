@@ -5,6 +5,8 @@ description: Quick command to invoke implementation-planner to create surgical, 
 
 # /plan Command
 
+> **Prefer `/do plan [feature]` instead.** This command invokes `@implementation-planner` directly. `/do` adds mandatory planning, quality gate enforcement, and context discovery.
+
 Create detailed implementation plan using the implementation-planner agent.
 
 ## Usage
