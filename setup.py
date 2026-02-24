@@ -263,19 +263,29 @@ def action_diagnose(os_type):
 # MENU
 # ============================================================================
 
-MENU_OPTIONS = [
-    ("1", "Install",    "Install Agentic Substrate to ~/.claude", action_install),
-    ("2", "Uninstall",  "Remove installation (preserves data)", action_uninstall),
-    ("3", "Update",     "Update only changed files", action_update),
-    ("4", "Verify",     "Check installation health", action_verify),
-    ("5", "Configure",  "Configure MCP servers", action_configure),
-    ("6", "Status",     "Show system info and components", action_status),
-    ("7", "Diagnose",   "Debug installation problems", action_diagnose),
-    ("q", "Quit",       "Exit", None),
+MENU_SECTIONS = [
+    ("SETUP", [
+        ("1", "Install",    "Install Agentic Substrate", action_install),
+        ("2", "Uninstall",  "Remove (preserves your data)", action_uninstall),
+        ("3", "Update",     "Update only changed files", action_update),
+    ]),
+    ("TOOLS", [
+        ("4", "Verify",     "Check installation health", action_verify),
+        ("5", "Configure",  "MCP servers & settings", action_configure),
+        ("6", "Status",     "System info & components", action_status),
+        ("7", "Diagnose",   "Debug installation problems", action_diagnose),
+    ]),
 ]
+
+# Flat list for lookups
+MENU_OPTIONS = [item for _, items in MENU_SECTIONS for item in items]
+MENU_OPTIONS.append(("q", "Quit", "Exit", None))
 
 def show_menu(os_type):
     installed = is_installed()
+
+    status_line = f"v{installed}" if installed else "Not installed"
+    status_color = status_line
 
     print(f"""
     ╔══════════════════════════════════════════════╗
@@ -283,12 +293,16 @@ def show_menu(os_type):
     ║   Research-first dev system for Claude Code  ║
     ╚══════════════════════════════════════════════╝
 
-    OS: {os_type}  |  Python: {platform.python_version()}  |  {"Installed: v" + installed if installed else "Not installed"}
+    OS: {os_type}  |  Python {platform.python_version()}  |  {status_color}
     """)
 
-    for key, name, desc, _ in MENU_OPTIONS:
-        print(f"    {key}) {name:<12} {desc}")
+    for section_name, items in MENU_SECTIONS:
+        print(f"    --- {section_name} ---")
+        for key, name, desc, _ in items:
+            print(f"    {key}) {name:<12} {desc}")
+        print()
 
+    print(f"    q) Quit")
     print()
 
 def main():
