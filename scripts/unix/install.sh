@@ -310,10 +310,18 @@ detect_curl_install() {
         script_dir="$(pwd)"
     fi
 
-    # Check if .claude directory exists at script location
+    # Check if .claude directory exists at script location (flat layout)
     if [ -d "$script_dir/.claude" ] && [ -f "$script_dir/manifest-template.json" ]; then
         CURL_INSTALL=false
         SCRIPT_DIR="$script_dir"
+        return
+    fi
+
+    # Check repo root: scripts/unix/install.sh -> repo root is ../../
+    local repo_root="$(dirname "$(dirname "$script_dir")")"
+    if [ -d "$repo_root/.claude" ] && [ -f "$repo_root/scripts/manifest-template.json" ]; then
+        CURL_INSTALL=false
+        SCRIPT_DIR="$repo_root"
         return
     fi
 
@@ -371,10 +379,18 @@ preflight_checks() {
         exit 1
     fi
 
-    # Check manifest
-    MANIFEST_TEMPLATE="$SCRIPT_DIR/manifest-template.json"
+    # Check manifest (may be in SCRIPT_DIR or scripts/ subfolder)
+    if [ -f "$SCRIPT_DIR/manifest-template.json" ]; then
+        MANIFEST_TEMPLATE="$SCRIPT_DIR/manifest-template.json"
+    elif [ -f "$SCRIPT_DIR/scripts/manifest-template.json" ]; then
+        MANIFEST_TEMPLATE="$SCRIPT_DIR/scripts/manifest-template.json"
+    else
+        local _self_dir
+        _self_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd)"
+        MANIFEST_TEMPLATE="$_self_dir/manifest-template.json"
+    fi
     if [ ! -f "$MANIFEST_TEMPLATE" ]; then
-        log_error "Manifest template not found: $MANIFEST_TEMPLATE"
+        log_error "Manifest template not found"
         exit 1
     fi
 

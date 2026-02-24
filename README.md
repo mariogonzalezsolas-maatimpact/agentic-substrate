@@ -11,18 +11,10 @@
 <a name="english"></a>
 ## Quick Start
 
-### 1. Clone
-
 ```bash
 git clone <this-repo-url>
 cd claude-user-memory
-```
-
-### 2. Install
-
-```bash
-./install.sh          # macOS / Linux / WSL / Git Bash
-.\install.ps1         # Windows PowerShell
+python setup.py
 ```
 
 ### Use
@@ -116,66 +108,24 @@ Quality gates block bad inputs. Circuit breaker stops infinite loops.
 
 ## Installation
 
-### Platform Support
+**Supported:** macOS, Linux, WSL, Windows (Git Bash, MSYS2, PowerShell)
 
-| Platform | Script | Status |
-|----------|--------|--------|
-| macOS | `./install.sh` | Full support |
-| Linux | `./install.sh` | Full support |
-| WSL | `./install.sh` | Full support |
-| Windows (Git Bash) | `./install.sh` | Full support |
-| Windows (MSYS2) | `./install.sh` | Full support |
-| Windows (PowerShell) | `.\install.ps1` | Full support |
-| Windows (cmd) | N/A | Use PowerShell |
-
-### Requirements
-
-**Minimal:** bash and git only (for install.sh) or PowerShell 5.1+ (for install.ps1)
-
-**Optional:** python3/python for enhanced JSON handling
-
-### What Gets Installed
-
-**Location:** `~/.claude/` (or `%USERPROFILE%\.claude` on Windows)
-
-**Preserves:**
-- All data in `~/.claude/data/`
-- Your `CLAUDE.md` customizations (smart-merged)
-- Modified files (detected by checksum)
-- Knowledge files and patterns
-
-### Upgrade
+**Requirements:** Python 3 + git
 
 ```bash
-./install.sh          # bash
-.\install.ps1         # PowerShell
+python setup.py       # auto-detects OS, runs the right installer
 ```
 
-Your data and customizations are automatically preserved.
+**Installs to:** `~/.claude/` (or `%USERPROFILE%\.claude` on Windows)
 
-### Selective Update
+**Preserves** existing data, customizations, and knowledge files on upgrades.
 
-```bash
-./update.sh    # Only update changed files
-```
-
----
-
-## Configuration
+### Other scripts (in `scripts/`)
 
 ```bash
-./customize.sh                              # Interactive menu
-./customize.sh --enable-mcp memory          # Enable MCP servers
-./customize.sh --list-mcps                  # View configuration
-```
-
----
-
-## Uninstall
-
-```bash
-./uninstall.sh --dry-run    # Preview what will be removed
-./uninstall.sh              # Remove (preserves data)
+bash scripts/unix/update.sh         # Update only changed files
+bash scripts/unix/customize.sh      # Configure MCP servers
+bash scripts/unix/uninstall.sh      # Remove (preserves data)
 ```
 
 ---
@@ -227,18 +177,10 @@ MIT License - See [LICENSE](LICENSE)
 
 ## Inicio Rapido
 
-### 1. Clonar
-
 ```bash
 git clone <url-de-este-repo>
 cd claude-user-memory
-```
-
-### 2. Instalar
-
-```bash
-./install.sh          # macOS / Linux / WSL / Git Bash
-.\install.ps1         # Windows PowerShell
+python setup.py
 ```
 
 ### Uso
@@ -332,42 +274,25 @@ Las puertas de calidad bloquean entradas incorrectas. El circuit breaker detiene
 
 ## Instalacion
 
-### Soporte de Plataformas
+**Soportado:** macOS, Linux, WSL, Windows (Git Bash, MSYS2, PowerShell)
 
-| Plataforma | Script | Estado |
-|------------|--------|--------|
-| macOS | `./install.sh` | Soporte completo |
-| Linux | `./install.sh` | Soporte completo |
-| WSL | `./install.sh` | Soporte completo |
-| Windows (Git Bash) | `./install.sh` | Soporte completo |
-| Windows (MSYS2) | `./install.sh` | Soporte completo |
-| Windows (PowerShell) | `.\install.ps1` | Soporte completo |
-| Windows (cmd) | N/A | Usar PowerShell |
-
-### Requisitos
-
-**Minimos:** solo bash y git (para install.sh) o PowerShell 5.1+ (para install.ps1)
-
-**Opcional:** python3/python para manejo mejorado de JSON
-
-### Que Se Instala
-
-**Ubicacion:** `~/.claude/` (o `%USERPROFILE%\.claude` en Windows)
-
-**Preserva:**
-- Todos los datos en `~/.claude/data/`
-- Tus personalizaciones de `CLAUDE.md` (fusion inteligente)
-- Archivos modificados (detectados por checksum)
-- Archivos de conocimiento y patrones
-
-### Actualizar
+**Requisitos:** Python 3 + git
 
 ```bash
-./install.sh          # bash
-.\install.ps1         # PowerShell
+python setup.py       # detecta el OS, ejecuta el instalador correcto
 ```
 
-Tus datos y personalizaciones se preservan automaticamente.
+**Se instala en:** `~/.claude/` (o `%USERPROFILE%\.claude` en Windows)
+
+**Preserva** datos, personalizaciones y archivos de conocimiento al actualizar.
+
+### Otros scripts (en `scripts/`)
+
+```bash
+bash scripts/update.sh         # Actualizar solo archivos cambiados
+bash scripts/customize.sh      # Configurar servidores MCP
+bash scripts/uninstall.sh      # Desinstalar (preserva datos)
+```
 
 ---
 
