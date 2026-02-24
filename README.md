@@ -1,7 +1,5 @@
 # Agentic Substrate v5.4
 
-> **Before using:** Search the repo for `your-org`, `your-domain.com`, `example.com` and `[Client X]` placeholders. Replace them with your actual project details. See `shared-knowledge/COMPANY.md` as the starting point.
-
 **Research-first development system for Claude Code CLI - Optimized for Claude Opus 4.6**
 
 > 15 agents across 4 tiers. No API hallucinations. No coding from stale training data. Research -> Plan -> Implement -> Grow.
@@ -13,28 +11,18 @@
 <a name="english"></a>
 ## Quick Start
 
-### macOS / Linux / WSL
+### 1. Clone
 
 ```bash
-git clone https://github.com/your-org/claude-user-memory.git
+git clone <this-repo-url>
 cd claude-user-memory
-./install.sh
 ```
 
-### Windows (Git Bash)
+### 2. Install
 
 ```bash
-git clone https://github.com/your-org/claude-user-memory.git
-cd claude-user-memory
-./install.sh
-```
-
-### Windows (PowerShell)
-
-```powershell
-git clone https://github.com/your-org/claude-user-memory.git
-cd claude-user-memory
-.\install.ps1
+./install.sh          # macOS / Linux / WSL / Git Bash
+.\install.ps1         # Windows PowerShell
 ```
 
 ### Use
@@ -212,17 +200,13 @@ Built on Anthropic research (2024-2025):
 
 ---
 
-## Fork Improvements
-
-This fork by [your-org](https://github.com/your-org) adds:
+## Features
 
 - **Native Windows Support** - Works with Git Bash, MSYS2, and PowerShell
 - **PowerShell Installer** - `install.ps1` for Windows users without bash
 - **Path Conversion** - Automatic Unix-to-Windows path conversion for Python
 - **Dynamic Python Detection** - Works with `python3` or `python`
 - **Bilingual Documentation** - English and Spanish
-
-**Upstream:** [VAMFI/claude-user-memory](https://github.com/VAMFI/claude-user-memory)
 
 ---
 
@@ -243,28 +227,18 @@ MIT License - See [LICENSE](LICENSE)
 
 ## Inicio Rapido
 
-### macOS / Linux / WSL
+### 1. Clonar
 
 ```bash
-git clone https://github.com/your-org/claude-user-memory.git
+git clone <url-de-este-repo>
 cd claude-user-memory
-./install.sh
 ```
 
-### Windows (Git Bash)
+### 2. Instalar
 
 ```bash
-git clone https://github.com/your-org/claude-user-memory.git
-cd claude-user-memory
-./install.sh
-```
-
-### Windows (PowerShell)
-
-```powershell
-git clone https://github.com/your-org/claude-user-memory.git
-cd claude-user-memory
-.\install.ps1
+./install.sh          # macOS / Linux / WSL / Git Bash
+.\install.ps1         # Windows PowerShell
 ```
 
 ### Uso
@@ -397,17 +371,13 @@ Tus datos y personalizaciones se preservan automaticamente.
 
 ---
 
-## Mejoras de este Fork
-
-Este fork por [your-org](https://github.com/your-org) agrega:
+## Caracteristicas
 
 - **Soporte Nativo de Windows** - Funciona con Git Bash, MSYS2 y PowerShell
 - **Instalador PowerShell** - `install.ps1` para usuarios de Windows sin bash
 - **Conversion de Rutas** - Conversion automatica de rutas Unix a Windows para Python
 - **Deteccion Dinamica de Python** - Funciona con `python3` o `python`
 - **Documentacion Bilingue** - Ingles y Espanol
-
-**Upstream:** [VAMFI/claude-user-memory](https://github.com/VAMFI/claude-user-memory)
 
 ---
 

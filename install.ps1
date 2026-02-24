@@ -24,7 +24,7 @@
 
 .NOTES
     Version: 5.4.0
-    Author: Agentic Substrate Team + Windows compatibility by your-org
+    Author: Agentic Substrate Team
 #>
 
 param(

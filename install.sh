@@ -339,23 +339,16 @@ clone_repository() {
     # Check for git
     if ! command -v git >/dev/null 2>&1; then
         log_error "Git is required but not installed"
-        log_error "Please install git first, or use:"
-        log_error "  git clone https://github.com/your-org/claude-user-memory.git"
-        log_error "  cd claude-user-memory && ./install.sh"
+        log_error "Please install git first, then clone and run ./install.sh"
         exit 1
     fi
 
-    # Create temp directory
-    SCRIPT_DIR=$(safe_mktemp) || {
-        log_error "Failed to create temporary directory"
-        exit 1
-    }
-    TEMP_CLONE=true
-
-    # Clone repository with retry
-    if ! git_clone_with_retry "https://github.com/your-org/claude-user-memory.git" "$SCRIPT_DIR"; then
-        exit 1
-    fi
+    # Curl install not supported - user must clone first
+    log_error "Cannot detect repository source"
+    log_error "Please clone the repository first, then run ./install.sh from inside it:"
+    log_error "  git clone <repo-url>"
+    log_error "  cd claude-user-memory && ./install.sh"
+    exit 1
 
     log_success "Repository downloaded successfully"
 }
