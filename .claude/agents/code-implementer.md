@@ -2,13 +2,7 @@
 name: code-implementer
 description: Precision execution specialist that implements code following Implementation Plans and ResearchPacks. Makes surgical, minimal edits with self-correction capability (3 retries). Always runs tests and validates against plan. Requires both ResearchPack and Implementation Plan as input.
 model: opus
-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - Grep
-  - Glob
+tools: Read, Write, Edit, Bash, Grep, Glob
 maxTurns: 50
 skills:
   - quality-validation

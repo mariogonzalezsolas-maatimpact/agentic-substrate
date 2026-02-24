@@ -953,7 +953,7 @@ git push -u origin main
 
 1. **Create Marketplace Structure**
    ```bash
-   # Already exists as /Users/amba/Code/claude-user-memory
+   # Already exists as ~/Code/claude-user-memory
    mkdir -p .claude-plugin
    ```
 
@@ -1068,4 +1068,4 @@ The claude-user-memory repository is well-positioned to become a successful plug
 
 **End of Research Report**
 
-This document will be saved to: `/Users/amba/Code/claude-user-memory/docs/references/claude-code-plugin-distribution-strategy.md`
+This document will be saved to: `./docs/references/claude-code-plugin-distribution-strategy.md`

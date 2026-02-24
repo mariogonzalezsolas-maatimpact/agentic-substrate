@@ -13,6 +13,10 @@ Execute complete Research → Plan → Implement workflow using chief-architect 
 /workflow <feature description>
 ```
 
+> **Note**: When invoked via `/do`, FEATURE tasks use Agent Teams by default for parallel execution.
+> When `/workflow` is called directly, it runs sequentially (research -> plan -> implement).
+> Add "simple" or "no team" to `/do` to force sequential mode.
+
 ## What This Does
 
 **Complete automation of all three phases**:

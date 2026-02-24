@@ -12,7 +12,7 @@ NC='\033[0m'
 
 echo "🧠 Checking for knowledge core updates..."
 
-KNOWLEDGE_FILE="knowledge-core.md"
+KNOWLEDGE_FILE=".claude/knowledge-core.md"
 
 # Check if any implementations happened this session
 # Look for recent modifications to source files

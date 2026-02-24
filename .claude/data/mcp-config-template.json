@@ -1,7 +1,7 @@
 {
   "version": "2.0.0",
   "updated": "2026-02-18T00:00:00Z",
-  "description": "MCP (Model Context Protocol) server configuration for Agentic Substrate v5.4",
+  "description": "MCP (Model Context Protocol) server configuration for Agentic Substrate v6.0",
   "instructions": "This file maps MCP servers to agents. Edit to customize which tools each agent can access.",
 
   "servers": {

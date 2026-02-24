@@ -14,7 +14,7 @@ The original settings.json had hardcoded user-specific paths:
 {
   "hooks": {
     "PreToolUse": [{
-      "command": "/Users/amba/.claude/hooks/check-agent-economics.sh"  // ❌ Not portable
+      "command": "~/.claude/hooks/check-agent-economics.sh"  // ❌ Not portable
     }]
   }
 }
@@ -154,7 +154,7 @@ echo $HOME/.claude/hooks/check-agent-economics.sh
 | `$HOME` | `$HOME/.claude/hooks/script.sh` | Global config | ✅ Yes |
 | `~` | `~/.claude/hooks/script.sh` | Shell expansion | ⚠️ Maybe* |
 | Relative | `.claude/hooks/script.sh` | Project config | ✅ Yes |
-| Absolute | `/Users/amba/.claude/hooks/script.sh` | N/A | ❌ No |
+| Absolute | `~/.claude/hooks/script.sh` | N/A | ❌ No |
 
 \* Tilde `~` expansion depends on shell context - use `$HOME` for reliability
 

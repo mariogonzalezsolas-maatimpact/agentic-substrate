@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.1.0",
-  "substrate_version": "5.4.0",
+  "substrate_version": "6.0.0",
   "managed_files": [
     "agents/brahma-analyzer.md",
     "agents/brahma-deployer.md",

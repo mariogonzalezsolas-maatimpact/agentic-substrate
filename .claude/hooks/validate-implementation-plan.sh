@@ -2,6 +2,12 @@
 # validate-implementation-plan.sh
 # Quality gate: Validates Implementation Plan before allowing implementation phase
 # Exit 0 = pass, Exit 2 = block (Claude Code convention)
+#
+# NOTE: This validator is available for manual invocation or PreToolUse hook integration.
+# Quality gate validation is currently handled by prompt-type hooks in settings.json
+# (SubagentStop event for implementation-planner).
+# To enable this as a PreToolUse hook, add to settings.json:
+#   "hooks": { "PreToolUse": [{ "matcher": "Write", "hooks": [{"type": "command", "command": "bash $HOME/.claude/hooks/validate-implementation-plan.sh"}] }] }
 
 set -e
 

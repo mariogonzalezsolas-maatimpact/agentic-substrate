@@ -87,7 +87,7 @@ fi
 
 **Command**:
 ```bash
-cd /tmp && bash /Users/amba/Code/claude-user-memory/install.sh --force
+cd /tmp && bash ./install.sh --force
 ```
 
 **Output**:

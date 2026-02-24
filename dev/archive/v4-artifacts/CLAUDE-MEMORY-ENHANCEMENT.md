@@ -39,7 +39,7 @@ Core Entity Types:
   Project:
     description: "Root entity for each codebase"
     naming: "/absolute/path/to/project"
-    example: "/Users/amba/Code/my-app"
+    example: "~/Code/my-app"
 
   Feature:
     description: "Functional components or modules"
@@ -122,7 +122,7 @@ Observation Types:
 # When starting a new project
 mcp__memory__create_entities(entities=[
   {
-    "name": "/Users/amba/Code/my-app",
+    "name": "~/Code/my-app",
     "entityType": "project",
     "observations": [
       "E-commerce platform using Next.js and PostgreSQL",
@@ -158,12 +158,12 @@ mcp__memory__create_entities(entities=[
 # Connect them
 mcp__memory__create_relations(relations=[
   {
-    "from": "/Users/amba/Code/my-app",
+    "from": "~/Code/my-app",
     "to": "feature:authentication",
     "relationType": "contains"
   },
   {
-    "from": "/Users/amba/Code/my-app",
+    "from": "~/Code/my-app",
     "to": "feature:product-catalog",
     "relationType": "contains"
   }
@@ -191,7 +191,7 @@ mcp__memory__create_entities(entities=[
 # Link decision to project and feature
 mcp__memory__create_relations(relations=[
   {
-    "from": "/Users/amba/Code/my-app",
+    "from": "~/Code/my-app",
     "to": "decision:use-redis-caching",
     "relationType": "made"
   },
@@ -305,7 +305,7 @@ past_decisions = mcp__memory__search_nodes(
 ```python
 # Get full project context
 project_graph = mcp__memory__open_nodes(
-  names=["/Users/amba/Code/my-app"]
+  names=["~/Code/my-app"]
 )
 # Returns: Project with all related entities and relationships
 
@@ -381,7 +381,7 @@ Scaling:
 
 ```yaml
 Good:
-  - /Users/amba/Code/my-app (absolute paths)
+  - ~/Code/my-app (absolute paths)
   - feature:authentication (type:name)
   - pattern:cache-aside (descriptive)
   - problem:bug:123 (categorized)

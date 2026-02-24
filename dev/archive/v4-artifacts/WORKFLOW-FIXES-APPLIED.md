@@ -35,7 +35,7 @@ Successfully implemented all Priority 1 (Critical) and Priority 2 (Major) fixes 
 
 ### Fix 1.1-v2: /workflow.md Directive Imperative (SUPERSEDES FIX 1.1)
 
-**Lines Modified**: 477-502 in `/Users/amba/.claude/commands/workflow.md`
+**Lines Modified**: 477-502 in `~/.claude/commands/workflow.md`
 
 **Before** (insufficient passive fix):
 ```markdown
@@ -80,7 +80,7 @@ Invoking @chief-architect with your request to orchestrate the complete workflow
 
 ### Fix 1.2-v2: /research.md Directive Imperative
 
-**Lines Modified**: 69-90 in `/Users/amba/.claude/commands/research.md`
+**Lines Modified**: 69-90 in `~/.claude/commands/research.md`
 
 **Before** (passive):
 ```markdown
@@ -115,7 +115,7 @@ The research-methodology skill will be automatically applied...
 
 ### Fix 1.3-v2: /plan.md Directive Imperative
 
-**Lines Modified**: 86-108 in `/Users/amba/.claude/commands/plan.md`
+**Lines Modified**: 86-108 in `~/.claude/commands/plan.md`
 
 **Before** (passive):
 ```markdown
@@ -150,7 +150,7 @@ The planning-methodology skill will be automatically applied...
 
 ### Fix 1.4-v2: /implement.md Directive Imperative
 
-**Lines Modified**: 161-184 in `/Users/amba/.claude/commands/implement.md`
+**Lines Modified**: 161-184 in `~/.claude/commands/implement.md`
 
 **Before** (passive):
 ```markdown
@@ -195,10 +195,10 @@ The code-implementer will:
 | Documentation accuracy | Misleading | Truthful | Trustworthy |
 
 **Files Modified** (4 total):
-- `/Users/amba/.claude/commands/workflow.md` (lines 477-502)
-- `/Users/amba/.claude/commands/research.md` (lines 69-90)
-- `/Users/amba/.claude/commands/plan.md` (lines 86-108)
-- `/Users/amba/.claude/commands/implement.md` (lines 161-184)
+- `~/.claude/commands/workflow.md` (lines 477-502)
+- `~/.claude/commands/research.md` (lines 69-90)
+- `~/.claude/commands/plan.md` (lines 86-108)
+- `~/.claude/commands/implement.md` (lines 161-184)
 
 **Time Invested**: 90 minutes (analysis + implementation + documentation)
 
@@ -214,7 +214,7 @@ The code-implementer will:
 
 **Problem**: The `/workflow` command was documentation-only. It told users to manually invoke `@chief-architect` instead of executing automatically.
 
-**Root Cause**: Lines 274-287 in `/Users/amba/.claude/commands/workflow.md` said:
+**Root Cause**: Lines 274-287 in `~/.claude/commands/workflow.md` said:
 ```markdown
 Please invoke: `@chief-architect {args}`
 ```
@@ -232,7 +232,7 @@ Invoking @chief-architect with your request to orchestrate the complete workflow
 - **User Experience**: Complete automation restored
 
 **Files Modified**:
-- `/Users/amba/.claude/commands/workflow.md` (lines 274-295)
+- `~/.claude/commands/workflow.md` (lines 274-295)
 
 ---
 
@@ -240,7 +240,7 @@ Invoking @chief-architect with your request to orchestrate the complete workflow
 
 **Problem**: Research validation hook always exited 0 (success) even when score < 80, so it warned but never blocked.
 
-**Root Cause**: Line 165 in `/Users/amba/.claude/hooks/validate-research-pack.sh`:
+**Root Cause**: Line 165 in `~/.claude/hooks/validate-research-pack.sh`:
 ```bash
 exit 0  # Changed to warn instead of block - set to exit 1 to block
 ```
@@ -257,7 +257,7 @@ exit 1  # Block planning if research quality insufficient
 - **Quality Impact**: Prevents API hallucinations, incomplete documentation
 
 **Files Modified**:
-- `/Users/amba/.claude/hooks/validate-research-pack.sh` (lines 161-166)
+- `~/.claude/hooks/validate-research-pack.sh` (lines 161-166)
 
 ---
 
@@ -265,7 +265,7 @@ exit 1  # Block planning if research quality insufficient
 
 **Problem**: Implementation plan validation hook always exited 0 even when score < 85, so it warned but never blocked.
 
-**Root Cause**: Line 186 in `/Users/amba/.claude/hooks/validate-implementation-plan.sh`:
+**Root Cause**: Line 186 in `~/.claude/hooks/validate-implementation-plan.sh`:
 ```bash
 exit 0  # Changed to warn instead of block - set to exit 1 to block
 ```
@@ -282,7 +282,7 @@ exit 1  # Block implementation if plan quality insufficient
 - **Safety Impact**: Prevents unsafe implementations, incomplete rollback procedures
 
 **Files Modified**:
-- `/Users/amba/.claude/hooks/validate-implementation-plan.sh` (lines 182-187)
+- `~/.claude/hooks/validate-implementation-plan.sh` (lines 182-187)
 
 ---
 
@@ -296,7 +296,7 @@ exit 1  # Block implementation if plan quality insufficient
 
 **Fix Applied**: Created file with initial state "closed":
 ```bash
-/Users/amba/.claude/.circuit-breaker-state
+~/.claude/.circuit-breaker-state
 Contents: closed
 ```
 
@@ -306,7 +306,7 @@ Contents: closed
 - **Reliability Impact**: Self-correction retry logic works as designed
 
 **Files Created**:
-- `/Users/amba/.claude/.circuit-breaker-state`
+- `~/.claude/.circuit-breaker-state`
 
 ---
 
@@ -328,7 +328,7 @@ Contents: closed
 - **User Understanding**: Clear expectations for workflow phases
 
 **Files Modified**:
-- `/Users/amba/.claude/commands/workflow.md` (multiple sections)
+- `~/.claude/commands/workflow.md` (multiple sections)
 
 **Documentation Added**:
 ```markdown
@@ -360,7 +360,7 @@ Contents: closed
 - **Performance Expectations**: Users understand time savings from pattern reuse
 
 **Files Modified**:
-- `/Users/amba/.claude/commands/workflow.md` (multiple sections)
+- `~/.claude/commands/workflow.md` (multiple sections)
 
 **Documentation Added**:
 ```markdown
@@ -392,7 +392,7 @@ Contents: closed
 - **Adoption**: Users can make informed decisions about installing optional MCPs
 
 **Files Modified**:
-- `/Users/amba/.claude/commands/workflow.md` (section added after "When to Use")
+- `~/.claude/commands/workflow.md` (section added after "When to Use")
 
 **Key Documentation**:
 - deepwiki: 49-67% better research accuracy
@@ -419,7 +419,7 @@ Contents: closed
 - **Quality**: Users can request ultrathink for critical decisions
 
 **Files Modified**:
-- `/Users/amba/.claude/commands/workflow.md` (section added after MCP Integration)
+- `~/.claude/commands/workflow.md` (section added after MCP Integration)
 
 **Key Documentation**:
 - 54% improvement on complex tasks
@@ -519,10 +519,10 @@ With all fixes applied, users can expect:
 
 | File | Type | Changes |
 |------|------|---------|
-| `/Users/amba/.claude/commands/workflow.md` | Slash Command | +120 lines (documentation) |
-| `/Users/amba/.claude/hooks/validate-research-pack.sh` | Validation Hook | 5 lines (exit code + message) |
-| `/Users/amba/.claude/hooks/validate-implementation-plan.sh` | Validation Hook | 5 lines (exit code + message) |
-| `/Users/amba/.claude/.circuit-breaker-state` | State File | Created with "closed" |
+| `~/.claude/commands/workflow.md` | Slash Command | +120 lines (documentation) |
+| `~/.claude/hooks/validate-research-pack.sh` | Validation Hook | 5 lines (exit code + message) |
+| `~/.claude/hooks/validate-implementation-plan.sh` | Validation Hook | 5 lines (exit code + message) |
+| `~/.claude/.circuit-breaker-state` | State File | Created with "closed" |
 
 ---
 

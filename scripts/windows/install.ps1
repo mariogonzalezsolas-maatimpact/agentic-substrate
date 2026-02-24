@@ -1,7 +1,7 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    Agentic Substrate v5.4.0 - PowerShell Installer for Windows
+    Agentic Substrate v6.0.0 - PowerShell Installer for Windows
 
 .DESCRIPTION
     Native Windows installer for the Agentic Substrate system.
@@ -23,7 +23,7 @@
     .\install.ps1 -Force
 
 .NOTES
-    Version: 5.4.0
+    Version: 6.0.0
     Author: Agentic Substrate Team
 #>
 
@@ -34,7 +34,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$VERSION = "5.4.0"
+$VERSION = "6.0.0"
 $CLAUDE_TARGET = Join-Path $env:USERPROFILE ".claude"
 $SCRIPT_DIR = Split-Path -Parent $MyInvocation.MyCommand.Path
 # Resolve repo root: scripts/windows/install.ps1 -> repo root is ../../
@@ -441,7 +441,24 @@ function Configure-AgentTeams {
         }
     }
     else {
-        Write-Info "settings.json will be installed with Agent Teams support"
+        # Settings.json will be installed by Install-Files - need to add env var after
+        $settingsPath = Join-Path $CLAUDE_TARGET "settings.json"
+        if (Test-Path $settingsPath) {
+            try {
+                $settings = Get-Content $settingsPath -Raw | ConvertFrom-Json
+                if (-not $settings.env) {
+                    $settings | Add-Member -NotePropertyName "env" -NotePropertyValue ([PSCustomObject]@{}) -Force
+                }
+                $settings.env | Add-Member -NotePropertyName "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS" -NotePropertyValue "1" -Force
+                $settings | ConvertTo-Json -Depth 10 | Set-Content $settingsPath -Encoding UTF8
+                Write-Success "Agent Teams enabled in settings.json"
+            } catch {
+                Write-Warn "Could not configure Agent Teams: $_"
+                Write-Info 'Add manually to ~/.claude/settings.json: "env": { "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1" }'
+            }
+        } else {
+            Write-Info "settings.json will be installed with Agent Teams support"
+        }
     }
 }
 

@@ -6,6 +6,8 @@
 
 set -euo pipefail
 
+if ! command -v jq &>/dev/null; then exit 0; fi
+
 INPUT=$(cat 2>/dev/null || echo "{}")
 AGENT_NAME=$(echo "$INPUT" | jq -r '.agent_name // "unknown"' 2>/dev/null)
 

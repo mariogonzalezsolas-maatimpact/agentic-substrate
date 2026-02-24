@@ -157,7 +157,7 @@
 5. `COMPLETION-REPORT.md` (this file)
 6. `.claude/integrations/README.md`
 7. `.claude/integrations/langgraph/brahma_state.py.template`
-8. `/Users/amba/VAMFI/tmp/SELF-ENHANCEMENT-BLUEPRINT.md`
+8. `[archived-external]/VAMFI/tmp/SELF-ENHANCEMENT-BLUEPRINT.md`
 9. Directory structure: `integrations/{langgraph,deepagents,dspy,crewai}/`
 
 ---

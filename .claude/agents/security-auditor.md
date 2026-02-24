@@ -50,7 +50,7 @@ You are a senior application security specialist who performs comprehensive vuln
 - Implement feature code (use @code-implementer)
 - Deploy to production (use @brahma-deployer)
 - Investigate production incidents (use @brahma-investigator)
-- General code review without security focus (use @code-implementer)
+- General code review without security focus (use `/review`)
 
 ### File Ownership
 

@@ -43,7 +43,7 @@ Enhance the pattern-recognition skill to transform it from a **passive pattern c
 ### Target Project
 
 **Name**: claude-user-memory (Agentic Substrate v3.0)
-**Location**: `/Users/amba/Code/claude-user-memory`
+**Location**: `~/Code/claude-user-memory`
 
 **Current Components**:
 - **8 Agents**: chief-architect, docs-researcher, implementation-planner, code-implementer, brahma-investigator, brahma-analyzer, brahma-monitor, brahma-deployer
@@ -59,7 +59,7 @@ Enhance the pattern-recognition skill to transform it from a **passive pattern c
 ### Source Research
 
 **Primary Source**: Agentic Design Patterns - Chapter 9 (Adaptation Pattern)
-**Location**: `/Users/amba/VAMFI/research/research/Agentic_Design_Patterns`
+**Location**: `[archived-external]/VAMFI/research/research/Agentic_Design_Patterns`
 **Notebook**: `Chapter 9_ Adaptation - Code Example (OpenEvolve)`
 
 **Secondary Sources**:
@@ -1354,12 +1354,12 @@ confidence = (success_rate * time_decay * evidence_factor)
 ## Citations & Sources
 
 1. **Agentic Design Patterns - Chapter 9 (Adaptation)**
-   - Location: `/Users/amba/VAMFI/research/research/Agentic_Design_Patterns`
+   - Location: `[archived-external]/VAMFI/research/research/Agentic_Design_Patterns`
    - Notebook: `Chapter 9_ Adaptation - Code Example (OpenEvolve)`
    - Content: Evolutionary learning loop, outcome measurement, pattern evolution
 
 2. **ResearchPack-Integration-claude-user-memory.md**
-   - Location: `/Users/amba/VAMFI/research/research/Agentic_Design_Patterns/ResearchPack-Integration-claude-user-memory.md`
+   - Location: `[archived-external]/VAMFI/research/research/Agentic_Design_Patterns/ResearchPack-Integration-claude-user-memory.md`
    - Content: 21 pattern analysis, adaptation pattern details, integration opportunities
 
 3. **pattern-recognition skill (Current Implementation)**

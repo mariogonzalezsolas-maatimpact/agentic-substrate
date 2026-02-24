@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Agentic Substrate v5.4 - Customization Interface
+# Agentic Substrate v6.0 - Customization Interface
 # User-friendly configuration for MCP servers and agent mappings
 
 set -e
 
-VERSION="5.4.0"
+VERSION="6.0.0"
 
 # Colors for output
 RED='\033[0;31m'
@@ -284,6 +284,13 @@ function show_help() {
 }
 
 # Main script
+
+# Handle --help before requiring dependencies
+if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
+  show_help
+  exit 0
+fi
+
 check_dependencies
 init_config
 
@@ -305,12 +312,12 @@ while [[ $# -gt 0 ]]; do
       shift 2
       ;;
     --assign-mcp)
-      [ -z "$2" ] || [ -z "$3" ] && { log_error "--assign-mcp requires <mcp> <agent>"; exit 1; }
+      { [ -z "$2" ] || [ -z "$3" ]; } && { log_error "--assign-mcp requires <mcp> <agent>"; exit 1; }
       assign_mcp "$2" "$3"
       shift 3
       ;;
     --unassign-mcp)
-      [ -z "$2" ] || [ -z "$3" ] && { log_error "--unassign-mcp requires <mcp> <agent>"; exit 1; }
+      { [ -z "$2" ] || [ -z "$3" ]; } && { log_error "--unassign-mcp requires <mcp> <agent>"; exit 1; }
       unassign_mcp "$2" "$3"
       shift 3
       ;;

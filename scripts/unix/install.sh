@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Agentic Substrate v5.4 - Robust Cross-Platform Installation
+# Agentic Substrate v6.0 - Robust Cross-Platform Installation
 # Works on: macOS, Linux, WSL, Windows (Git Bash/MSYS2), minimal containers, with/without Python
 # Optimized for Claude Opus 4.6 with 15 agents across 4 tiers
 
-VERSION="5.4.0"
+VERSION="6.0.0"
 
 # ============================================================================
 # GLOBAL VARIABLES
@@ -357,8 +357,6 @@ clone_repository() {
     log_error "  git clone <repo-url>"
     log_error "  cd claude-user-memory && ./install.sh"
     exit 1
-
-    log_success "Repository downloaded successfully"
 }
 
 # Comprehensive pre-flight checks
@@ -723,15 +721,38 @@ PYEOF
         log_info "Add manually to ~/.claude/settings.json:"
         log_info '  "env": { "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1" }'
     else
-        # No settings.json -- create minimal one
-        cat > "$settings" << 'EOF'
+        # No settings.json -- try to copy from source first, then add env var
+        if [ -f "$CLAUDE_SOURCE/settings.json" ]; then
+            cp "$CLAUDE_SOURCE/settings.json" "$settings"
+            # Now add env var using Python merge
+            local settings_path
+            settings_path=$(to_windows_path "$settings")
+            if [ -n "$PYTHON_CMD" ]; then
+                SETTINGS_PATH="$settings_path" $PYTHON_CMD << 'PYEOF' 2>/dev/null
+import json, os
+path = os.environ['SETTINGS_PATH']
+with open(path, 'r') as f:
+    data = json.load(f)
+if 'env' not in data:
+    data['env'] = {}
+data['env']['CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS'] = '1'
+with open(path, 'w') as f:
+    json.dump(data, f, indent=2)
+    f.write('\n')
+PYEOF
+            fi
+            log_success "settings.json created with Agent Teams enabled (from source)"
+        else
+            # Only as last resort, create minimal
+            cat > "$settings" << 'EOF'
 {
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   }
 }
 EOF
-        log_success "settings.json created with Agent Teams enabled"
+            log_success "settings.json created with Agent Teams enabled"
+        fi
     fi
 }
 
@@ -756,13 +777,13 @@ generate_manifest() {
 
     # Try to generate with Python
     if [ -n "$PYTHON_CMD" ]; then
-        $PYTHON_CMD << EOF 2>/dev/null
-import json
-with open('$manifest_src_path', 'r') as f:
+        MANIFEST_SRC="$manifest_src_path" MANIFEST_DST="$manifest_dst_path" INSTALL_TIMESTAMP="$timestamp" $PYTHON_CMD << 'EOF' 2>/dev/null
+import json, os
+with open(os.environ['MANIFEST_SRC'], 'r') as f:
     data = json.load(f)
-data['installed_at'] = '$timestamp'
+data['installed_at'] = os.environ['INSTALL_TIMESTAMP']
 data['installed_by'] = 'install.sh'
-with open('$manifest_dst_path', 'w') as f:
+with open(os.environ['MANIFEST_DST'], 'w') as f:
     json.dump(data, f, indent=2)
 EOF
         if [ $? -eq 0 ]; then

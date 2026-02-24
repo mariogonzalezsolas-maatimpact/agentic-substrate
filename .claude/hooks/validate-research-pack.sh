@@ -2,6 +2,12 @@
 # validate-research-pack.sh
 # Quality gate: Validates ResearchPack before allowing planning phase
 # Exit 0 = pass, Exit 2 = block (Claude Code convention)
+#
+# NOTE: This validator is available for manual invocation or PreToolUse hook integration.
+# Quality gate validation is currently handled by prompt-type hooks in settings.json
+# (SubagentStop event for docs-researcher).
+# To enable this as a PreToolUse hook, add to settings.json:
+#   "hooks": { "PreToolUse": [{ "matcher": "Write", "hooks": [{"type": "command", "command": "bash $HOME/.claude/hooks/validate-research-pack.sh"}] }] }
 
 set -e
 

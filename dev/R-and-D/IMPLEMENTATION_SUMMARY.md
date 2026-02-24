@@ -1,6 +1,6 @@
 # Implementation Plan Summary
 
-**Quick Reference for `/Users/amba/Code/claude-user-memory/IMPLEMENTATION_PLAN.md`**
+**Quick Reference for `./IMPLEMENTATION_PLAN.md`**
 
 ---
 
@@ -175,9 +175,9 @@ claude plugin install claude-user-memory
 
 ## Document Locations
 
-- **Full Plan**: `/Users/amba/Code/claude-user-memory/IMPLEMENTATION_PLAN.md` (16,000 words)
-- **Research**: `/Users/amba/Code/claude-user-memory/docs/references/RESEARCH-SUMMARY.md`
-- **Analysis**: `/Users/amba/Code/claude-user-memory/PROJECT_ANALYSIS.md`
+- **Full Plan**: `./IMPLEMENTATION_PLAN.md` (16,000 words)
+- **Research**: `./docs/references/RESEARCH-SUMMARY.md`
+- **Analysis**: `./PROJECT_ANALYSIS.md`
 
 ---
 

@@ -189,7 +189,7 @@ if [ ! -d "$HOME/.claude/scripts" ]; then
 fi
 ```
 
-**Finding**: These directories do NOT exist in `/Users/amba/Code/claude-user-memory/.claude/`
+**Finding**: These directories do NOT exist in `./.claude/`
 
 **Hypothesis**: These were planned for v3.1 (adaptive learning) but:
 - pattern-index.json may have been stored elsewhere
@@ -704,12 +704,12 @@ update.sh
 ## 🔗 Authoritative Sources
 
 1. **Current Scripts**:
-   - `/Users/amba/Code/claude-user-memory/install.sh` - Current installation
-   - `/Users/amba/Code/claude-user-memory/update-local-installation.sh` - Current update
+   - `./install.sh` - Current installation
+   - `./update-local-installation.sh` - Current update
    - Version: 3.1.0
 
 2. **Repository Structure**:
-   - `/Users/amba/Code/claude-user-memory/.claude/` - Source files
+   - `./.claude/` - Source files
    - 35 managed files across 7 directories
 
 3. **CLI Directory Analysis**:
@@ -717,7 +717,7 @@ update.sh
    - Observed: 11 CLI-managed directories, 3 CLI-managed files
 
 4. **Manifest Specification**:
-   - `/Users/amba/Code/claude-user-memory/manifest.json` - Package manifest
+   - `./manifest.json` - Package manifest
    - Version: 3.0.0 (needs update to 3.1.0)
 
 **Confidence Level**: HIGH

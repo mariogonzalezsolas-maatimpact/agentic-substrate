@@ -40,7 +40,7 @@ done
 for f in "$PROJECT_DIR"/ImplementationPlan*.md "$PROJECT_DIR"/.claude/ImplementationPlan*.md; do
     [ -f "$f" ] && ARTIFACTS="$ARTIFACTS Plan" && break
 done
-[ -f "$PROJECT_DIR/knowledge-core.md" ] && ARTIFACTS="$ARTIFACTS knowledge-core"
+[ -f "$PROJECT_DIR/.claude/knowledge-core.md" ] && ARTIFACTS="$ARTIFACTS knowledge-core"
 if [ -n "$ARTIFACTS" ]; then
     echo "Artifacts:$ARTIFACTS"
 else

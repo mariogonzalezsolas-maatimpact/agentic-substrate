@@ -3367,7 +3367,7 @@ Available: /workflow, /context, all agents
 ## References
 
 ### ResearchPack
-- **Location**: `/Users/amba/Code/claude-user-memory/ResearchPack-Anthropic-Engineering-Philosophy.md`
+- **Location**: `./ResearchPack-Anthropic-Engineering-Philosophy.md`
 - **Sources**: 11 Anthropic engineering articles (Sep 2024 - Oct 2025)
 - **Confidence**: HIGH (all official sources)
 - **Coverage**: 7 thematic patterns, implementation checklist

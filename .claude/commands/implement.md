@@ -141,13 +141,13 @@ After `/implement` completes:
 ## Troubleshooting
 
 **Tests fail all 3 times**:
-- See `TROUBLESHOOTING.md` → "Implementation Issues"
+- See `docs/TROUBLESHOOTING.md` → "Implementation Issues"
 - Check if plan was correct (might need revision)
 - Check if environment is set up (deps installed, etc.)
 - Check if APIs in ResearchPack are accurate
 
 **Circuit breaker blocking**:
-- See `TROUBLESHOOTING.md` → "Circuit Breaker Issues"
+- See `docs/TROUBLESHOOTING.md` → "Circuit Breaker Issues"
 - Don't reset until root cause fixed
 - Review failure history before retrying
 

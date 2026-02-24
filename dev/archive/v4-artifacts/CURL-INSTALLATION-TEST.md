@@ -51,7 +51,7 @@ curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claud
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅ Pre-flight checks passed
-✅ Backup created: /Users/amba/.claude.backup-20251101-224420
+✅ Backup created: ~/.claude.backup-20251101-224420
 ✅ All managed files installed (35 files)
 ✅ Permissions set on executable files
 ✅ User-level CLAUDE.md installed

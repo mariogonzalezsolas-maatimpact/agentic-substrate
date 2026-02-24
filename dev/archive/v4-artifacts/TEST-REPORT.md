@@ -503,7 +503,7 @@ When running workflows, watch for hook output:
 ### File Locations
 - **Global config:** `~/.claude/`
 - **Backup:** `~/.claude.backup-20251017-020508/`
-- **Project repo:** `/Users/amba/Code/claude-user-memory/`
+- **Project repo:** `./`
 
 ### Rollback Procedure
 If issues arise, restore previous configuration:
@@ -575,7 +575,7 @@ mv ~/.claude.backup-20251017-020508 ~/.claude
 
 ## Files Modified (Summary)
 
-### Repository (`/Users/amba/Code/claude-user-memory/.claude/`)
+### Repository (`./.claude/`)
 1. `settings.json` - Hook format updated
 2. `validators/circuit-breaker.sh` - Integer comparison fixed
 3. `hooks/validate-implementation-plan.sh` - Backtick escaping fixed

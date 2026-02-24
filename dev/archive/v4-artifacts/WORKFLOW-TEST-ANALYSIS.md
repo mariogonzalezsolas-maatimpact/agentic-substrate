@@ -35,11 +35,11 @@
 5. ✅ Documentation vs implementation gap
 
 **Files Analyzed**:
-- `/Users/amba/.claude/commands/workflow.md`
-- `/Users/amba/.claude/commands/research.md`
-- `/Users/amba/.claude/commands/plan.md`
-- `/Users/amba/.claude/commands/implement.md`
-- `/Users/amba/.claude/commands/context.md` (control comparison)
+- `~/.claude/commands/workflow.md`
+- `~/.claude/commands/research.md`
+- `~/.claude/commands/plan.md`
+- `~/.claude/commands/implement.md`
+- `~/.claude/commands/context.md` (control comparison)
 
 ---
 
@@ -196,7 +196,7 @@ Invoking @chief-architect with your request to orchestrate the complete workflow
 
 #### Fix 1.1: /workflow Command Auto-Execution
 
-**File**: `/Users/amba/.claude/commands/workflow.md`
+**File**: `~/.claude/commands/workflow.md`
 **Lines**: 274-295 (replace current "Invoking..." section)
 
 **Current** (lines 274-295):
@@ -252,7 +252,7 @@ The chief-architect will:
 
 #### Fix 1.2: /research Command Auto-Execution
 
-**File**: `/Users/amba/.claude/commands/research.md`
+**File**: `~/.claude/commands/research.md`
 **Lines**: 69-74 (replace "Executing command" section)
 
 **Current**:
@@ -299,7 +299,7 @@ The docs-researcher will:
 
 #### Fix 1.3: /plan Command Auto-Execution
 
-**File**: `/Users/amba/.claude/commands/plan.md`
+**File**: `~/.claude/commands/plan.md`
 **Lines**: 86-97 (replace "Executing command" section)
 
 **Current**:
@@ -350,7 +350,7 @@ The implementation-planner will:
 
 #### Fix 1.4: /implement Command Auto-Execution
 
-**File**: `/Users/amba/.claude/commands/implement.md`
+**File**: `~/.claude/commands/implement.md`
 **Lines**: 161-164 (replace "Executing command" section)
 
 **Current**:

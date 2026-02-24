@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Agentic Substrate v5.4 - Intelligent Update Script (Robust Cross-Platform)
+# Agentic Substrate v6.0 - Intelligent Update Script (Robust Cross-Platform)
 # Selectively updates only changed files, preserves user data
 
-VERSION="5.4.0"
+VERSION="6.0.0"
 
 # DO NOT use set -e - we want explicit error handling
 # set -e causes immediate exit on any error, preventing cleanup
@@ -487,20 +487,20 @@ update_manifest() {
 
     # Try python3 first
     if command -v python3 >/dev/null 2>&1; then
-        python3 << EOF 2>/dev/null || return 1
-import json
+        MANIFEST_SRC="$MANIFEST_TEMPLATE" MANIFEST_DST="$manifest" INSTALL_TIMESTAMP="$timestamp" UPDATED_FROM="$CURRENT_VERSION" python3 << 'EOF' 2>/dev/null || return 1
+import json, os
 
 # Load template
-with open('$MANIFEST_TEMPLATE', 'r') as f:
+with open(os.environ['MANIFEST_SRC'], 'r') as f:
     data = json.load(f)
 
 # Add update metadata
-data['installed_at'] = '$timestamp'
+data['installed_at'] = os.environ['INSTALL_TIMESTAMP']
 data['installed_by'] = 'update.sh'
-data['updated_from'] = '$CURRENT_VERSION'
+data['updated_from'] = os.environ['UPDATED_FROM']
 
 # Write to installation directory
-with open('$manifest', 'w') as f:
+with open(os.environ['MANIFEST_DST'], 'w') as f:
     json.dump(data, f, indent=2)
 EOF
         if [ $? -eq 0 ]; then
@@ -511,20 +511,20 @@ EOF
 
     # Try python
     if command -v python >/dev/null 2>&1; then
-        python << EOF 2>/dev/null || return 1
-import json
+        MANIFEST_SRC="$MANIFEST_TEMPLATE" MANIFEST_DST="$manifest" INSTALL_TIMESTAMP="$timestamp" UPDATED_FROM="$CURRENT_VERSION" python << 'EOF' 2>/dev/null || return 1
+import json, os
 
 # Load template
-with open('$MANIFEST_TEMPLATE', 'r') as f:
+with open(os.environ['MANIFEST_SRC'], 'r') as f:
     data = json.load(f)
 
 # Add update metadata
-data['installed_at'] = '$timestamp'
+data['installed_at'] = os.environ['INSTALL_TIMESTAMP']
 data['installed_by'] = 'update.sh'
-data['updated_from'] = '$CURRENT_VERSION'
+data['updated_from'] = os.environ['UPDATED_FROM']
 
 # Write to installation directory
-with open('$manifest', 'w') as f:
+with open(os.environ['MANIFEST_DST'], 'w') as f:
     json.dump(data, f, indent=2)
 EOF
         if [ $? -eq 0 ]; then

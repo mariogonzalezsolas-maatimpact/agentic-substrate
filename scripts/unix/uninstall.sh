@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Agentic Substrate v5.4 - Safe Uninstallation (Robust Cross-Platform)
+# Agentic Substrate v6.0 - Safe Uninstallation (Robust Cross-Platform)
 # Removes installed files while preserving user data and customizations
 
-VERSION="5.4.0"
+VERSION="6.0.0"
 
 # DO NOT use set -e - we want explicit error handling
 # set -e causes immediate exit on any error, preventing cleanup
@@ -273,6 +273,7 @@ declare -a REMOVE_CATEGORIES=(
     "hooks:Automation hooks"
     "templates:Template files"
     "validators:Quality validators"
+    "metrics:Metrics tracker"
 )
 
 declare -a PRESERVE_ALWAYS=(
@@ -491,7 +492,7 @@ main() {
 
     # Clean up empty directories (except data and backups)
     if [ "$DRY_RUN" != true ] && [ "$PRESERVE_ALL" != true ]; then
-        for dir in agents skills commands hooks templates validators integrations; do
+        for dir in agents skills commands hooks templates validators metrics integrations; do
             if [ -d "$CLAUDE_TARGET/$dir" ]; then
                 if [ -z "$(ls -A "$CLAUDE_TARGET/$dir" 2>/dev/null)" ]; then
                     rmdir "$CLAUDE_TARGET/$dir" 2>/dev/null || true

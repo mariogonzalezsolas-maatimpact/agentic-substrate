@@ -126,7 +126,7 @@ manifest-template.json                                         rollback-to-vX.Y.
 
 ### Step 1: Create .gitignore (5 min)
 
-**File**: `/Users/amba/Code/claude-user-memory/.gitignore`
+**File**: `./.gitignore`
 
 **Content**:
 ```gitignore
@@ -201,7 +201,7 @@ git ls-files | grep settings.json  # Should be empty
 
 ### Step 3: Create Manifest Template (20 min)
 
-**File**: `/Users/amba/Code/claude-user-memory/manifest-template.json`
+**File**: `./manifest-template.json`
 
 **Structure**:
 ```json
@@ -314,7 +314,7 @@ jq '.managed_files | length' manifest-template.json
 
 ### Step 4: Rewrite install.sh (40 min)
 
-**File**: `/Users/amba/Code/claude-user-memory/install.sh`
+**File**: `./install.sh`
 
 **Key Changes**:
 1. Replace `cp -r` with manifest-driven file-by-file copy
@@ -453,7 +453,7 @@ jq '.substrate_version' ~/.claude/.agentic-substrate-manifest.json  # Should sho
 
 ### Step 5: Create update.sh (35 min)
 
-**File**: `/Users/amba/Code/claude-user-memory/update.sh`
+**File**: `./update.sh`
 
 **Key Features**:
 1. Detect current version from `~/.claude/.agentic-substrate-version`
@@ -569,7 +569,7 @@ main "$@"
 
 ### Step 6: Create validate-install.sh (15 min)
 
-**File**: `/Users/amba/Code/claude-user-memory/validate-install.sh`
+**File**: `./validate-install.sh`
 
 **Purpose**: Automated testing of installation integrity
 
@@ -705,7 +705,7 @@ Preserved for reference in archive/ directory."
 
 ### Step 8: Update manifest.json Version (3 min)
 
-**File**: `/Users/amba/Code/claude-user-memory/manifest.json`
+**File**: `./manifest.json`
 
 **Changes**:
 ```json
@@ -1269,7 +1269,7 @@ git reset --hard [commit-hash]
 
 ## 11. References
 
-**ResearchPack**: `/Users/amba/Code/claude-user-memory/ResearchPack.md`
+**ResearchPack**: `./ResearchPack.md`
 
 **Knowledge Core**: N/A (pattern will be captured after implementation)
 

@@ -3,6 +3,8 @@
 # PostToolUse hook: Automatically format code after Write/Edit operations
 # Reads tool input from stdin JSON
 
+if ! command -v jq &>/dev/null; then exit 0; fi
+
 INPUT=$(cat 2>/dev/null || echo "{}")
 FILE_PATH=$(echo "$INPUT" | jq -r '.tool_input.file_path // .tool_input.path // empty' 2>/dev/null)
 

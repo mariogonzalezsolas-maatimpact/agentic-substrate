@@ -114,8 +114,8 @@ EXIT CODE: 1 (BLOCKING)
 - **After**: `exit 1  # Block planning if research quality insufficient`
 
 **Same Fix Applied to**:
-- `/Users/amba/.claude/hooks/validate-research-pack.sh` (line 166)
-- `/Users/amba/.claude/hooks/validate-implementation-plan.sh` (line 187)
+- `~/.claude/hooks/validate-research-pack.sh` (line 166)
+- `~/.claude/hooks/validate-implementation-plan.sh` (line 187)
 
 ---
 
@@ -171,7 +171,7 @@ closed
 - **Phase 5 requirement**: Implementation phase checks breaker is `closed` before starting
 
 **Critical Fix Applied**:
-- **Created**: `/Users/amba/.claude/.circuit-breaker-state` with initial state "closed"
+- **Created**: `~/.claude/.circuit-breaker-state` with initial state "closed"
 - **Before**: File didn't exist (potential errors on first use)
 - **After**: File exists with correct initial state
 
@@ -341,7 +341,7 @@ Expected outputs documented for all phases:
 ### Priority 2 (Major) - Infrastructure
 
 **Fix 2.1: Circuit Breaker Initialization**
-- Created: `/Users/amba/.claude/.circuit-breaker-state` with "closed" initial state
+- Created: `~/.claude/.circuit-breaker-state` with "closed" initial state
 - Impact: Circuit breaker works from first use
 
 ### Priority 2 (Major) - Documentation Completeness
@@ -371,7 +371,7 @@ Expected outputs documented for all phases:
 ## Test Environment
 
 **Operating System**: macOS (Darwin 25.0.0)
-**Working Directory**: /Users/amba/Code/claude-user-memory
+**Working Directory**: ~/Code/claude-user-memory
 **Claude Code Version**: Sonnet 4.5 (claude-sonnet-4-5-20250929)
 **Agentic Substrate Version**: v4.1
 **Git Status**: Clean (commit 99ab5f7)
@@ -385,15 +385,15 @@ Expected outputs documented for all phases:
 - `WORKFLOW-TEST-RESULTS.md` - This comprehensive test report
 
 **Files Modified During Fixes**:
-- `/Users/amba/.claude/commands/workflow.md` (lines 477-502)
-- `/Users/amba/.claude/commands/research.md` (lines 69-90)
-- `/Users/amba/.claude/commands/plan.md` (lines 86-108)
-- `/Users/amba/.claude/commands/implement.md` (lines 161-184)
-- `/Users/amba/.claude/hooks/validate-research-pack.sh` (line 166)
-- `/Users/amba/.claude/hooks/validate-implementation-plan.sh` (line 187)
+- `~/.claude/commands/workflow.md` (lines 477-502)
+- `~/.claude/commands/research.md` (lines 69-90)
+- `~/.claude/commands/plan.md` (lines 86-108)
+- `~/.claude/commands/implement.md` (lines 161-184)
+- `~/.claude/hooks/validate-research-pack.sh` (line 166)
+- `~/.claude/hooks/validate-implementation-plan.sh` (line 187)
 
 **Files Created**:
-- `/Users/amba/.claude/.circuit-breaker-state` (initial state: "closed")
+- `~/.claude/.circuit-breaker-state` (initial state: "closed")
 
 **Documentation Updated**:
 - `WORKFLOW-FIXES-APPLIED.md` - Comprehensive fix documentation (580+ lines)

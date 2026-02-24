@@ -87,7 +87,7 @@ Quality gates block advancement between phases. Circuit breaker opens after 3 co
 /do security audit on auth module        # SECURITY -> OWASP Top 10
 ```
 
-`/do` auto-classifies into one of 17 routes and dispatches to the right agent.
+`/do` auto-classifies into one of 18 routes and dispatches to the right agent.
 
 ### Full Automation
 
@@ -210,7 +210,7 @@ powershell scripts/windows/verify-installation.ps1
 
 ### What Gets Installed
 
-60 managed files into `~/.claude/`:
+65 managed files into `~/.claude/`:
 
 | Directory | Files | Contents |
 |-----------|-------|----------|

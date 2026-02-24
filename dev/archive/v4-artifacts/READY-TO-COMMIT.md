@@ -89,7 +89,7 @@
    - Week-by-week roadmap (12 weeks)
    - Risk analysis and mitigations
    - 50+ authoritative sources
-   - Location: `/Users/amba/VAMFI/tmp/SELF-ENHANCEMENT-BLUEPRINT.md`
+   - Location: `[archived-external]/VAMFI/tmp/SELF-ENHANCEMENT-BLUEPRINT.md`
 
 9. **V4-IMPLEMENTATION-PLAN.md**
    - 5-phase detailed roadmap
@@ -221,7 +221,7 @@
 8. `V4-ENHANCEMENT-SUMMARY.md`
 9. `COMPLETION-REPORT.md`
 10. `READY-TO-COMMIT.md` (this file)
-11. `/Users/amba/VAMFI/tmp/SELF-ENHANCEMENT-BLUEPRINT.md`
+11. `[archived-external]/VAMFI/tmp/SELF-ENHANCEMENT-BLUEPRINT.md`
 12. Directory structure: `.claude/integrations/{langgraph,deepagents,dspy,crewai}/`
 
 ---
