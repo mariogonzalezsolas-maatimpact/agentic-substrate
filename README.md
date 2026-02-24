@@ -135,9 +135,9 @@ bash scripts/unix/uninstall.sh      # Remove (preserves data)
 - [Agents Overview](.claude/templates/agents-overview.md) - All 15 agents across 4 tiers
 - [Skills Overview](.claude/templates/skills-overview.md) - Auto-invoked capabilities
 - [Workflows Overview](.claude/templates/workflows-overview.md) - Development + Growth patterns
-- [Installation Behavior](INSTALLATION-BEHAVIOR.md) - Data preservation details
-- [Changelog](CHANGELOG.md) - Complete version history
-- [Legacy Release Notes](archive/v4-artifacts/RELEASE-NOTES-V4.md) - v4.0/4.1 features
+- [Installation Behavior](docs/INSTALLATION-BEHAVIOR.md) - Data preservation details
+- [Changelog](docs/CHANGELOG.md) - Complete version history
+- [Legacy Release Notes](dev/archive/v4-artifacts/RELEASE-NOTES-V4.md) - v4.0/4.1 features
 
 ---
 
@@ -289,9 +289,9 @@ python setup.py       # detecta el OS, ejecuta el instalador correcto
 ### Otros scripts (en `scripts/`)
 
 ```bash
-bash scripts/update.sh         # Actualizar solo archivos cambiados
-bash scripts/customize.sh      # Configurar servidores MCP
-bash scripts/uninstall.sh      # Desinstalar (preserva datos)
+bash scripts/unix/update.sh         # Actualizar solo archivos cambiados
+bash scripts/unix/customize.sh      # Configurar servidores MCP
+bash scripts/unix/uninstall.sh      # Desinstalar (preserva datos)
 ```
 
 ---

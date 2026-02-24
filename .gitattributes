@@ -1,0 +1,8 @@
+# Shell scripts must always use LF line endings
+*.sh text eol=lf
+
+# PowerShell can use CRLF
+*.ps1 text eol=crlf
+
+# Python scripts use LF
+*.py text eol=lf

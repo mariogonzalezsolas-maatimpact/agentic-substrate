@@ -1,297 +1,160 @@
-# OSS Framework Integrations for Agentic Substrate
+# LangGraph Integration for Agentic Substrate v5.4
 
-> **Note**: This document describes the planned integration architecture. Currently only `langgraph/brahma_state.py.template` is implemented. Other frameworks (DeepAgents, DSPy, CrewAI) are planned for future releases.
+Optional LangGraph templates for running the Agentic Substrate workflow as a Python state machine.
 
-This directory contains integration templates, examples, and guides for enhancing the Agentic Substrate with leading open-source agentic AI frameworks.
+> **Note**: The Agentic Substrate works fully without LangGraph. These templates are for users who want to run the workflow as a standalone Python application outside of Claude Code.
 
-## Overview
-
-Based on comprehensive research across 50+ authoritative sources (2024-2025), these integrations provide:
-
-- **LangGraph**: State machine orchestration with best-in-class performance
-- **Deep Agents**: Long-running task capabilities with file system management
-- **DSPy**: Systematic prompt optimization for 20-40% accuracy improvement
-- **CrewAI**: Rapid prototyping with 40+ pre-built tools
-
-## Research Foundation
-
-**Source**: `SELF-ENHANCEMENT-BLUEPRINT.md` (comprehensive meta-research)
-**Agents Used**: 4 parallel researchers + 1 gap analyzer
-**Thinking Mode**: Ultrathink (5-10 min extended reasoning per domain)
-**Sources**: 50+ (official docs, research papers, benchmarks)
-**Confidence**: HIGH (corroborated by multiple official sources)
-
-### Key Findings
-
-**Multi-Agent Orchestration** (Anthropic Research 2024):
-- 90.2% performance improvement on complex tasks
-- Lead orchestrator (Claude Opus 4.6) + parallel workers (Claude Sonnet 4.6)
-- Swarm pattern > Supervisor pattern (flat token usage vs. growing overhead)
-
-**State Management** (LangGraph Production Patterns):
-- Explicit state definition (TypedDict/Pydantic)
-- PostgreSQL checkpointing for fault tolerance
-- Human-in-the-loop interrupts
-- Best latency and token efficiency in benchmarks
-
-**Long-Running Tasks** (Deep Agents Architecture):
-- Task decomposition with `write_todos`
-- Subagent spawning for context isolation
-- File system prevents context overflow
-- Built for 10-60 minute implementations
-
-**Prompt Optimization** (DSPy Stanford NLP):
-- Systematic optimization vs. trial-and-error
-- Model portability (swap Claude ↔ GPT-4 ↔ Gemini)
-- 20-40% accuracy improvement empirically
-
-## Framework Comparison
-
-| Framework | Best For | Integration Difficulty | Production Ready | Fit Score |
-|-----------|----------|----------------------|------------------|-----------|
-| **LangGraph** | Multi-agent orchestration, state management | Medium-High | ✅ Yes | **95/100** |
-| **Deep Agents** | Long-running coding tasks, file systems | Medium | ✅ Yes | **92/100** |
-| **DSPy** | Prompt optimization, individual agents | High | ✅ Yes | **88/100** |
-| **CrewAI** | Role-based teams, rapid prototyping | Low | ✅ Yes | **85/100** |
-
-See `FRAMEWORK-COMPARISON.md` for detailed analysis.
-
-## Directory Structure
+## What's Included
 
 ```
 .claude/integrations/
-├── README.md (this file)
-├── langgraph/
-│   ├── README.md (setup guide)
-│   ├── brahma_state.py.template (state definition)
-│   ├── brahma_graph.py.template (graph workflows)
-│   ├── quality_gates.py.template (conditional routing)
-│   └── examples/ (working examples)
-├── deepagents/
-│   ├── README.md (setup guide)
-│   ├── code_implementer.py.template (enhanced implementer)
-│   └── subagents/ (test_runner, linter, security)
-├── dspy/
-│   ├── README.md (setup guide)
-│   ├── optimizers/ (compiled modules)
-│   └── training/ (training datasets)
-└── crewai/
-    ├── README.md (setup guide)
-    ├── prototype_crew.py.template (crew template)
-    └── crews/ (example crews)
+├── README.md                              (this file)
+└── langgraph/
+    ├── brahma_state.py.template           (state definition + quality gates)
+    ├── brahma_graph.py.template           (StateGraph workflow - runnable)
+    └── quality_gates.py.template          (scoring + routing functions)
 ```
+
+## When to Use This
+
+| Scenario | Use LangGraph? |
+|----------|---------------|
+| Normal Claude Code usage | No - use `/do`, `/workflow`, agents directly |
+| Want state persistence across crashes | Yes - PostgresSaver checkpointing |
+| Building a CI/CD pipeline that runs agents | Yes - standalone Python execution |
+| Need visual debugging of workflow | Yes - graph visualization |
+| Running agents from your own Python app | Yes - import and invoke graph |
 
 ## Quick Start
 
-### Prerequisites
-
 ```bash
-# Python 3.9+ required
-python --version
+# 1. Install dependencies
+pip install langgraph>=0.6.0 langchain-anthropic
 
-# Create virtual environment (recommended)
-python -m venv ~/.claude/venv
-source ~/.claude/venv/bin/activate  # On Windows: venv\Scripts\activate
+# 2. Copy templates (remove .template suffix)
+cd .claude/integrations/langgraph
+cp brahma_state.py.template brahma_state.py
+cp brahma_graph.py.template brahma_graph.py
+cp quality_gates.py.template quality_gates.py
 
-# PostgreSQL (for LangGraph checkpointing)
-brew install postgresql  # macOS
-# or apt-get install postgresql  # Linux
+# 3. Run the demo
+python brahma_graph.py
 ```
 
-### Installation
+Expected output:
+```
+============================================================
+Agentic Substrate v5.4 - LangGraph Core Workflow
+============================================================
+  [docs-researcher] Researching: Add Redis caching to ProductService
+  [implementation-planner] Planning from ResearchPack (score: 85)
+  [brahma-analyzer] Analyzing plan consistency
+  [code-implementer] Implementing with TDD (attempt 1/3)
+  [complete] Workflow finished. 2 files modified.
 
-```bash
-# Install all frameworks
-pip install langgraph langgraph-checkpoint-postgres langchain-anthropic
-pip install deepagents
-pip install dspy-ai
-pip install crewai crewai-tools
-
-# Verify installations
-python -c "import langgraph; print('LangGraph:', langgraph.__version__)"
-python -c "import deepagents; print('Deep Agents:', deepagents.__version__)"
-python -c "import dspy; print('DSPy:', dspy.__version__)"
-python -c "import crewai; print('CrewAI:', crewai.__version__)"
+============================================================
+RESULT:
+  Phase: complete
+  Circuit breaker: closed
+  Artifacts: ['src/service.py', 'tests/test_service.py']
+  Retries: 0
+  Tests: 12 passing, 0 failing
 ```
 
-### Configuration
+## Architecture
 
-```bash
-# PostgreSQL for LangGraph (production)
-createdb brahma_checkpoints
+The graph maps directly to the Agentic Substrate workflow:
 
-# Set environment variables
-export POSTGRES_CHECKPOINT_URI="postgresql://user:pass@localhost/brahma_checkpoints"
-export CREWAI_STORAGE_DIR="$HOME/.claude/.crewai_memory"
-
-# Verify configuration
-psql brahma_checkpoints -c "SELECT version();"
+```
+START
+  │
+  ▼
+research (docs-researcher)
+  │
+  ├── score >= 80 ──► plan (implementation-planner)
+  │                     │
+  │                     ├── score >= 85 ──► analyze (brahma-analyzer)
+  │                     │                     │
+  │                     │                     ├── score >= 80 ──► implement (code-implementer)
+  │                     │                     │                     │
+  │                     │                     │                     ├── tests pass ──► complete ──► END
+  │                     │                     │                     │
+  │                     │                     │                     └── tests fail ──► retry
+  │                     │                     │                                         │
+  │                     │                     │                                         ├── retries < 3 ──► implement
+  │                     │                     │                                         │
+  │                     │                     │                                         └── retries >= 3 ──► CIRCUIT BREAKER OPEN
+  │                     │                     │
+  │                     │                     └── conflicts ──► plan (re-plan)
+  │                     │
+  │                     └── score < 85 ──► retry
+  │
+  └── score < 80 ──► retry
 ```
 
-## Integration Guides
+### Quality Gates
 
-Each framework subdirectory contains:
-- **README.md**: Detailed setup, usage, and examples
-- **Templates**: Copy-paste ready code with comments
-- **Examples**: Working demonstrations of key patterns
+| Transition | Threshold | Agent |
+|------------|-----------|-------|
+| Research → Plan | Score >= 80 | docs-researcher |
+| Plan → Analyze | Score >= 85 | implementation-planner |
+| Analyze → Implement | Score >= 80, no conflicts | brahma-analyzer |
+| Implement → Complete | All tests passing | code-implementer |
 
-### 1. LangGraph (Recommended for Phase 1)
+### Circuit Breaker
 
-**When to use**: Complex multi-step workflows, state persistence needed, production deployment
+Opens after 3 failed retries in any phase. Reset with `/circuit-breaker reset` in Claude Code.
 
-**Setup time**: 2-4 hours
-**Complexity**: Medium-High
-**ROI**: Very High (best performance, fault tolerance)
+## Production Setup
 
-See `langgraph/README.md` for complete guide.
+For production, replace `InMemorySaver` with `PostgresSaver`:
 
-### 2. Deep Agents (Recommended for Phase 2)
+```python
+from langgraph.checkpoint.postgres import PostgresSaver
 
-**When to use**: Long-running coding tasks (10-60 min), large codebases, need subagents
+DB_URI = "postgresql://user:pass@localhost:5432/agentic_substrate"
 
-**Setup time**: 1-2 hours
-**Complexity**: Medium
-**ROI**: High (perfect fit for code-implementer enhancement)
-
-See `deepagents/README.md` for complete guide.
-
-### 3. DSPy (Recommended for Phase 3)
-
-**When to use**: Optimizing individual agent prompts, need model portability
-
-**Setup time**: 3-5 hours (including training data collection)
-**Complexity**: High (paradigm shift)
-**ROI**: Medium-High (20-40% accuracy improvement)
-
-See `dspy/README.md` for complete guide.
-
-### 4. CrewAI (Recommended for ongoing use)
-
-**When to use**: Rapid prototyping, tool-heavy workflows, domain-specific teams
-
-**Setup time**: 30 min - 1 hour
-**Complexity**: Low
-**ROI**: Medium (3-5x faster prototyping)
-
-See `crewai/README.md` for complete guide.
-
-## Phased Implementation Plan
-
-### Phase 1: LangGraph Foundation (Weeks 1-3)
-- Implement BUILD workflow as StateGraph
-- Add PostgreSQL checkpointing
-- Quality gates as conditional edges
-- Test with real features
-
-**Expected outcome**: State persistence, fault tolerance, visual debugging
-
-### Phase 2: Deep Agents Enhancement (Weeks 4-5)
-- Enhance code-implementer with Deep Agents
-- Add subagents (test_runner, linter, security)
-- Enable file system for large codebases
-
-**Expected outcome**: Better handling of complex 10-60 min implementations
-
-### Phase 3: DSPy Optimization (Weeks 6-8)
-- Optimize top 5 agents (docs-researcher, chief-architect, implementation-planner, brahma-analyzer, brahma-investigator)
-- Collect training data
-- Compile and measure improvement
-
-**Expected outcome**: 20-40% accuracy improvement, model portability
-
-### Phase 4: CrewAI Prototyping (Weeks 9-10)
-- Build 3 example crews (documentation, security, performance)
-- Use for rapid iteration on new capabilities
-
-**Expected outcome**: 3-5x faster development of new agents
-
-See `V4-IMPLEMENTATION-PLAN.md` for complete roadmap.
-
-## Testing
-
-Each integration includes test procedures:
-
-```bash
-# Test LangGraph
-python .claude/integrations/langgraph/examples/test_brahma_graph.py
-
-# Test Deep Agents
-python .claude/integrations/deepagents/examples/test_code_implementer.py
-
-# Test DSPy
-python .claude/integrations/dspy/examples/test_optimizers.py
-
-# Test CrewAI
-python .claude/integrations/crewai/examples/test_documentation_crew.py
+with PostgresSaver.from_conn_string(DB_URI) as checkpointer:
+    checkpointer.setup()  # Creates tables on first run
+    graph = build_core_workflow(checkpointer=checkpointer)
+    result = graph.invoke(initial_state, config)
 ```
 
-## Troubleshooting
+Install: `pip install langgraph-checkpoint-postgres`
 
-### Common Issues
+## Customizing
 
-**Import Error: No module named 'langgraph'**
-- Ensure virtual environment activated: `source ~/.claude/venv/bin/activate`
-- Reinstall: `pip install langgraph`
+### Replace stub nodes with real agents
 
-**PostgreSQL Connection Failed**
-- Check database exists: `psql -l | grep brahma_checkpoints`
-- Verify connection string: `echo $POSTGRES_CHECKPOINT_URI`
-- Create database: `createdb brahma_checkpoints`
+Each node function in `brahma_graph.py` has `# --- STUB ---` markers. Replace these with:
 
-**Deep Agents File Not Found**
-- Check installation: `pip list | grep deepagents`
-- Reinstall: `pip install deepagents --upgrade`
+1. **Claude API calls** via `langchain-anthropic`
+2. **Your own agent logic** (any Python code)
+3. **External tool calls** (APIs, databases, file systems)
 
-**DSPy Compilation Error**
-- Verify training data format (JSON list of examples)
-- Check metric function returns float 0-1
-- Increase max_bootstrapped_demos if too few examples
+### Add Growth tier nodes
 
-**CrewAI Memory Error**
-- Check storage directory exists: `ls $CREWAI_STORAGE_DIR`
-- Create if missing: `mkdir -p $CREWAI_STORAGE_DIR`
-- Clear old memory: `rm -rf $CREWAI_STORAGE_DIR/*` (careful!)
+The templates include `GrowthAuditState` for parallel audits:
 
-## Resources
+```python
+# Add growth nodes to the graph
+builder.add_node("seo_audit", seo_node)
+builder.add_node("security_audit", security_node)
+builder.add_node("ux_review", ux_node)
 
-**Official Documentation**:
-- [LangGraph Docs](https://docs.langchain.com/oss/python/langgraph)
-- [Deep Agents GitHub](https://github.com/langchain-ai/deepagents)
-- [DSPy Docs](https://dspy.ai/)
-- [CrewAI Docs](https://docs.crewai.com/)
+# Fan out from a trigger node
+builder.add_edge("trigger_growth", "seo_audit")
+builder.add_edge("trigger_growth", "security_audit")
+builder.add_edge("trigger_growth", "ux_review")
+```
 
-**Research Papers**:
-- [Anthropic Multi-Agent Research](https://www.anthropic.com/engineering/multi-agent-research-system)
-- [Extended Thinking Protocol](https://www.anthropic.com/engineering/claude-think-tool)
-- [DSPy: Compiling Declarative Language Model Calls](https://arxiv.org/abs/2310.03714)
+## Requirements
 
-**Benchmarks**:
-- [LangGraph vs Others](https://blog.langchain.com/benchmarking-multi-agent-architectures/)
-- [Agentic AI Design Patterns](https://machinelearningmastery.com/7-must-know-agentic-ai-design-patterns/)
-
-## Support
-
-**Issues**: Open an issue in the `claude-user-memory` repository
-**Questions**: See `docs/faq.md` or `TROUBLESHOOTING.md`
-**Contributions**: See `CONTRIBUTING.md`
-
-## Version History
-
-- **v4.0** (2025-11-06): Initial integration architecture
-  - LangGraph templates and examples
-  - Deep Agents code-implementer enhancement
-  - DSPy optimization framework
-  - CrewAI rapid prototyping templates
-  - Comprehensive documentation and guides
+- Python >= 3.9
+- `langgraph >= 0.6.0`
+- `langchain-anthropic` (for Claude model integration)
+- PostgreSQL (optional, for production checkpointing)
 
 ---
 
-**Next Steps**:
-1. Review framework comparison: `FRAMEWORK-COMPARISON.md`
-2. Read integration guide: `OSS-INTEGRATION-GUIDE.md`
-3. Choose starting framework (recommend LangGraph)
-4. Follow framework-specific README
-5. Test with simple examples
-6. Integrate into Agentic Substrate
-
-**Happy integrating!**
+**Version**: 5.4.0 | **Updated**: 2026-02-24 | **Status**: Templates ready

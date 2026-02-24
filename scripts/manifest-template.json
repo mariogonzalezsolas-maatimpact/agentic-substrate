@@ -61,7 +61,9 @@
     "templates/workflows-overview.md",
     "data/mcp-config-template.json",
     "integrations/README.md",
-    "integrations/langgraph/brahma_state.py.template"
+    "integrations/langgraph/brahma_state.py.template",
+    "integrations/langgraph/brahma_graph.py.template",
+    "integrations/langgraph/quality_gates.py.template"
   ],
   "executable_files": [
     "hooks/auto-format.sh",
@@ -113,7 +115,7 @@
     }
   },
   "metadata": {
-    "total_files": 60,
+    "total_files": 62,
     "agents": 15,
     "skills": 5,
     "commands": 12,
@@ -122,7 +124,7 @@
     "metrics": 1,
     "templates": 8,
     "data": 1,
-    "integrations": 2,
+    "integrations": 4,
     "config": 2
   }
 }

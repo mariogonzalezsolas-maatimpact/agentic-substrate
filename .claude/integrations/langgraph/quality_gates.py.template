@@ -1,0 +1,187 @@
+"""
+Agentic Substrate v5.4 - Quality Gates for LangGraph
+
+Reusable quality gate functions for conditional edge routing.
+These map directly to the Agentic Substrate quality thresholds.
+
+USAGE:
+    from quality_gates import research_gate, plan_gate, analysis_gate, test_gate
+
+Updated: 2026-02-24 | Agentic Substrate v5.4.0
+"""
+
+from typing import Any
+
+
+# =============================================================================
+# THRESHOLDS (match CLAUDE.md and agents-overview.md)
+# =============================================================================
+
+GATES = {
+    "research": {"threshold": 80, "field": "research_pack", "next": "plan"},
+    "plan":     {"threshold": 85, "field": "implementation_plan", "next": "analyze"},
+    "analyze":  {"threshold": 80, "field": "analysis_results", "next": "implement"},
+}
+
+
+# =============================================================================
+# GATE FUNCTIONS
+# =============================================================================
+
+def research_gate(state: dict) -> str:
+    """
+    Research quality gate.
+    Pass: ResearchPack score >= 80
+    Fail: retry (or back to research with better params)
+    """
+    pack = state.get("research_pack")
+    if not pack:
+        return "retry"
+    if pack.get("score", 0) >= GATES["research"]["threshold"]:
+        return "plan"
+    return "retry"
+
+
+def plan_gate(state: dict) -> str:
+    """
+    Plan quality gate.
+    Pass: Implementation Plan score >= 85
+    Fail: retry (re-plan with more detail)
+    """
+    plan = state.get("implementation_plan")
+    if not plan:
+        return "retry"
+    if plan.get("score", 0) >= GATES["plan"]["threshold"]:
+        return "analyze"
+    return "retry"
+
+
+def analysis_gate(state: dict) -> str:
+    """
+    Analysis quality gate.
+    Pass: Analysis score >= 80 AND no conflicts
+    Fail: back to plan (fix conflicts)
+    """
+    analysis = state.get("analysis_results")
+    if not analysis:
+        return "plan"
+
+    score_ok = analysis.get("score", 0) >= GATES["analyze"]["threshold"]
+    no_conflicts = len(analysis.get("conflicts", [])) == 0
+
+    if score_ok and no_conflicts:
+        return "implement"
+    return "plan"
+
+
+def test_gate(state: dict) -> str:
+    """
+    Implementation quality gate.
+    Pass: All tests passing (failing == 0, passing > 0)
+    Fail: retry with self-correction
+    """
+    tests = state.get("test_results")
+    if not tests:
+        return "retry"
+    if tests.get("failing", 1) == 0 and tests.get("passing", 0) > 0:
+        return "complete"
+    return "retry"
+
+
+def circuit_breaker_gate(state: dict) -> str:
+    """
+    Circuit breaker gate.
+    Open: stop workflow (too many failures)
+    Closed: continue to next retry
+    """
+    if state.get("circuit_breaker") == "open":
+        return "failed"
+    return "continue"
+
+
+# =============================================================================
+# SCORING HELPERS
+# =============================================================================
+
+def score_research_pack(pack: dict) -> int:
+    """
+    Score a ResearchPack (0-100).
+
+    Criteria:
+      - Has library + version: 20 pts
+      - Has >= 3 API entries: 20 pts
+      - Has best_practices: 20 pts
+      - Has pitfalls/warnings: 20 pts
+      - Has code examples: 20 pts
+    """
+    score = 0
+    if pack.get("library") and pack.get("version"):
+        score += 20
+    apis = pack.get("apis", [])
+    if len(apis) >= 3:
+        score += 20
+    elif len(apis) >= 1:
+        score += 10
+    if pack.get("best_practices"):
+        score += 20
+    if pack.get("pitfalls"):
+        score += 20
+    if any(api.get("example") for api in apis):
+        score += 20
+    return min(score, 100)
+
+
+def score_implementation_plan(plan: dict) -> int:
+    """
+    Score an Implementation Plan (0-100).
+
+    Criteria:
+      - Has files_to_modify: 20 pts
+      - Has ordered steps: 20 pts
+      - Has rollback_plan: 20 pts
+      - Steps reference specific files: 20 pts
+      - Has >= 3 steps: 20 pts
+    """
+    score = 0
+    if plan.get("files_to_modify"):
+        score += 20
+    steps = plan.get("steps", [])
+    if steps and all(s.get("order") for s in steps):
+        score += 20
+    if plan.get("rollback_plan"):
+        score += 20
+    if any(s.get("files") for s in steps):
+        score += 20
+    if len(steps) >= 3:
+        score += 20
+    return min(score, 100)
+
+
+# =============================================================================
+# USAGE
+# =============================================================================
+
+if __name__ == "__main__":
+    # Test scoring
+    pack = {
+        "library": "redis", "version": "5.0.0",
+        "apis": [
+            {"name": "createClient", "example": "redis.createClient()"},
+            {"name": "set", "example": "client.set('key', 'val')"},
+            {"name": "get", "example": "client.get('key')"},
+        ],
+        "best_practices": ["Use connection pooling"],
+        "pitfalls": ["Close connections on shutdown"],
+    }
+    print(f"ResearchPack score: {score_research_pack(pack)}")
+
+    plan = {
+        "files_to_modify": ["src/cache.py"],
+        "steps": [
+            {"order": 1, "description": "Install", "files": ["requirements.txt"]},
+            {"order": 2, "description": "Implement", "files": ["src/cache.py"]},
+            {"order": 3, "description": "Test", "files": ["tests/test_cache.py"]},
+        ],
+        "rollback_plan": "git revert HEAD~3",
+    }
+    print(f"Plan score: {score_implementation_plan(plan)}")

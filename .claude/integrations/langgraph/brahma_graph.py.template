@@ -1,0 +1,331 @@
+"""
+Agentic Substrate v5.4 - LangGraph Workflow Graph
+
+StateGraph implementation of the core workflow:
+  Research -> Plan -> Analyze -> Implement
+
+With quality gates as conditional edges and circuit breaker protection.
+
+USAGE:
+    cp brahma_graph.py.template brahma_graph.py
+    cp brahma_state.py.template brahma_state.py
+    pip install langgraph>=0.6.0 langchain-anthropic
+    python brahma_graph.py
+
+Updated: 2026-02-24 | Agentic Substrate v5.4.0
+"""
+
+from typing import Literal
+from langgraph.graph import START, END, StateGraph
+from langgraph.checkpoint.memory import InMemorySaver
+
+# Import state (copy the .template files first)
+# from brahma_state import AgenticState, create_initial_state, check_quality_gate, check_circuit_breaker
+# For this template, we define inline:
+from typing import TypedDict, Annotated, Optional
+from langgraph.graph import add_messages
+
+
+# =============================================================================
+# STATE (inline for standalone usage - use brahma_state.py in production)
+# =============================================================================
+
+RESEARCH_THRESHOLD = 80
+PLAN_THRESHOLD = 85
+ANALYSIS_THRESHOLD = 80
+MAX_RETRIES = 3
+
+class AgenticState(TypedDict):
+    messages: Annotated[list, add_messages]
+    task_description: str
+    current_phase: Literal[
+        "research", "plan", "analyze", "implement",
+        "deploy", "complete", "failed"
+    ]
+    research_pack: Optional[dict]
+    implementation_plan: Optional[dict]
+    analysis_results: Optional[dict]
+    test_results: Optional[dict]
+    circuit_breaker: Literal["closed", "open"]
+    retry_count: int
+    artifacts: list[str]
+    current_agent: Optional[str]
+    error_log: list[str]
+
+
+# =============================================================================
+# NODE FUNCTIONS (replace with your actual agent implementations)
+# =============================================================================
+
+def research_node(state: AgenticState) -> dict:
+    """
+    Tier 2: docs-researcher
+    Fetches version-accurate documentation, produces ResearchPack.
+
+    Replace this stub with your actual docs-researcher integration.
+    """
+    print(f"  [docs-researcher] Researching: {state['task_description']}")
+
+    # --- STUB: Replace with actual research logic ---
+    # Example: call Claude API, fetch docs, score the pack
+    research_pack = {
+        "score": 85,
+        "library": "example-lib",
+        "version": "1.0.0",
+        "apis": [{"name": "exampleMethod", "signature": "() -> str"}],
+        "best_practices": ["Use connection pooling"],
+        "pitfalls": ["Don't forget to close connections"],
+    }
+    # --- END STUB ---
+
+    return {
+        "research_pack": research_pack,
+        "current_agent": "docs-researcher",
+        "messages": [{"role": "assistant", "content": f"Research complete. Score: {research_pack['score']}"}],
+    }
+
+
+def plan_node(state: AgenticState) -> dict:
+    """
+    Tier 2: implementation-planner
+    Creates minimal-change blueprint from ResearchPack.
+    """
+    print(f"  [implementation-planner] Planning from ResearchPack (score: {state['research_pack']['score']})")
+
+    # --- STUB: Replace with actual planning logic ---
+    plan = {
+        "score": 88,
+        "files_to_modify": ["src/service.py", "tests/test_service.py"],
+        "steps": [
+            {"order": 1, "description": "Add dependency", "files": ["requirements.txt"]},
+            {"order": 2, "description": "Implement service", "files": ["src/service.py"]},
+            {"order": 3, "description": "Write tests", "files": ["tests/test_service.py"]},
+        ],
+        "rollback_plan": "Revert commits in reverse order",
+    }
+    # --- END STUB ---
+
+    return {
+        "implementation_plan": plan,
+        "current_agent": "implementation-planner",
+        "messages": [{"role": "assistant", "content": f"Plan complete. Score: {plan['score']}"}],
+    }
+
+
+def analyze_node(state: AgenticState) -> dict:
+    """
+    Tier 2: brahma-analyzer
+    Validates consistency between research, plan, and codebase.
+    """
+    print(f"  [brahma-analyzer] Analyzing plan consistency")
+
+    # --- STUB: Replace with actual analysis logic ---
+    analysis = {
+        "score": 92,
+        "conflicts": [],
+        "coverage": {"spec_to_plan": 100, "plan_to_tasks": 95},
+    }
+    # --- END STUB ---
+
+    return {
+        "analysis_results": analysis,
+        "current_agent": "brahma-analyzer",
+        "messages": [{"role": "assistant", "content": f"Analysis complete. Score: {analysis['score']}"}],
+    }
+
+
+def implement_node(state: AgenticState) -> dict:
+    """
+    Tier 2: code-implementer (Opus 4.6)
+    Executes plan with TDD: RED -> GREEN -> REFACTOR.
+    Self-corrects up to 3 times before circuit breaker opens.
+    """
+    print(f"  [code-implementer] Implementing with TDD (attempt {state['retry_count'] + 1}/{MAX_RETRIES})")
+
+    # --- STUB: Replace with actual implementation logic ---
+    test_results = {
+        "passing": 12,
+        "failing": 0,
+        "coverage": 87.5,
+        "duration_ms": 3400,
+    }
+    artifacts = state.get("artifacts", []) + ["src/service.py", "tests/test_service.py"]
+    # --- END STUB ---
+
+    return {
+        "test_results": test_results,
+        "artifacts": artifacts,
+        "current_agent": "code-implementer",
+        "messages": [{"role": "assistant", "content": f"Implementation complete. {test_results['passing']} tests passing."}],
+    }
+
+
+def retry_node(state: AgenticState) -> dict:
+    """Increment retry counter for self-correction loop."""
+    new_count = state["retry_count"] + 1
+    print(f"  [circuit-breaker] Retry {new_count}/{MAX_RETRIES}")
+
+    if new_count >= MAX_RETRIES:
+        return {
+            "retry_count": new_count,
+            "circuit_breaker": "open",
+            "current_phase": "failed",
+            "error_log": state.get("error_log", []) + ["Circuit breaker opened after 3 retries"],
+        }
+
+    return {"retry_count": new_count}
+
+
+def complete_node(state: AgenticState) -> dict:
+    """Mark workflow as successfully completed."""
+    print(f"  [complete] Workflow finished. {len(state.get('artifacts', []))} files modified.")
+    return {
+        "current_phase": "complete",
+        "messages": [{"role": "assistant", "content": "Workflow completed successfully."}],
+    }
+
+
+# =============================================================================
+# ROUTING FUNCTIONS (quality gates as conditional edges)
+# =============================================================================
+
+def route_after_research(state: AgenticState) -> Literal["plan", "research"]:
+    """Quality gate: Research score >= 80."""
+    pack = state.get("research_pack")
+    if pack and pack.get("score", 0) >= RESEARCH_THRESHOLD:
+        return "plan"
+    if state["retry_count"] >= MAX_RETRIES:
+        return "plan"  # Will be caught by circuit breaker
+    return "research"
+
+
+def route_after_plan(state: AgenticState) -> Literal["analyze", "plan"]:
+    """Quality gate: Plan score >= 85."""
+    plan = state.get("implementation_plan")
+    if plan and plan.get("score", 0) >= PLAN_THRESHOLD:
+        return "analyze"
+    if state["retry_count"] >= MAX_RETRIES:
+        return "analyze"
+    return "plan"
+
+
+def route_after_analysis(state: AgenticState) -> Literal["implement", "plan"]:
+    """Quality gate: Analysis score >= 80, no conflicts."""
+    analysis = state.get("analysis_results")
+    if analysis:
+        score_ok = analysis.get("score", 0) >= ANALYSIS_THRESHOLD
+        no_conflicts = len(analysis.get("conflicts", [])) == 0
+        if score_ok and no_conflicts:
+            return "implement"
+    return "plan"  # Go back to planning if analysis fails
+
+
+def route_after_implement(state: AgenticState) -> Literal["complete", "retry"]:
+    """Quality gate: All tests passing."""
+    tests = state.get("test_results")
+    if tests and tests.get("failing", 1) == 0 and tests.get("passing", 0) > 0:
+        return "complete"
+    return "retry"
+
+
+def route_after_retry(state: AgenticState) -> Literal["implement", "complete"]:
+    """Circuit breaker check after retry."""
+    if state.get("circuit_breaker") == "open":
+        return "complete"  # Exit with failure status
+    return "implement"
+
+
+# =============================================================================
+# BUILD GRAPH
+# =============================================================================
+
+def build_core_workflow(checkpointer=None) -> StateGraph:
+    """
+    Build the core Agentic Substrate workflow graph.
+
+    Flow:
+        START -> research -> [gate >= 80] -> plan -> [gate >= 85]
+              -> analyze -> [gate >= 80] -> implement -> [tests pass]
+              -> complete -> END
+
+    With retry loops and circuit breaker protection at each gate.
+    """
+    builder = StateGraph(AgenticState)
+
+    # Add nodes (one per agent)
+    builder.add_node("research", research_node)
+    builder.add_node("plan", plan_node)
+    builder.add_node("analyze", analyze_node)
+    builder.add_node("implement", implement_node)
+    builder.add_node("retry", retry_node)
+    builder.add_node("complete", complete_node)
+
+    # Entry point
+    builder.add_edge(START, "research")
+
+    # Quality gate edges
+    builder.add_conditional_edges("research", route_after_research,
+                                  {"plan": "plan", "research": "retry"})
+    builder.add_conditional_edges("plan", route_after_plan,
+                                  {"analyze": "analyze", "plan": "retry"})
+    builder.add_conditional_edges("analyze", route_after_analysis,
+                                  {"implement": "implement", "plan": "plan"})
+    builder.add_conditional_edges("implement", route_after_implement,
+                                  {"complete": "complete", "retry": "retry"})
+
+    # Retry loop
+    builder.add_conditional_edges("retry", route_after_retry,
+                                  {"implement": "implement", "complete": "complete"})
+
+    # Exit
+    builder.add_edge("complete", END)
+
+    # Compile with optional checkpointer
+    if checkpointer:
+        return builder.compile(checkpointer=checkpointer)
+    return builder.compile()
+
+
+# =============================================================================
+# USAGE
+# =============================================================================
+
+if __name__ == "__main__":
+    # Build with in-memory checkpointer (use PostgresSaver for production)
+    memory = InMemorySaver()
+    graph = build_core_workflow(checkpointer=memory)
+
+    # Create initial state
+    initial = {
+        "messages": [],
+        "task_description": "Add Redis caching to ProductService",
+        "current_phase": "research",
+        "research_pack": None,
+        "implementation_plan": None,
+        "analysis_results": None,
+        "test_results": None,
+        "circuit_breaker": "closed",
+        "retry_count": 0,
+        "artifacts": [],
+        "current_agent": None,
+        "error_log": [],
+    }
+
+    # Run workflow
+    config = {"configurable": {"thread_id": "demo-1"}}
+    print("=" * 60)
+    print("Agentic Substrate v5.4 - LangGraph Core Workflow")
+    print("=" * 60)
+
+    result = graph.invoke(initial, config)
+
+    print("\n" + "=" * 60)
+    print("RESULT:")
+    print(f"  Phase: {result['current_phase']}")
+    print(f"  Circuit breaker: {result['circuit_breaker']}")
+    print(f"  Artifacts: {result['artifacts']}")
+    print(f"  Retries: {result['retry_count']}")
+
+    if result.get("test_results"):
+        tr = result["test_results"]
+        print(f"  Tests: {tr['passing']} passing, {tr['failing']} failing")

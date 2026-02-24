@@ -262,11 +262,22 @@ safe_cp() {
 # MAIN UPDATE LOGIC
 #==============================================================================
 
-# Get script directory
+# Get script directory and repo root
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-CLAUDE_SOURCE="$SCRIPT_DIR/.claude"
+# Resolve repo root (script is in scripts/unix/)
+if [ -d "$SCRIPT_DIR/../../.claude" ]; then
+    REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+elif [ -d "$SCRIPT_DIR/.claude" ]; then
+    REPO_ROOT="$SCRIPT_DIR"
+else
+    REPO_ROOT="$SCRIPT_DIR"
+fi
+CLAUDE_SOURCE="$REPO_ROOT/.claude"
 CLAUDE_TARGET="$HOME/.claude"
-MANIFEST_TEMPLATE="$SCRIPT_DIR/manifest-template.json"
+MANIFEST_TEMPLATE="$REPO_ROOT/scripts/manifest-template.json"
+if [ ! -f "$MANIFEST_TEMPLATE" ]; then
+    MANIFEST_TEMPLATE="$REPO_ROOT/manifest-template.json"
+fi
 
 # Detect current version
 detect_current_version() {

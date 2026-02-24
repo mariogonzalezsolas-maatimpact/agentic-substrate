@@ -33,10 +33,12 @@
     "anthropic",
     "agentic-substrate"
   ],
-  "main": "install.sh",
+  "main": "setup.py",
   "install": {
-    "type": "shell",
-    "command": "./install.sh",
+    "type": "python",
+    "command": "python setup.py install",
+    "unix": "bash scripts/unix/install.sh",
+    "windows": "powershell scripts/windows/install.ps1",
     "destination": "~/.claude"
   },
   "anthropic": {
@@ -51,12 +53,16 @@
   },
   "files": [
     ".claude/**/*",
-    "install.sh",
-    "install.ps1",
-    "verify-installation.ps1",
+    "scripts/unix/install.sh",
+    "scripts/unix/update.sh",
+    "scripts/unix/uninstall.sh",
+    "scripts/unix/customize.sh",
+    "scripts/windows/install.ps1",
+    "scripts/windows/verify-installation.ps1",
+    "scripts/manifest-template.json",
+    "setup.py",
     "README.md",
     "LICENSE",
-    "knowledge-core.md",
     "CLAUDE.md"
   ],
   "features": {

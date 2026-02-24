@@ -231,7 +231,8 @@ def action_diagnose(os_type):
 
     script = os.path.join(SCRIPT_DIR, "dev", "tools", "diagnose-install.sh")
     if os.path.isfile(script) and has_bash():
-        return subprocess.call(["bash", script])
+        bash_path = to_bash_path(script) if detect_os() == "windows" else script
+        return subprocess.call(["bash", bash_path])
 
     # Fallback: basic Python diagnostics
     print("    Running basic diagnostics...\n")
