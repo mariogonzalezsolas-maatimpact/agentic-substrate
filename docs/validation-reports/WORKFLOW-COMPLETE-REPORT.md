@@ -191,7 +191,7 @@ done
 
 ### Fresh Installation
 ```bash
-git clone https://github.com/VAMFI/claude-user-memory.git
+git clone https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory.git
 cd claude-user-memory
 ./install.sh
 

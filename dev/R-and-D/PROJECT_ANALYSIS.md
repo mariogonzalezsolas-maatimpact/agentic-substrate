@@ -5,7 +5,7 @@
 The **claude-user-memory** project is a sophisticated multi-agent orchestration system for Claude Code CLI that implements a disciplined **Research → Plan → Implement** workflow. It provides a modular, extensible framework with 4 core agents (1 orchestrator + 3 specialists) that work together to deliver production-quality software development automation.
 
 **Current Status**: Mature, well-documented, actively maintained
-**Repository**: https://github.com/VAMFI/claude-user-memory
+**Repository**: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory
 **License**: MIT
 
 ---

@@ -156,12 +156,12 @@ elif [ "$COMMAND_COUNT" -lt 12 ] || [ "$SKILL_COUNT" -lt 5 ]; then
     echo ""
     echo "Solution:"
     echo "  Run installation again with latest version:"
-    echo "  curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash -s -- --force"
+    echo "  curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash -s -- --force"
 else
     echo "⚠️  INSTALLATION PARTIALLY COMPLETE"
     echo ""
     echo "Some files are missing. Run with --force to reinstall:"
-    echo "  curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash -s -- --force"
+    echo "  curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash -s -- --force"
 fi
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""

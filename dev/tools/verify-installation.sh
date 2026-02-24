@@ -162,7 +162,7 @@ else
     echo "❌ $FAIL_COUNT CHECKS FAILED"
     echo ""
     echo "Some components are missing. Please reinstall:"
-    echo "  curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash -s -- --force"
+    echo "  curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash -s -- --force"
 fi
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""

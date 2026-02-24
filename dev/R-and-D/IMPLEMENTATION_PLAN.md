@@ -261,7 +261,7 @@ exit 0
   "description": "Research → Plan → Implement workflow system with quality gates",
   "author": "VAMFI",
   "license": "MIT",
-  "repository": "https://github.com/VAMFI/claude-user-memory",
+  "repository": "https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory",
   "homepage": "https://vamfi.org",
   "keywords": ["workflow", "multi-agent", "research", "planning", "quality-gates"],
   "claudeVersion": ">=2.0.20",
@@ -1211,7 +1211,7 @@ Focus on fewer, higher-quality examples rather than quantity.
 ### Infrastructure
 
 **Repository**:
-- GitHub repository (existing: https://github.com/VAMFI/claude-user-memory)
+- GitHub repository (existing: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory)
 - GitHub Actions for CI/CD (free tier)
 
 **Distribution**:

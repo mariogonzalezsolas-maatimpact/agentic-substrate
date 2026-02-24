@@ -547,7 +547,7 @@ When reporting issues, include:
 
 ### Where to Get Help
 
-- GitHub Issues: https://github.com/VAMFI/claude-user-memory/issues
+- GitHub Issues: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory/issues
 - Documentation: `.claude/templates/` directory
 - Examples: `examples/` directory
 

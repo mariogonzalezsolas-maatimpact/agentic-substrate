@@ -10,7 +10,7 @@
 
 **User tested on AWS CloudShell**:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 
 # Error:
 ❌ Manifest template not found: /home/cloudshell-user/manifest-template.json
@@ -123,7 +123,7 @@ cd /tmp && bash /Users/amba/Code/claude-user-memory/install.sh --force
 
 **Command**:
 ```bash
-git clone https://github.com/VAMFI/claude-user-memory.git
+git clone https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory.git
 cd claude-user-memory
 ./install.sh
 ```
@@ -137,7 +137,7 @@ cd claude-user-memory
 ### Scenario 1: Curl Install (NEW)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 ```
 
 **Flow**:
@@ -151,7 +151,7 @@ curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/insta
 ### Scenario 2: Git Clone Install (TRADITIONAL)
 
 ```bash
-git clone https://github.com/VAMFI/claude-user-memory.git
+git clone https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory.git
 cd claude-user-memory
 ./install.sh
 ```
@@ -197,7 +197,7 @@ cd claude-user-memory
 
 ### Method 1: One-Liner (Recommended) ⭐
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 ```
 ✅ Auto-downloads repository
 ✅ Installs everything
@@ -205,7 +205,7 @@ curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/insta
 
 ### Method 2: Traditional Git Clone
 ```bash
-git clone https://github.com/VAMFI/claude-user-memory.git
+git clone https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory.git
 cd claude-user-memory
 ./install.sh
 ```
@@ -215,7 +215,7 @@ cd claude-user-memory
 
 ### Method 3: Force Reinstall
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash -s -- --force
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash -s -- --force
 ```
 ✅ Overwrites existing installation
 ✅ Auto-downloads repository
@@ -268,7 +268,7 @@ curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/insta
 **Once GitHub CDN updates** (2-5 minutes), test on AWS CloudShell:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 ```
 
 **Expected**:

@@ -487,7 +487,7 @@ main() {
 
     echo ""
     log_info "Thank you for using Agentic Substrate!"
-    log_info "To reinstall: git clone https://github.com/VAMFI/claude-user-memory.git && cd claude-user-memory && ./install.sh"
+    log_info "To reinstall: git clone https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory.git && cd claude-user-memory && ./install.sh"
 
     # Clean up empty directories (except data and backups)
     if [ "$DRY_RUN" != true ] && [ "$PRESERVE_ALL" != true ]; then

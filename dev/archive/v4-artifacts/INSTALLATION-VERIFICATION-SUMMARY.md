@@ -172,7 +172,7 @@ curl ... | bash
 ### Method 1: Curl One-Liner ⭐ RECOMMENDED
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 ```
 
 **What happens**:
@@ -190,7 +190,7 @@ curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/insta
 ### Method 2: Git Clone (Traditional)
 
 ```bash
-git clone https://github.com/VAMFI/claude-user-memory.git
+git clone https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory.git
 cd claude-user-memory
 ./install.sh
 ```
@@ -219,10 +219,10 @@ cd claude-user-memory
 
 ```bash
 # Install
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 
 # Verify
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/verify-installation.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/verify-installation.sh | bash
 ```
 
 **Expected output**:

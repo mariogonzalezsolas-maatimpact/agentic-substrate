@@ -107,13 +107,13 @@ Time: 12 minutes
 
 The Agentic Substrate is **open source** and available for installation in Claude Code CLI:
 
-🔗 **GitHub Repository**: https://github.com/VAMFI/claude-user-memory
+🔗 **GitHub Repository**: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory
 
 📖 **Complete Documentation**: https://vamfi.org/blog-demo8-philia-sophia
 
 🚀 **Quick Start**:
 ```bash
-git clone https://github.com/VAMFI/claude-user-memory
+git clone https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory
 cd claude-user-memory
 ./install.sh
 ```
@@ -163,10 +163,10 @@ We invite you to:
 **Links:**
 
 🌐 VAMFI Website: https://vamfi.org
-📦 GitHub: https://github.com/VAMFI/claude-user-memory
+📦 GitHub: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory
 📝 Blog Post: https://vamfi.org/blog-demo8-philia-sophia
-💬 Discussions: https://github.com/VAMFI/claude-user-memory/discussions
-🐛 Issues: https://github.com/VAMFI/claude-user-memory/issues
+💬 Discussions: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory/discussions
+🐛 Issues: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory/issues
 
 ---
 

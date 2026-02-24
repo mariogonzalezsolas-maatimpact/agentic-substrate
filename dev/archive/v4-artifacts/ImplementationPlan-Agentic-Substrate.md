@@ -1221,7 +1221,7 @@ Agents will apply maximum reasoning before decomposing into research/plan/implem
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/VAMFI/claude-user-memory"
+    "url": "https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory"
   },
   "categories": ["workflow", "agents", "productivity"],
   "keywords": [
@@ -1365,7 +1365,7 @@ A system-wide enhancement package for Claude Code CLI that provides:
 ### Option 1: Desktop Extension (One-Click) 🆕
 
 **Claude Desktop v2.0.20+**:
-1. Download `agentic-substrate-3.0.0.mcpb` from [Releases](https://github.com/VAMFI/claude-user-memory/releases)
+1. Download `agentic-substrate-3.0.0.mcpb` from [Releases](https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory/releases)
 2. Open Claude Desktop → Settings → Extensions
 3. Click "Install Extension" → Select `.mcpb` file
 4. Restart Claude Code CLI
@@ -1374,7 +1374,7 @@ A system-wide enhancement package for Claude Code CLI that provides:
 ### Option 2: Command-Line Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 ```
 
 ### Option 3: Manual Install

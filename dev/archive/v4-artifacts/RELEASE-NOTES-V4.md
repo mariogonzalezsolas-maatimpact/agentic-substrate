@@ -46,7 +46,7 @@ mcp__memory__search_nodes(query="authentication patterns jwt")
 
 ### 2. MCP Configuration System
 
-Addresses [GitHub Issue #2](https://github.com/VAMFI/claude-user-memory/issues/2) - User-configurable MCP mappings:
+Addresses [GitHub Issue #2](https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory/issues/2) - User-configurable MCP mappings:
 
 - **Config File**: `~/.claude/data/mcp-config.json`
 - **Survives Updates**: User customizations preserved
@@ -207,7 +207,7 @@ mcp__memory__read_graph()
 curl -sSL https://vamfi.org/install-claude | bash
 
 # Or clone and install
-git clone https://github.com/VAMFI/claude-user-memory.git
+git clone https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory.git
 cd claude-user-memory
 ./install.sh
 ```
@@ -276,7 +276,7 @@ mcp__memory__read_graph()
 ## 📖 Resources
 
 ### Documentation
-- [GitHub Repository](https://github.com/VAMFI/claude-user-memory)
+- [GitHub Repository](https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory)
 - [VAMFI Blog](https://vamfi.org/blog)
 - [Anthropic Research](https://anthropic.com/research)
 

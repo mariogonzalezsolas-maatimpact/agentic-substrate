@@ -119,7 +119,7 @@ cp -r .claude ~/
 The install script now uses portable paths automatically:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 ```
 
 ---

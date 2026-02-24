@@ -25,7 +25,7 @@ It's open source and available as a one-click Desktop Extension for Claude Code 
 
 Read the full technical writeup: https://vamfi.org/blog-demo8-philia-sophia
 
-GitHub: https://github.com/VAMFI/claude-user-memory
+GitHub: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory
 
 The code, research pack, and implementation plan are all public. Feedback welcome.
 
@@ -77,7 +77,7 @@ If you're interested in how to apply AI research to real tools, the methodology 
 
 Blog post with full details: https://vamfi.org/blog-demo8-philia-sophia
 
-GitHub repo: https://github.com/VAMFI/claude-user-memory
+GitHub repo: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory
 
 Open to feedback and questions.
 
@@ -132,7 +132,7 @@ Works system-wide in ~/.claude/
 
 Backward compatible.
 
-GitHub: https://github.com/VAMFI/claude-user-memory
+GitHub: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory
 
 ---
 

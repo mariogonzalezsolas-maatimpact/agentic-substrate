@@ -151,7 +151,7 @@ quality-validation/   research-methodology/
 
 ```bash
 # On AWS CloudShell
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash -s -- --force
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash -s -- --force
 ```
 
 **Expected output**:
@@ -173,7 +173,7 @@ ls ~/.claude/commands/
 ls ~/.claude/skills/
 # Should show: context-engineering pattern-recognition planning-methodology quality-validation research-methodology
 
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/verify-installation.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/verify-installation.sh | bash
 # Should show: ✅ ALL CHECKS PASSED
 ```
 

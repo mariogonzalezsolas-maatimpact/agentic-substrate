@@ -10,7 +10,7 @@
 
 **Command**:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 ```
 
 ---
@@ -21,7 +21,7 @@ curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/insta
 
 **Command**:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 ```
 
 **Result**:
@@ -42,7 +42,7 @@ curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/insta
 
 **Command**:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash -s -- --force
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash -s -- --force
 ```
 
 **Result**:
@@ -164,19 +164,19 @@ cat ~/.claude/.agentic-substrate-version
 
 **Method 1: One-liner (fresh install)**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash
 ```
 ✅ Works perfectly
 
 **Method 2: One-liner with force**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/VAMFI/claude-user-memory/main/install.sh | bash -s -- --force
+curl -fsSL https://raw.githubusercontent.com/mariogonzalezsolas-maatimpact/claude-user-memory/main/install.sh | bash -s -- --force
 ```
 ✅ Works perfectly
 
 **Method 3: Clone and install**
 ```bash
-git clone https://github.com/VAMFI/claude-user-memory.git
+git clone https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory.git
 cd claude-user-memory
 ./install.sh
 ```

@@ -64,7 +64,6 @@ def run_bash(relative_path):
     if not os.path.isfile(full_path):
         print(f"    Script not found: {relative_path}")
         return 1
-    # Use relative path with cwd=repo root - works on all platforms
     return subprocess.call(["bash", relative_path.replace("\\", "/")], cwd=SCRIPT_DIR)
 
 def run_bash_with_args(relative_path, args):
@@ -83,12 +82,46 @@ def run_powershell(ps_cmd, relative_path):
         return 1
     return subprocess.call([ps_cmd, "-ExecutionPolicy", "Bypass", "-File", full_path])
 
+def run_powershell_with_args(ps_cmd, relative_path, args):
+    """Run a PowerShell script with arguments using full path."""
+    full_path = os.path.join(SCRIPT_DIR, relative_path)
+    if not os.path.isfile(full_path):
+        print(f"    Script not found: {relative_path}")
+        return 1
+    return subprocess.call([ps_cmd, "-ExecutionPolicy", "Bypass", "-File", full_path] + args)
+
 # ============================================================================
 # ACTIONS
 # ============================================================================
 
+def _run_install_bash(force=False):
+    if force:
+        return run_bash_with_args("scripts/unix/install.sh", ["--force"])
+    return run_bash("scripts/unix/install.sh")
+
+def _run_install_ps(ps_cmd, force=False):
+    if force:
+        return run_powershell_with_args(ps_cmd, "scripts/windows/install.ps1", ["-Force"])
+    return run_powershell(ps_cmd, "scripts/windows/install.ps1")
+
 def action_install(os_type):
     print("\n    --- Install Agentic Substrate ---\n")
+
+    # Check if already installed - offer --force
+    installed = is_installed()
+    force = False
+    if installed:
+        print(f"    Already installed: v{installed}")
+        print()
+        print("    Options:")
+        print("      1) Reinstall with --force")
+        print("      2) Back to menu")
+        choice = input("\n    Choose [1/2]: ").strip()
+        if choice != "1":
+            print("    Cancelled.")
+            return 0
+        force = True
+        print()
 
     if os_type == "windows":
         bash = has_bash()
@@ -100,18 +133,18 @@ def action_install(os_type):
             print("      2) PowerShell (install.ps1)")
             choice = input("\n    Choose [1/2] (default: 1): ").strip()
             if choice == "2":
-                return run_powershell(ps_cmd, "scripts/windows/install.ps1")
-            return run_bash("scripts/unix/install.sh")
+                return _run_install_ps(ps_cmd, force)
+            return _run_install_bash(force)
         elif ps_cmd:
-            return run_powershell(ps_cmd, "scripts/windows/install.ps1")
+            return _run_install_ps(ps_cmd, force)
         elif bash:
-            return run_bash("scripts/unix/install.sh")
+            return _run_install_bash(force)
         else:
             print("    ERROR: No bash or PowerShell found.")
             print("    Install Git for Windows: https://git-scm.com/download/win")
             return 1
     else:
-        return run_bash("scripts/unix/install.sh")
+        return _run_install_bash(force)
 
 def action_uninstall(os_type):
     print("\n    --- Uninstall Agentic Substrate ---\n")
@@ -138,6 +171,24 @@ def action_uninstall(os_type):
 
 def action_update(os_type):
     print("\n    --- Update (changed files only) ---\n")
+
+    # Pull latest changes from remote before updating
+    print("    Pulling latest changes from git...")
+    result = subprocess.run(["git", "pull"], cwd=SCRIPT_DIR, capture_output=True, text=True)
+    if result.returncode == 0:
+        output = result.stdout.strip()
+        if "Already up to date" in output or "Already up-to-date" in output:
+            print("    Already up to date.\n")
+        else:
+            print(f"    {output}\n")
+    else:
+        print(f"    WARNING: git pull failed: {result.stderr.strip()}")
+        choice = input("    Continue with local files? [y/N]: ").strip().lower()
+        if choice not in ("y", "yes", "s", "si"):
+            print("    Cancelled.")
+            return 0
+        print()
+
     return run_bash("scripts/unix/update.sh")
 
 def action_verify(os_type):
@@ -190,7 +241,51 @@ def action_verify(os_type):
 
 def action_configure(os_type):
     print("\n    --- Configure MCP Servers ---\n")
-    return run_bash("scripts/unix/customize.sh")
+
+    # Try bash script first
+    script = os.path.join(SCRIPT_DIR, "scripts", "unix", "customize.sh")
+    if os.path.isfile(script) and has_bash():
+        result = run_bash("scripts/unix/customize.sh")
+        if result == 0:
+            return 0
+
+    # Fallback: Python-based configuration guide
+    print("    MCP Configuration Guide")
+    print("    -----------------------")
+    print()
+
+    config_dir = os.path.join(INSTALL_DIR, "data")
+    config_file = os.path.join(config_dir, "mcp-config.json")
+    template_file = os.path.join(config_dir, "mcp-config-template.json")
+
+    if os.path.isfile(config_file):
+        size = os.path.getsize(config_file)
+        print(f"    [OK] Config exists: {config_file} ({size} bytes)")
+    elif os.path.isfile(template_file):
+        print(f"    [OK] Template available: {template_file}")
+        print(f"    To create your config:")
+        print(f"         Copy the template and edit it:")
+        print(f"         cp {template_file} {config_file}")
+    else:
+        print(f"    [MISS] No config template found")
+        print(f"    Run install first: python setup.py -> Install")
+        return 1
+
+    settings_file = os.path.join(INSTALL_DIR, "settings.json")
+    if os.path.isfile(settings_file):
+        print(f"    [OK] Settings: {settings_file}")
+    else:
+        print(f"    [MISS] Settings file not found")
+
+    print()
+    print("    To configure MCP servers manually:")
+    print(f"    1. Edit: {config_file}")
+    print(f"    2. Add server entries with name, command, and args")
+    print(f"    3. Restart Claude Code to pick up changes")
+    print()
+    print(f"    Docs: https://docs.anthropic.com/en/docs/claude-code/mcp")
+
+    return 0
 
 def action_status(os_type):
     print("\n    --- Status ---\n")
@@ -223,12 +318,15 @@ def action_status(os_type):
 def action_diagnose(os_type):
     print("\n    --- Diagnose Installation ---\n")
 
+    # Try dedicated diagnostic script
     diag_path = os.path.join(SCRIPT_DIR, "dev", "tools", "diagnose-install.sh")
     if os.path.isfile(diag_path) and has_bash():
-        return subprocess.call(["bash", "dev/tools/diagnose-install.sh"], cwd=SCRIPT_DIR)
+        result = run_bash("dev/tools/diagnose-install.sh")
+        if result == 0:
+            return 0
 
-    # Fallback: basic Python diagnostics
-    print("    Running basic diagnostics...\n")
+    # Fallback: Python diagnostics
+    print("    Running diagnostics...\n")
     action_verify(os_type)
 
     # Check for common issues
@@ -250,6 +348,22 @@ def action_diagnose(os_type):
     else:
         print("    [WARN] Claude CLI not found in PATH")
         print("           Install from: https://claude.ai/download")
+
+    # Check line endings on bash scripts
+    scripts_dir = os.path.join(SCRIPT_DIR, "scripts", "unix")
+    if os.path.isdir(scripts_dir):
+        crlf_files = []
+        for f in os.listdir(scripts_dir):
+            if f.endswith(".sh"):
+                fpath = os.path.join(scripts_dir, f)
+                with open(fpath, "rb") as fh:
+                    if b"\r\n" in fh.read(1024):
+                        crlf_files.append(f)
+        if crlf_files:
+            print(f"    [WARN] CRLF line endings in: {', '.join(crlf_files)}")
+            print("           Run: dos2unix scripts/unix/*.sh")
+        else:
+            print("    [OK]   Shell scripts have correct line endings (LF)")
 
     return 0
 
@@ -275,11 +389,14 @@ MENU_SECTIONS = [
 MENU_OPTIONS = [item for _, items in MENU_SECTIONS for item in items]
 MENU_OPTIONS.append(("q", "Quit", "Exit", None))
 
+# Valid menu keys for quick re-entry
+VALID_KEYS = {key for key, _, _, action in MENU_OPTIONS if action}
+VALID_KEYS.add("q")
+
 def show_menu(os_type):
     installed = is_installed()
 
     status_line = f"v{installed}" if installed else "Not installed"
-    status_color = status_line
 
     print(f"""
     ╔══════════════════════════════════════════════╗
@@ -287,7 +404,7 @@ def show_menu(os_type):
     ║   Research-first dev system for Claude Code  ║
     ╚══════════════════════════════════════════════╝
 
-    OS: {os_type}  |  Python {platform.python_version()}  |  {status_color}
+    OS: {os_type}  |  Python {platform.python_version()}  |  {status_line}
     """)
 
     for section_name, items in MENU_SECTIONS:
@@ -305,6 +422,8 @@ def main():
     # Direct command: python setup.py install / uninstall / verify / status
     if len(sys.argv) > 1:
         cmd = sys.argv[1].lower()
+        # Support --force for direct install command
+        force_flag = "--force" in sys.argv or "-Force" in sys.argv
         for key, name, desc, action in MENU_OPTIONS:
             if cmd == name.lower() and action:
                 sys.exit(action(os_type))
@@ -313,9 +432,14 @@ def main():
         sys.exit(1)
 
     # Interactive menu
+    next_choice = None
     while True:
-        show_menu(os_type)
-        choice = input("    Choose an option: ").strip().lower()
+        if next_choice:
+            choice = next_choice
+            next_choice = None
+        else:
+            show_menu(os_type)
+            choice = input("    Choose an option: ").strip().lower()
 
         if choice in ("q", "quit", "exit", ""):
             print("    Bye!")
@@ -326,13 +450,18 @@ def main():
             if choice == key or choice == name.lower():
                 if action:
                     action(os_type)
-                    input("\n    Press Enter to continue...")
+                    # Smart continue: if user types a valid option, use it directly
+                    cont = input("\n    Press Enter to continue (or type option number): ").strip().lower()
+                    if cont in VALID_KEYS:
+                        next_choice = cont
                 matched = True
                 break
 
         if not matched:
             print(f"    Invalid option: {choice}")
-            input("\n    Press Enter to continue...")
+            cont = input("\n    Press Enter to continue (or type option number): ").strip().lower()
+            if cont in VALID_KEYS:
+                next_choice = cont
 
 if __name__ == "__main__":
     main()

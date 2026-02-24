@@ -166,7 +166,7 @@ cp -r .claude/* ~/.claude/
 ### Safe Installation
 
 ```bash
-git clone https://github.com/VAMFI/claude-user-memory.git
+git clone https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory.git
 cd claude-user-memory
 ./install.sh
 
@@ -242,7 +242,7 @@ git pull origin main
 
 ## 🔗 GitHub Repository Status
 
-**URL**: https://github.com/VAMFI/claude-user-memory
+**URL**: https://github.com/mariogonzalezsolas-maatimpact/claude-user-memory
 
 **Latest Commit**: `001660c` - docs: Add validation reports and benchmarking research
 
