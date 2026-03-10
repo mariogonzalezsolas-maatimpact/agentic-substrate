@@ -51,5 +51,29 @@ fi
 RECENT=$(find "$PROJECT_DIR" -type f \( -name "*.ts" -o -name "*.js" -o -name "*.py" -o -name "*.go" -o -name "*.rs" -o -name "*.md" \) -mmin -120 ! -path "*/node_modules/*" ! -path "*/.git/*" ! -path "*/compact-backups/*" 2>/dev/null | wc -l | tr -d ' ')
 echo "Files modified (last 2h): $RECENT"
 
+# Error memory auto-load
+ERRORS_FILE=""
+for candidate in \
+    "$PROJECT_DIR/memory/errors.md" \
+    "$HOME/.claude/memory/errors.md"; do
+    [ -f "$candidate" ] && ERRORS_FILE="$candidate" && break
+done
+if [ -z "$ERRORS_FILE" ]; then
+    for candidate in "$HOME/.claude/projects"/*/memory/errors.md; do
+        [ -f "$candidate" ] && ERRORS_FILE="$candidate" && break
+    done
+fi
+if [ -n "$ERRORS_FILE" ]; then
+    # Count entries (lines starting with ### [)
+    ERROR_COUNT=$(grep -c '^### \[' "$ERRORS_FILE" 2>/dev/null || echo "0")
+    if [ "$ERROR_COUNT" -gt 0 ]; then
+        echo "--- Error Memory (auto-loaded) ---"
+        echo "ERRORS_FOUND: $ERROR_COUNT documented errors"
+        grep -A1 '^### \[' "$ERRORS_FILE" 2>/dev/null | head -10
+        grep '^\- \*\*Prevention\*\*' "$ERRORS_FILE" 2>/dev/null | tail -5
+        echo "--- End Error Memory ---"
+    fi
+fi
+
 echo "--- End Session Context ---"
 exit 0

@@ -38,6 +38,15 @@
         "hooks": [
           {
             "type": "command",
+            "command": "[ -f \"$HOME/.claude/hooks/auto-error-capture.sh\" ] && bash \"$HOME/.claude/hooks/auto-error-capture.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
             "command": "[ -f \"$HOME/.claude/hooks/suggest-context-edits.sh\" ] && bash \"$HOME/.claude/hooks/suggest-context-edits.sh\" || true",
             "timeout": 10
           }

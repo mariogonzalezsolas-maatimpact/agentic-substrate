@@ -8,7 +8,7 @@ Source repository for the Claude Code CLI enhancement system. Users install to `
 - TDD mandatory: RED -> GREEN -> REFACTOR
 - Quality gates: Research 80+, Plan 85+, Tests pass
 - Circuit breaker opens after 3 failures: /circuit-breaker reset
-- **CRITICAL: Error Self-Tracking** -- When you make a mistake (wrong code, bad assumption, incorrect tool usage, failed approach), you MUST log it immediately in `memory/errors.md`. Read this file at the start of every session. Never repeat a documented error. This is your feedback loop for continuous improvement.
+- **CRITICAL: Error Self-Tracking** -- When you make a mistake, log it to `memory/errors.md` immediately. The auto-error-capture hook logs subagent failures automatically. Read errors.md at session start (auto-loaded by session-start hook). Check for patterns: 3+ similar errors = create a prevention rule. Never repeat a documented error. This is your feedback loop for continuous improvement.
 
 ## Commands (22)
 - `/do [anything]` -- Universal router with mandatory planning (RECOMMENDED)
@@ -81,9 +81,9 @@ This repository is the **source** for the Agentic Substrate. Key directories:
 | Directory | Contents |
 |-----------|----------|
 | `.claude/agents/` | 25 agent definitions |
-| `.claude/skills/` | 9 auto-invoked skills |
+| `.claude/skills/` | 10 auto-invoked skills |
 | `.claude/commands/` | 22 slash commands |
-| `.claude/hooks/` | 13 lifecycle hooks |
+| `.claude/hooks/` | 14 lifecycle hooks |
 | `.claude/templates/` | Shared templates + overview docs |
 | `.claude/rules/` | Path-specific rules (glob patterns) |
 | `.claude/validators/` | API matcher + circuit breaker |
