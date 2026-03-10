@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Agentic Substrate v6.0 - Robust Cross-Platform Installation
+# Agentic Substrate v7.1 - Robust Cross-Platform Installation
 # Works on: macOS, Linux, WSL, Windows (Git Bash/MSYS2), minimal containers, with/without Python
-# Optimized for Claude Opus 4.6 with 15 agents across 4 tiers
+# Optimized for Claude Opus 4.6 with 25 agents across 5 tiers
 
-VERSION="6.0.0"
+VERSION="7.1.0"
 
 # ============================================================================
 # GLOBAL VARIABLES

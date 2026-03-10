@@ -124,4 +124,4 @@ Lead requests: Full artifact (ResearchPack, Plan, Audit Report, etc.)
 
 ---
 
-**Updated**: 2026-02-24 | **Version**: 6.0.0 | **Protocol**: Agent Report v1.1
+**Updated**: 2026-03-10 | **Version**: 7.1.0 | **Protocol**: Agent Report v1.1

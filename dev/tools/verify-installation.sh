@@ -39,41 +39,41 @@ echo ""
 # Check agents
 echo "🤖 Checking agents..."
 AGENT_COUNT=$(find "$CLAUDE_DIR/agents" -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
-if [ "$AGENT_COUNT" -eq 15 ]; then
-    check_pass "All 15 agents installed"
+if [ "$AGENT_COUNT" -eq 25 ]; then
+    check_pass "All 25 agents installed"
     check_info "$(ls "$CLAUDE_DIR"/agents/*.md | xargs -n1 basename | sed 's/^/    - /')"
 else
-    check_fail "Expected 15 agents, found $AGENT_COUNT"
+    check_fail "Expected 25 agents, found $AGENT_COUNT"
 fi
 echo ""
 
 # Check skills
 echo "🧠 Checking skills..."
 SKILL_COUNT=$(find "$CLAUDE_DIR/skills" -name "skill.md" 2>/dev/null | wc -l | tr -d ' ')
-if [ "$SKILL_COUNT" -eq 5 ]; then
-    check_pass "All 5 skills installed"
+if [ "$SKILL_COUNT" -eq 10 ]; then
+    check_pass "All 10 skills installed"
     check_info "$(ls -d "$CLAUDE_DIR"/skills/*/ | xargs -n1 basename | sed 's/^/    - /')"
 else
-    check_fail "Expected 5 skills, found $SKILL_COUNT"
+    check_fail "Expected 10 skills, found $SKILL_COUNT"
 fi
 echo ""
 
 # Check commands
 echo "⚡ Checking commands..."
 COMMAND_COUNT=$(find "$CLAUDE_DIR/commands" -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
-if [ "$COMMAND_COUNT" -eq 12 ]; then
-    check_pass "All 12 commands installed"
+if [ "$COMMAND_COUNT" -eq 22 ]; then
+    check_pass "All 22 commands installed"
     check_info "$(ls "$CLAUDE_DIR"/commands/*.md | xargs -n1 basename | sed 's/\.md$//' | sed 's/^/    \/ /')"
 else
-    check_fail "Expected 12 commands, found $COMMAND_COUNT"
+    check_fail "Expected 22 commands, found $COMMAND_COUNT"
 fi
 echo ""
 
 # Check hooks
 echo "🔗 Checking hooks..."
 HOOK_COUNT=$(find "$CLAUDE_DIR/hooks" -name "*.sh" 2>/dev/null | wc -l | tr -d ' ')
-if [ "$HOOK_COUNT" -eq 12 ]; then
-    check_pass "All 12 hooks installed"
+if [ "$HOOK_COUNT" -eq 14 ]; then
+    check_pass "All 14 hooks installed"
     # Check if executable (skip on Windows where perm checks are unreliable)
     if [[ "$OSTYPE" != "msys" && "$OSTYPE" != "cygwin" ]]; then
         NON_EXEC=$(find "$CLAUDE_DIR/hooks" -name "*.sh" ! -perm -111 2>/dev/null | wc -l | tr -d ' ')
@@ -84,7 +84,7 @@ if [ "$HOOK_COUNT" -eq 12 ]; then
         fi
     fi
 else
-    check_fail "Expected 12 hooks, found $HOOK_COUNT"
+    check_fail "Expected 14 hooks, found $HOOK_COUNT"
 fi
 echo ""
 
@@ -120,10 +120,10 @@ echo ""
 # Check templates
 echo "📝 Checking templates..."
 TEMPLATE_COUNT=$(find "$CLAUDE_DIR/templates" -type f 2>/dev/null | wc -l | tr -d ' ')
-if [ "$TEMPLATE_COUNT" -eq 8 ]; then
-    check_pass "All 8 templates installed"
+if [ "$TEMPLATE_COUNT" -eq 17 ]; then
+    check_pass "All 17 templates installed"
 else
-    check_fail "Expected 8 templates, found $TEMPLATE_COUNT"
+    check_fail "Expected 17 templates, found $TEMPLATE_COUNT"
     check_info "Found: $(find "$CLAUDE_DIR/templates" -type f | xargs -n1 basename | sed 's/^/    - /')"
 fi
 echo ""

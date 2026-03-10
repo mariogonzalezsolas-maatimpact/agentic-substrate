@@ -5,6 +5,41 @@ All notable changes to Agentic Substrate will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.1.0] - 2026-03-10
+
+### Added
+
+#### Auto Error-Learning Feedback Loop
+- **auto-error-capture.sh** hook - SubagentStop hook that detects FAIL/BLOCKED in agent output and auto-logs to errors.md
+- **error-learning** skill - 6 error categories, pattern detection (3+ similar = escalate to rule), self-correction protocol
+- **session-start.sh** updated - Auto-loads last 5 errors with prevention rules at session start
+- **memory/errors.md** - Persistent error log template
+
+#### Hawk Oversight Pattern
+- **hawk.sh** hook - PostToolUse hook detecting chaotic oscillation, reward hacking, destructive ops, error swallowing
+- **hawk-pattern.md** template - Documentation for the real-time oversight pattern
+
+#### Anti-Patterns & Quality
+- **anti-reward-hacking.md** rule - Prevents test.skip, generic catch, mock abuse, force-install, evidence deletion
+- **linked-chunks.md** rule - Enforces @linked reference reading before editing files
+- **/tech-debt** command - Continuous tech debt reduction scanning for agent-introduced anti-patterns
+
+#### Templates
+- **scratchpad.md** - Living document surviving context compaction
+- **learnings-template.md** - "Carry scars, not context" dead-end capture
+- **perceptual-diff.md** - Visual regression testing pattern for UI agents
+
+### Changed
+- **Version**: 7.0.0 -> 7.1.0
+- **Skills**: 9 -> 10 (added error-learning)
+- **Commands**: 21 -> 22 (added /tech-debt)
+- **Hooks**: 12 -> 14 (added auto-error-capture, hawk)
+- **Templates**: 14 -> 17 (added hawk-pattern, scratchpad, learnings-template, perceptual-diff)
+- **Rules**: 1 -> 3 (added anti-reward-hacking, linked-chunks)
+- **Routes**: 33 -> 34 (added TECH_DEBT)
+
+---
+
 ## [7.0.0] - 2026-02-27
 
 ### Added

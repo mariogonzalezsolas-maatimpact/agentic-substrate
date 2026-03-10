@@ -1,4 +1,4 @@
-# Troubleshooting Guide - Agentic Substrate v7.0
+# Troubleshooting Guide - Agentic Substrate v7.1
 
 Common issues and solutions for the Research → Plan → Implement workflow and the 25-agent system.
 
@@ -584,5 +584,5 @@ When reporting issues, include:
 
 ---
 
-**Last Updated**: 2026-02-20
-**Version**: 6.0.0
+**Last Updated**: 2026-03-10
+**Version**: 7.1.0

@@ -1,6 +1,6 @@
 # Skills Overview
 
-9 skills that enhance agent capabilities:
+10 skills that enhance agent capabilities:
 
 | Skill | Triggers When | Key Function |
 |-------|--------------|--------------|
@@ -13,6 +13,7 @@
 | api-methodology | API design decisions needed | Contract-first, OpenAPI, versioning, error design |
 | testing-methodology | Test strategy decisions needed | Test pyramid, coverage targets, mock strategy, anti-flaky |
 | project-organization | New project, onboarding, "organize" | 6-pillar codebase organization for agent navigation (<30s) |
+| error-learning | Mistake made, approach failed, user correction | Auto-captures errors, 6 categories, pattern escalation to rules |
 
 ## How They Work Together
 
@@ -53,4 +54,4 @@ User: "Organize this codebase for AI agents"
 
 ---
 
-**Updated**: 2026-02-27 | **Version**: 7.0.0
+**Updated**: 2026-03-10 | **Version**: 7.1.0

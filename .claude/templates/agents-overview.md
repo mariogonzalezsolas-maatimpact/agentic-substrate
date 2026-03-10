@@ -42,7 +42,7 @@
 
 ---
 
-## Agent Format (v6.0)
+## Agent Format (v7.1)
 
 Every agent follows a standardized professional structure:
 
@@ -191,4 +191,4 @@ Full gate definitions: @.claude/templates/quality-gates.md
 
 ---
 
-**Updated**: 2026-02-27 | **Version**: 7.0.0 | **Agents**: 25 (5 Opus + 12 Sonnet + 8 Haiku)
+**Updated**: 2026-03-10 | **Version**: 7.1.0 | **Agents**: 25 (5 Opus + 12 Sonnet + 8 Haiku)

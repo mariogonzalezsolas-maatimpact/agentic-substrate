@@ -1,7 +1,7 @@
-# Project Knowledge Core - Agentic Substrate v6.0
+# Project Knowledge Core - Agentic Substrate v7.1
 
-**Last Updated**: 2026-02-24
-**Version**: 6.0.0 (15-Agent System with Quality Gates & Model Mixing)
+**Last Updated**: 2026-03-10
+**Version**: 7.1.0 (25-Agent System with Quality Gates, Model Mixing & Error Learning)
 **Project**: Claude User Memory → Agentic Substrate
 
 **Purpose**: This document is the single source of truth for this project's architectural decisions, established patterns, and key learnings. It serves as the persistent memory for all AI agents working on the Agentic Substrate system.

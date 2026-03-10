@@ -1,4 +1,4 @@
-# Installation Behavior - Agentic Substrate v7.0
+# Installation Behavior - Agentic Substrate v7.1
 
 ## Overview
 
@@ -230,13 +230,13 @@ ls -la ~/.claude/CLAUDE.md.backup
 
 **Current**: v1.1.0
 
-**Substrate Version**: v7.0.0
+**Substrate Version**: v7.1.0
 
-**Total Managed Files**: 60
-- Agents: 15
-- Skills: 5
-- Commands: 12
-- Hooks: 12
+**Total Managed Files**: 75
+- Agents: 25
+- Skills: 10
+- Commands: 22
+- Hooks: 14
 - Validators: 2
 - Metrics: 1
 - Templates: 8
@@ -264,6 +264,6 @@ ls -la ~/.claude/CLAUDE.md.backup
 
 ---
 
-**Last Updated**: 2026-02-20
-**Version**: 6.0.0
+**Last Updated**: 2026-03-10
+**Version**: 7.1.0
 **Status**: Production-Ready

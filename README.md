@@ -1,8 +1,8 @@
-# Agentic Substrate v7.0
+# Agentic Substrate v7.1
 
 **Research-first development system for Claude Code CLI**
 
-> 25 agents. 22 commands. 9 auto-invoked skills. 13 lifecycle hooks. Zero API hallucinations. Research first, code second.
+> 25 agents. 22 commands. 10 auto-invoked skills. 14 lifecycle hooks. Auto error-learning. Zero API hallucinations. Research first, code second.
 
 [English](#english) | [Espanol](#espanol)
 
@@ -33,9 +33,9 @@ That's it. `/do` classifies your intent, shows a plan, waits for confirmation, a
 A drop-in enhancement for [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) that installs to `~/.claude/` and transforms it into a research-first development system with:
 
 - **25 specialized agents** across 5 tiers (Orchestration, Core, Engineering, Infrastructure, Growth & Quality)
-- **9 auto-invoked skills** (research, planning, validation, pattern recognition, context management, architecture, API, testing, project organization)
+- **10 auto-invoked skills** (research, planning, validation, pattern recognition, context management, architecture, API, testing, project organization, error learning)
 - **22 slash commands** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`, `/responsive-review`, `/theme-review`, `/i18n-review`, `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`)
-- **13 lifecycle hooks** (quality gates, auto-formatting, knowledge capture, session management, hawk oversight)
+- **14 lifecycle hooks** (quality gates, auto-formatting, knowledge capture, session management, hawk oversight, auto error capture)
 - **Quality gates** with scoring rubrics (Research >= 80, Plan >= 85, Tests pass)
 - **Circuit breaker** that stops infinite loops after 3 consecutive failures
 - **Persistent memory** via knowledge-core.md across sessions
@@ -274,8 +274,8 @@ claude-user-memory/
 ├── .claude/                    # Core system (installed to ~/.claude/)
 │   ├── agents/                 # 25 agent definitions
 │   ├── commands/               # 22 slash commands
-│   ├── skills/                 # 9 auto-invoked skills
-│   ├── hooks/                  # 13 lifecycle hooks
+│   ├── skills/                 # 10 auto-invoked skills
+│   ├── hooks/                  # 14 lifecycle hooks
 │   ├── templates/              # Shared templates + overviews
 │   ├── validators/             # Quality gate validators
 │   ├── metrics/                # Workflow metrics tracker
@@ -291,7 +291,7 @@ claude-user-memory/
 │   ├── manifest.json           # File manifest for installations
 │   └── manifest-template.json  # Template for packaging
 ├── docs/
-│   ├── CHANGELOG.md            # Version history (v3.0 - v7.0)
+│   ├── CHANGELOG.md            # Version history (v3.0 - v7.1)
 │   ├── CONTRIBUTING.md         # Contributing guidelines
 │   ├── INSTALLATION-BEHAVIOR.md # Installation details
 │   ├── TROUBLESHOOTING.md      # Common issues + fixes
@@ -343,10 +343,10 @@ Based on [Anthropic research](https://www.anthropic.com/research) (2024-2025):
 |----------|-------------|
 | [Agents Overview](.claude/templates/agents-overview.md) | All 25 agents, tiers, models |
 | [Workflows Overview](.claude/templates/workflows-overview.md) | Routing table, workflow patterns |
-| [Skills Overview](.claude/templates/skills-overview.md) | 9 auto-invoked skills reference |
+| [Skills Overview](.claude/templates/skills-overview.md) | 10 auto-invoked skills reference |
 | [Quality Gates](.claude/templates/quality-gates.md) | Scoring rubrics, circuit breaker |
 | [Agent Teams](.claude/agent-teams.md) | Parallel collaboration guide |
-| [Changelog](docs/CHANGELOG.md) | Version history (v3.0 - v7.0) |
+| [Changelog](docs/CHANGELOG.md) | Version history (v3.0 - v7.1) |
 | [Installation Behavior](docs/INSTALLATION-BEHAVIOR.md) | Data preservation details |
 | [Contributing](docs/CONTRIBUTING.md) | How to contribute |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common issues and fixes |
@@ -359,6 +359,7 @@ Based on [Anthropic research](https://www.anthropic.com/research) (2024-2025):
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| **7.1** | 2026-03-10 | Auto error-learning feedback loop, Hawk oversight pattern, anti-reward-hacking rules, linked chunks, tech-debt command, scratchpad + learnings templates |
 | **7.0** | 2026-02-27 | 10 new agents (25 total), 5 tiers, 9 new commands (21 total), 4 new skills (9 total), Agent Report Protocol |
 | **6.0** | 2026-02-24 | Agent Teams default on, v6.0 across all references, Opus 4.6 optimization |
 | **5.4** | 2026-02-18 | SessionStart hook, `/mode` command, semantic quality gates |
@@ -379,11 +380,11 @@ MIT License - See [LICENSE](LICENSE)
 
 <a name="espanol"></a>
 
-# Agentic Substrate v7.0 (Espanol)
+# Agentic Substrate v7.1 (Espanol)
 
 **Sistema de desarrollo basado en investigacion para Claude Code CLI**
 
-> 25 agentes. 22 comandos. 9 habilidades auto-invocadas. 13 hooks de ciclo de vida. Cero alucinaciones de APIs. Investigar primero, programar despues.
+> 25 agentes. 22 comandos. 10 habilidades auto-invocadas. 14 hooks de ciclo de vida. Auto-aprendizaje de errores. Cero alucinaciones de APIs. Investigar primero, programar despues.
 
 ---
 
@@ -410,9 +411,9 @@ Eso es todo. `/do` clasifica tu intencion, muestra un plan, espera confirmacion 
 Una extension drop-in para [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) que se instala en `~/.claude/` y lo transforma en un sistema de desarrollo basado en investigacion con:
 
 - **25 agentes especializados** en 5 niveles (Orquestacion, Core, Ingenieria, Infraestructura, Crecimiento y Calidad)
-- **9 habilidades auto-invocadas** (investigacion, planificacion, validacion, reconocimiento de patrones, gestion de contexto, arquitectura, API, testing, organizacion de proyecto)
+- **10 habilidades auto-invocadas** (investigacion, planificacion, validacion, reconocimiento de patrones, gestion de contexto, arquitectura, API, testing, organizacion de proyecto, aprendizaje de errores)
 - **22 comandos slash** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`, `/responsive-review`, `/theme-review`, `/i18n-review`, `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`)
-- **13 hooks de ciclo de vida** (puertas de calidad, auto-formato, captura de conocimiento, gestion de sesion, vigilancia hawk)
+- **14 hooks de ciclo de vida** (puertas de calidad, auto-formato, captura de conocimiento, gestion de sesion, vigilancia hawk, captura automatica de errores)
 - **Puertas de calidad** con rubricas de puntuacion (Investigacion >= 80, Plan >= 85, Tests pasan)
 - **Circuit breaker** que detiene bucles infinitos despues de 3 fallos consecutivos
 - **Memoria persistente** via knowledge-core.md entre sesiones
@@ -601,10 +602,10 @@ powershell scripts/windows/verify-installation.ps1
 |-----------|-------------|
 | [Agents Overview](.claude/templates/agents-overview.md) | 25 agentes, niveles, modelos |
 | [Workflows Overview](.claude/templates/workflows-overview.md) | Tabla de rutas, patrones |
-| [Skills Overview](.claude/templates/skills-overview.md) | 9 habilidades auto-invocadas |
+| [Skills Overview](.claude/templates/skills-overview.md) | 10 habilidades auto-invocadas |
 | [Quality Gates](.claude/templates/quality-gates.md) | Rubricas, circuit breaker |
 | [Agent Teams](.claude/agent-teams.md) | Guia de colaboracion paralela |
-| [Changelog](docs/CHANGELOG.md) | Historial de versiones (v3.0 - v7.0) |
+| [Changelog](docs/CHANGELOG.md) | Historial de versiones (v3.0 - v7.1) |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Problemas comunes |
 
 ---
@@ -613,6 +614,7 @@ powershell scripts/windows/verify-installation.ps1
 
 | Version | Fecha | Destacado |
 |---------|-------|-----------|
+| **7.1** | 2026-03-10 | Auto-aprendizaje de errores, patron Hawk de supervision, reglas anti-reward-hacking, linked chunks, comando tech-debt, plantillas scratchpad + learnings |
 | **7.0** | 2026-02-27 | 10 nuevos agentes (25 total), 5 niveles, 9 nuevos comandos (21 total), 4 nuevas habilidades (9 total), Agent Report Protocol |
 | **6.0** | 2026-02-24 | Agent Teams por defecto, optimizacion Opus 4.6 |
 | **5.4** | 2026-02-18 | Hook SessionStart, comando `/mode`, quality gates semanticas |
@@ -628,4 +630,4 @@ MIT License - Ver [LICENSE](LICENSE)
 
 ---
 
-**Version:** 7.0.0 | **Fecha:** 2026-02-27 | **Agentes:** 25 (5 Opus + 12 Sonnet + 8 Haiku) | **Comandos:** 21 | **Skills:** 9 | **Hooks:** 12
+**Version:** 7.1.0 | **Fecha:** 2026-03-10 | **Agentes:** 25 (5 Opus + 12 Sonnet + 8 Haiku) | **Comandos:** 22 | **Skills:** 10 | **Hooks:** 14

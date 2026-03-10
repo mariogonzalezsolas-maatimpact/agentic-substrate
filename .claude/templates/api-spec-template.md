@@ -245,4 +245,4 @@ Retry policy: 3 attempts with exponential backoff (1s, 10s, 100s).
 
 ---
 
-**Updated**: 2026-02-27 | **Version**: 7.0.0
+**Updated**: 2026-03-10 | **Version**: 7.1.0

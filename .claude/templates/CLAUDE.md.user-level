@@ -1,4 +1,4 @@
-# Agentic Substrate v6.0
+# Agentic Substrate v7.1
 # --- AGENTIC SUBSTRATE START ---
 
 ## System Rules
@@ -7,9 +7,9 @@
 - TDD mandatory: RED -> GREEN -> REFACTOR
 - Quality gates: Research 80+, Plan 85+, Tests pass
 - Circuit breaker opens after 3 failures: /circuit-breaker reset
-- **CRITICAL: Error Self-Tracking** -- When you make a mistake (wrong code, bad assumption, incorrect tool usage, failed approach), you MUST log it immediately in `memory/errors.md`. Read this file at the start of every session. Never repeat a documented error. This is your feedback loop for continuous improvement.
+- **CRITICAL: Error Self-Tracking** -- When you make a mistake, log it to `memory/errors.md` immediately. The auto-error-capture hook logs subagent failures automatically. Read errors.md at session start (auto-loaded by session-start hook). Check for patterns: 3+ similar errors = create a prevention rule. Never repeat a documented error. This is your feedback loop for continuous improvement.
 
-## Commands (12)
+## Commands (22)
 - `/do [anything]` -- Universal router with mandatory planning (RECOMMENDED)
 - `/workflow [feature]` -- Full automation: research -> plan -> implement
 - `/research [topic]` -- Fetch version-accurate docs (<2 min)
@@ -22,12 +22,23 @@
 - `/security-audit [scope]` -- OWASP Top 10 + code security review
 - `/seo-audit [scope]` -- Technical SEO + Core Web Vitals audit
 - `/ux-review [scope]` -- WCAG 2.2 + usability heuristics audit
+- `/responsive-review [scope]` -- Mobile-first, breakpoints, touch targets
+- `/theme-review [scope]` -- Dark/light mode, design tokens, contrast
+- `/i18n-review [scope]` -- Translations, RTL, pluralization, locale
+- `/architecture [scope]` -- System design, patterns, ADRs, C4
+- `/database [scope]` -- Schema design, migrations, query optimization
+- `/api-design [scope]` -- REST/GraphQL/gRPC, OpenAPI specs
+- `/test-strategy [scope]` -- Test architecture, coverage, TDD coaching
+- `/devops [scope]` -- CI/CD, Docker, K8s, Terraform
+- `/secdevops [scope]` -- SAST/DAST, supply chain, pipeline security
+- `/tech-debt [scope]` -- Continuous tech debt reduction
 
-## 15 Agents (4 Tiers)
-- **Orchestrator**: chief-architect
-- **Core (BUILD+FIX)**: docs-researcher, implementation-planner, brahma-analyzer, code-implementer, brahma-investigator
-- **Production (SERVE)**: brahma-deployer, brahma-monitor, brahma-optimizer
-- **Growth (GROW)**: seo-strategist, business-analyst, content-strategist, product-strategist, security-auditor, ux-accessibility-reviewer
+## 25 Agents (5 Tiers, 3 Models)
+- **Orchestrator** (opus): chief-architect
+- **Core** (opus+sonnet): docs-researcher, implementation-planner, brahma-analyzer, code-implementer, brahma-investigator
+- **Engineering** (opus+sonnet): software-architect, programmer, database-architect, api-designer, testing-engineer
+- **Infrastructure** (sonnet): devops-engineer, secdevops-engineer, brahma-deployer, brahma-monitor, brahma-optimizer
+- **Growth & Quality** (haiku+sonnet): seo-strategist, business-analyst, content-strategist, product-strategist, security-auditor, ux-accessibility-reviewer, responsive-reviewer, theme-reviewer, i18n-reviewer
 
 ## Thinking Modes
 Add keyword: **think** (30-60s) | **think hard** (1-2min) | **think harder** (2-4min) | **ultrathink** (5-10min)

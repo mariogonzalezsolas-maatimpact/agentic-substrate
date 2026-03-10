@@ -1,6 +1,6 @@
 # Philosophy: Philia Sophia - Love of Wisdom
 
-**Agentic Substrate v7.0** represents the synthesis of two engineering philosophies:
+**Agentic Substrate v7.1** represents the synthesis of two engineering philosophies:
 
 1. **Anthropic's Agent Philosophy** - Cutting-edge research on autonomous agents
 2. **VAMFI's Brahma Orchestration** - Practical workflow automation and quality gates
@@ -30,7 +30,7 @@ Agentic Substrate integrates **7 key patterns** from Anthropic's engineering phi
 **Principle**: Create dedicated space for structured thinking during complex tasks.
 
 **In Agentic Substrate**:
-- All 15 agents have "Think Protocol"
+- All 25 agents have "Think Protocol"
 - Keywords: "think", "think hard", "think harder", "ultrathink"
 - Automatic triggers for complex decisions
 - 54% improvement on complex tasks (Anthropic research)

@@ -90,4 +90,4 @@ Store in: `docs/adr/` or `architecture/decisions/`
 
 ---
 
-**Updated**: 2026-02-27 | **Version**: 7.0.0
+**Updated**: 2026-03-10 | **Version**: 7.1.0

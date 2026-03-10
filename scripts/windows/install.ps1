@@ -1,7 +1,7 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    Agentic Substrate v6.0.0 - PowerShell Installer for Windows
+    Agentic Substrate v7.1.0 - PowerShell Installer for Windows
 
 .DESCRIPTION
     Native Windows installer for the Agentic Substrate system.
@@ -34,7 +34,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$VERSION = "6.0.0"
+$VERSION = "7.1.0"
 $CLAUDE_TARGET = Join-Path $env:USERPROFILE ".claude"
 $SCRIPT_DIR = Split-Path -Parent $MyInvocation.MyCommand.Path
 # Resolve repo root: scripts/windows/install.ps1 -> repo root is ../../

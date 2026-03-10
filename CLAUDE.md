@@ -1,4 +1,4 @@
-# Agentic Substrate v7.0
+# Agentic Substrate v7.1
 
 Source repository for the Claude Code CLI enhancement system. Users install to `~/.claude/` via `install.sh` or `install.ps1`.
 
