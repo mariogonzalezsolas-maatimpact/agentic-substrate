@@ -2,7 +2,7 @@
 
 **Research-first development system for Claude Code CLI**
 
-> 25 agents. 22 commands. 10 auto-invoked skills. 14 lifecycle hooks. Auto error-learning. Zero API hallucinations. Research first, code second.
+> 25 agents. 22 commands. 10 auto-invoked skills. 18 lifecycle hooks. Auto error-learning. Zero API hallucinations. Research first, code second.
 
 [English](#english) | [Espanol](#espanol)
 
@@ -35,7 +35,7 @@ A drop-in enhancement for [Claude Code CLI](https://docs.anthropic.com/en/docs/c
 - **25 specialized agents** across 5 tiers (Orchestration, Core, Engineering, Infrastructure, Growth & Quality)
 - **10 auto-invoked skills** (research, planning, validation, pattern recognition, context management, architecture, API, testing, project organization, error learning)
 - **22 slash commands** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`, `/responsive-review`, `/theme-review`, `/i18n-review`, `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`)
-- **14 lifecycle hooks** (quality gates, auto-formatting, knowledge capture, session management, hawk oversight, auto error capture)
+- **18 lifecycle hooks** (quality gates, auto-formatting, knowledge capture, session management, hawk oversight, auto error capture, file protection, desktop notifications, post-compaction reinject, dead rule detection)
 - **Quality gates** with scoring rubrics (Research >= 80, Plan >= 85, Tests pass)
 - **Circuit breaker** that stops infinite loops after 3 consecutive failures
 - **Persistent memory** via knowledge-core.md across sessions
@@ -275,7 +275,7 @@ claude-user-memory/
 │   ├── agents/                 # 25 agent definitions
 │   ├── commands/               # 22 slash commands
 │   ├── skills/                 # 10 auto-invoked skills
-│   ├── hooks/                  # 14 lifecycle hooks
+│   ├── hooks/                  # 18 lifecycle hooks
 │   ├── templates/              # Shared templates + overviews
 │   ├── validators/             # Quality gate validators
 │   ├── metrics/                # Workflow metrics tracker
@@ -384,7 +384,7 @@ MIT License - See [LICENSE](LICENSE)
 
 **Sistema de desarrollo basado en investigacion para Claude Code CLI**
 
-> 25 agentes. 22 comandos. 10 habilidades auto-invocadas. 14 hooks de ciclo de vida. Auto-aprendizaje de errores. Cero alucinaciones de APIs. Investigar primero, programar despues.
+> 25 agentes. 22 comandos. 10 habilidades auto-invocadas. 18 hooks de ciclo de vida. Auto-aprendizaje de errores. Cero alucinaciones de APIs. Investigar primero, programar despues.
 
 ---
 
@@ -413,7 +413,7 @@ Una extension drop-in para [Claude Code CLI](https://docs.anthropic.com/en/docs/
 - **25 agentes especializados** en 5 niveles (Orquestacion, Core, Ingenieria, Infraestructura, Crecimiento y Calidad)
 - **10 habilidades auto-invocadas** (investigacion, planificacion, validacion, reconocimiento de patrones, gestion de contexto, arquitectura, API, testing, organizacion de proyecto, aprendizaje de errores)
 - **22 comandos slash** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`, `/responsive-review`, `/theme-review`, `/i18n-review`, `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`)
-- **14 hooks de ciclo de vida** (puertas de calidad, auto-formato, captura de conocimiento, gestion de sesion, vigilancia hawk, captura automatica de errores)
+- **18 hooks de ciclo de vida** (puertas de calidad, auto-formato, captura de conocimiento, gestion de sesion, vigilancia hawk, captura automatica de errores, proteccion de archivos, notificaciones de escritorio, reinyeccion post-compactacion, deteccion de reglas muertas)
 - **Puertas de calidad** con rubricas de puntuacion (Investigacion >= 80, Plan >= 85, Tests pasan)
 - **Circuit breaker** que detiene bucles infinitos despues de 3 fallos consecutivos
 - **Memoria persistente** via knowledge-core.md entre sesiones

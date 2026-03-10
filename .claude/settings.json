@@ -89,17 +89,6 @@
         ]
       }
     ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -f \"$HOME/.claude/hooks/update-knowledge-core.sh\" ] && bash \"$HOME/.claude/hooks/update-knowledge-core.sh\" || true",
-            "timeout": 30
-          }
-        ]
-      }
-    ],
     "TeammateIdle": [
       {
         "hooks": [
@@ -144,6 +133,29 @@
         ]
       }
     ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"$HOME/.claude/hooks/protect-files.sh\" ] && bash \"$HOME/.claude/hooks/protect-files.sh\" || true",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"$HOME/.claude/hooks/notify-completion.sh\" ] && bash \"$HOME/.claude/hooks/notify-completion.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "hooks": [
@@ -151,6 +163,35 @@
             "type": "command",
             "command": "[ -f \"$HOME/.claude/hooks/session-start.sh\" ] && bash \"$HOME/.claude/hooks/session-start.sh\" || true",
             "timeout": 15
+          }
+        ]
+      },
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"$HOME/.claude/hooks/post-compact-reinject.sh\" ] && bash \"$HOME/.claude/hooks/post-compact-reinject.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"$HOME/.claude/hooks/update-knowledge-core.sh\" ] && bash \"$HOME/.claude/hooks/update-knowledge-core.sh\" || true",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Before stopping, verify task completion. Check: (1) Was the user's original request fully addressed? (2) Are there any uncommitted changes that should be committed? (3) Were tests run if code was modified? (4) Are there any loose ends or TODO items mentioned but not completed? If everything is complete, output PASS. If something was missed, output WARN with what remains."
           }
         ]
       }

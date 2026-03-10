@@ -97,9 +97,9 @@ fi
 echo ""
 
 HOOK_COUNT=$(find "$HOME/.claude/hooks" -name "*.sh" 2>/dev/null | wc -l | tr -d ' ')
-echo "  Hooks: $HOOK_COUNT/12"
-if [ "$HOOK_COUNT" -lt 12 ]; then
-    echo "    ⚠️  Missing $((12 - HOOK_COUNT)) hooks"
+echo "  Hooks: $HOOK_COUNT/18"
+if [ "$HOOK_COUNT" -lt 18 ]; then
+    echo "    ⚠️  Missing $((18 - HOOK_COUNT)) hooks"
 fi
 echo ""
 
