@@ -22,6 +22,7 @@
     "skills/planning-methodology/skill.md",
     "skills/quality-validation/skill.md",
     "skills/research-methodology/skill.md",
+    "skills/project-organization/skill.md",
     "commands/circuit-breaker.md",
     "commands/context.md",
     "commands/do.md",
@@ -120,7 +121,7 @@
   "metadata": {
     "total_files": 64,
     "agents": 15,
-    "skills": 5,
+    "skills": 6,
     "commands": 12,
     "hooks": 12,
     "validators": 2,

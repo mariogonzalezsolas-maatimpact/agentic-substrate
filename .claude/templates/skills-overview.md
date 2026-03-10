@@ -1,6 +1,6 @@
 # Skills Overview
 
-8 auto-invoked skills that enhance agent capabilities:
+9 skills that enhance agent capabilities:
 
 | Skill | Triggers When | Key Function |
 |-------|--------------|--------------|
@@ -12,6 +12,7 @@
 | architecture-methodology | Architecture decisions needed | C4 diagrams, ADRs, pattern evaluation, trade-off analysis |
 | api-methodology | API design decisions needed | Contract-first, OpenAPI, versioning, error design |
 | testing-methodology | Test strategy decisions needed | Test pyramid, coverage targets, mock strategy, anti-flaky |
+| project-organization | New project, onboarding, "organize" | 6-pillar codebase organization for agent navigation (<30s) |
 
 ## How They Work Together
 
@@ -37,6 +38,11 @@ User: "Evaluate architecture for the payment system"
 User: "Improve test coverage for auth module"
   1. testing-methodology -> Test pyramid + coverage analysis
   2. [testing-engineer identifies gaps + writes tests]
+
+User: "Organize this codebase for AI agents"
+  1. project-organization -> Explore + audit structure
+  2. [Creates docs/, rewrites CLAUDE.md, scratchpad, feedback loops]
+  3. [Verifies build passes after reorganization]
 ```
 
 ## Commands
