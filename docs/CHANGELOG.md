@@ -5,6 +5,67 @@ All notable changes to Agentic Substrate will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.0.0] - 2026-02-27
+
+### Added
+
+#### Tier 3: Engineering Agents (5 new agents)
+- **@software-architect** - System architecture, C4 diagrams, ADRs, pattern evaluation, SOLID/DDD
+- **@programmer** - General-purpose coding, algorithms, prototyping, pair programming
+- **@database-architect** - Schema design, migrations, query optimization, index strategies
+- **@api-designer** - REST/GraphQL/gRPC design, OpenAPI specs, versioning, contract-first
+- **@testing-engineer** - Test strategy, coverage analysis, mocking, TDD coaching, flaky test fixing
+
+#### Tier 4: Infrastructure Agents (2 new agents)
+- **@devops-engineer** - CI/CD pipelines, Docker, Kubernetes, Terraform, GitOps
+- **@secdevops-engineer** - SAST/DAST, secret scanning, container scanning, SBOM, pipeline security
+
+#### Tier 5: Quality Reviewers (3 new agents)
+- **@responsive-reviewer** - Breakpoints, mobile-first, touch targets, fluid typography
+- **@theme-reviewer** - Dark/light mode, design tokens, color contrast per theme
+- **@i18n-reviewer** - Translations, RTL, pluralization, locale handling, hreflang
+
+#### 9 New Commands
+- `/responsive-review` - Mobile-first and breakpoint audits
+- `/theme-review` - Dark/light mode and design token audits
+- `/i18n-review` - Internationalization and localization audits
+- `/architecture` - System design, patterns, ADRs
+- `/database` - Schema design, migrations, query optimization
+- `/api-design` - REST/GraphQL/gRPC, OpenAPI specs
+- `/test-strategy` - Test architecture, coverage, TDD coaching
+- `/devops` - CI/CD, Docker, K8s, Terraform
+- `/secdevops` - SAST/DAST, supply chain, pipeline security
+
+#### 4 New Skills
+- **api-methodology** - Contract-first development, OpenAPI, versioning, error design
+- **architecture-methodology** - C4 diagrams, ADRs, pattern evaluation, trade-off analysis
+- **testing-methodology** - Test pyramid, coverage targets, mock strategy, anti-flaky
+- **project-organization** - 6-pillar codebase organization for agent navigation
+
+#### Agent Report Protocol
+- Standardized compact report format (<800 tokens) for all agents
+- Severity levels: critical, high, medium, low, info
+- Integrated with Agent Teams for efficient lead coordination
+
+### Changed
+- **Version**: 6.0.0 → 7.0.0
+- **Agent count**: 15 → 25 across 5 tiers (was 4 tiers)
+- **Tier reorganization**: Production renamed to Infrastructure, new Engineering tier added, Growth expanded to Growth & Quality
+- **Commands**: 12 → 21 (9 new specialist commands)
+- **Skills**: 5 → 9 (4 new methodology skills)
+- **Routes**: 18 → 33 in /do command
+- **Model distribution**: 3 Opus → 5 Opus, 7 Sonnet → 12 Sonnet, 5 Haiku → 8 Haiku
+
+### Architecture
+- **5-Tier Agent System**:
+  - Tier 1: Orchestration (1 agent) - chief-architect
+  - Tier 2: Core Workflow / BUILD+FIX (5 agents)
+  - Tier 3: Engineering (5 agents) - architecture, coding, database, API, testing
+  - Tier 4: Infrastructure (5 agents) - DevOps, SecDevOps, deploy, monitor, optimize
+  - Tier 5: Growth & Quality (9 agents) - SEO, business, content, product, security, UX, responsive, theme, i18n
+
+---
+
 ## [6.0.0] - 2026-02-24
 
 ### Changed

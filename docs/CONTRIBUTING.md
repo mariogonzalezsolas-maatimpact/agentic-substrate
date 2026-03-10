@@ -1,6 +1,6 @@
 # Contributing to Agentic Substrate
 
-Thank you for your interest in contributing! This repository provides the Agentic Substrate for Claude Code CLI: 15 specialized agents across 4 tiers, 12 commands, 5 skills, and 12 hooks.
+Thank you for your interest in contributing! This repository provides the Agentic Substrate for Claude Code CLI: 25 specialized agents across 5 tiers, 21 commands, 9 skills, and 12 hooks.
 
 ## 🎯 Project Philosophy
 
@@ -32,17 +32,18 @@ git checkout -b feature/your-contribution
 ./install.sh --force
 
 # Verify installation
-./verify-installation.sh  # Should show 15 agents, 5 skills, 12 commands, 12 hooks
+./verify-installation.sh  # Should show 25 agents, 9 skills, 21 commands, 12 hooks
 ```
 
 ## 📋 Types of Contributions
 
 ### 1. Agent Enhancement
-Improving the 15 agents across 4 tiers:
+Improving the 25 agents across 5 tiers:
 - **Orchestration**: chief-architect
 - **Core (BUILD+FIX)**: docs-researcher, implementation-planner, brahma-analyzer, code-implementer, brahma-investigator
-- **Production (SERVE)**: brahma-deployer, brahma-monitor, brahma-optimizer
-- **Growth (GROW)**: seo-strategist, business-analyst, content-strategist, product-strategist, security-auditor, ux-accessibility-reviewer
+- **Engineering**: software-architect, programmer, database-architect, api-designer, testing-engineer
+- **Infrastructure**: devops-engineer, secdevops-engineer, brahma-deployer, brahma-monitor, brahma-optimizer
+- **Growth & Quality**: seo-strategist, business-analyst, content-strategist, product-strategist, security-auditor, ux-accessibility-reviewer, responsive-reviewer, theme-reviewer, i18n-reviewer
 
 ### 2. Workflow Examples
 - Real-world scenarios demonstrating the workflow
@@ -116,7 +117,7 @@ color: unique-color
 ```bash
 # Read the agent you want to enhance
 cat .claude/agents/docs-researcher.md
-# or any of the 15 agents in .claude/agents/
+# or any of the 25 agents in .claude/agents/
 ```
 
 ### Step 2: Identify Enhancement Opportunities

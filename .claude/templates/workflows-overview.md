@@ -31,6 +31,7 @@ Just say what you want -- `/do` classifies, plans, confirms, then executes:
 | DATABASE | `@database-architect` | Review/Migration Delivered |
 | API | `@api-designer` | API Spec Delivered |
 | TESTING | `@testing-engineer` | Tests Pass + Coverage Target |
+| TECH_DEBT | `@programmer` (tech debt mode) | Tests Pass (no regressions) |
 | DEVOPS | `@devops-engineer` | Pipeline Operational |
 | SECDEVOPS | `@secdevops-engineer` | Security Posture Delivered |
 | BUSINESS | `@business-analyst` | Analysis Delivered |
@@ -127,4 +128,4 @@ Run `/context analyze` every 50 messages. `/context optimize` when switching tas
 
 ---
 
-**Updated**: 2026-02-27 | **Version**: 7.0.0 | **Routes**: 33
+**Updated**: 2026-03-10 | **Version**: 7.1.0 | **Routes**: 34

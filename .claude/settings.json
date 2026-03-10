@@ -10,6 +10,16 @@
             "timeout": 30
           }
         ]
+      },
+      {
+        "matcher": "Edit|Write|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"$HOME/.claude/hooks/hawk.sh\" ] && bash \"$HOME/.claude/hooks/hawk.sh\" || true",
+            "timeout": 15
+          }
+        ]
       }
     ],
     "SubagentStart": [

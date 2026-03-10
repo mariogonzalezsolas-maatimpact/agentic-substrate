@@ -60,6 +60,7 @@ Standard quality gates for all workflow routes in the Agentic Substrate. Gates e
 | DATABASE | 1 | Review/Migration Delivered |
 | API | 1 | API Spec Delivered |
 | TESTING | 1 | Tests Pass + Coverage Target |
+| TECH_DEBT | 1 | Tests Pass (no regressions) |
 | DEVOPS | 1 | Pipeline Operational |
 | SECDEVOPS | 1 | Security Posture Delivered |
 | CONTEXT | 0 | None (utility command) |
@@ -166,4 +167,4 @@ Checked before every implementation phase. If OPEN, `/do` refuses to start imple
 
 ---
 
-**Updated**: 2026-02-27 | **Version**: 7.0.0 | **Gates**: 4 defined, 33 routes covered
+**Updated**: 2026-03-10 | **Version**: 7.1.0 | **Gates**: 4 defined, 34 routes covered

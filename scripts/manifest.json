@@ -2,8 +2,8 @@
   "dxt_version": "1.0.0",
   "name": "agentic-substrate",
   "displayName": "Agentic Substrate - Claude Code Enhancement",
-  "version": "6.0.0",
-  "description": "The foundational layer for Claude Code superintelligence. 15 specialized agents across 4 tiers (BUILD+FIX+SERVE+GROW), optimized for Opus 4.6. Adds Research→Plan→Implement workflow, Growth & Strategy agents (SEO, Business, Content, Product, Security, UX), multi-agent coordination, context engineering, and think protocols.",
+  "version": "7.0.0",
+  "description": "The foundational layer for Claude Code superintelligence. 25 specialized agents across 5 tiers (Orchestration, Core, Engineering, Infrastructure, Growth & Quality), 21 commands, 9 skills, optimized for Opus 4.6. Adds Research→Plan→Implement workflow, Engineering agents (Architecture, Coding, Database, API, Testing), Infrastructure agents (DevOps, SecDevOps), Quality reviewers (Responsive, Theme, i18n), multi-agent coordination, context engineering, and think protocols.",
   "server": {
     "type": "static",
     "enabled": false
@@ -67,23 +67,24 @@
   ],
   "features": {
     "agents": {
-      "count": 15,
+      "count": 25,
       "names": [
         "chief-architect",
         "docs-researcher", "implementation-planner", "brahma-analyzer", "code-implementer", "brahma-investigator",
-        "brahma-deployer", "brahma-monitor", "brahma-optimizer",
-        "seo-strategist", "business-analyst", "content-strategist", "product-strategist", "security-auditor", "ux-accessibility-reviewer"
+        "software-architect", "programmer", "database-architect", "api-designer", "testing-engineer",
+        "devops-engineer", "secdevops-engineer", "brahma-deployer", "brahma-monitor", "brahma-optimizer",
+        "seo-strategist", "business-analyst", "content-strategist", "product-strategist", "security-auditor", "ux-accessibility-reviewer", "responsive-reviewer", "theme-reviewer", "i18n-reviewer"
       ],
-      "description": "15 specialized agents across 4 tiers: Orchestration, Core Workflow, Production, Growth & Strategy"
+      "description": "25 specialized agents across 5 tiers: Orchestration, Core Workflow, Engineering, Infrastructure, Growth & Quality"
     },
     "skills": {
-      "count": 5,
-      "names": ["research-methodology", "planning-methodology", "quality-validation", "pattern-recognition", "context-engineering"],
+      "count": 9,
+      "names": ["research-methodology", "planning-methodology", "quality-validation", "pattern-recognition", "context-engineering", "api-methodology", "architecture-methodology", "testing-methodology", "project-organization"],
       "description": "Auto-invoked capabilities that enhance agent performance"
     },
     "commands": {
-      "count": 12,
-      "names": ["/research", "/plan", "/implement", "/workflow", "/context", "/do", "/circuit-breaker", "/mode", "/review", "/security-audit", "/seo-audit", "/ux-review"],
+      "count": 21,
+      "names": ["/research", "/plan", "/implement", "/workflow", "/context", "/do", "/circuit-breaker", "/mode", "/review", "/security-audit", "/seo-audit", "/ux-review", "/responsive-review", "/theme-review", "/i18n-review", "/architecture", "/database", "/api-design", "/test-strategy", "/devops", "/secdevops"],
       "description": "Quick commands for workflow automation"
     },
     "hooks": {

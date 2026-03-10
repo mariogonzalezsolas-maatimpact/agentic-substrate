@@ -10,7 +10,7 @@ Source repository for the Claude Code CLI enhancement system. Users install to `
 - Circuit breaker opens after 3 failures: /circuit-breaker reset
 - **CRITICAL: Error Self-Tracking** -- When you make a mistake (wrong code, bad assumption, incorrect tool usage, failed approach), you MUST log it immediately in `memory/errors.md`. Read this file at the start of every session. Never repeat a documented error. This is your feedback loop for continuous improvement.
 
-## Commands (21)
+## Commands (22)
 - `/do [anything]` -- Universal router with mandatory planning (RECOMMENDED)
 - `/workflow [feature]` -- Full automation: research -> plan -> implement
 - `/research [topic]` -- Fetch version-accurate docs (<2 min)
@@ -32,6 +32,7 @@ Source repository for the Claude Code CLI enhancement system. Users install to `
 - `/test-strategy [scope]` -- Test architecture, coverage, TDD coaching
 - `/devops [scope]` -- CI/CD, Docker, K8s, Terraform
 - `/secdevops [scope]` -- SAST/DAST, supply chain, pipeline security
+- `/tech-debt [scope]` -- Continuous tech debt reduction
 
 ## 25 Agents (5 Tiers, 3 Models)
 - **Orchestrator** (opus): chief-architect
@@ -80,9 +81,9 @@ This repository is the **source** for the Agentic Substrate. Key directories:
 | Directory | Contents |
 |-----------|----------|
 | `.claude/agents/` | 25 agent definitions |
-| `.claude/skills/` | 8 auto-invoked skills |
-| `.claude/commands/` | 21 slash commands |
-| `.claude/hooks/` | 12 lifecycle hooks |
+| `.claude/skills/` | 9 auto-invoked skills |
+| `.claude/commands/` | 22 slash commands |
+| `.claude/hooks/` | 13 lifecycle hooks |
 | `.claude/templates/` | Shared templates + overview docs |
 | `.claude/rules/` | Path-specific rules (glob patterns) |
 | `.claude/validators/` | API matcher + circuit breaker |

@@ -66,6 +66,7 @@ Analyze the request and assign exactly one route:
 | DATABASE | database, schema, migration, query, index, SQL, ORM | `@database-architect` |
 | API | api design, openapi, swagger, graphql, grpc, endpoints, rest design | `@api-designer` |
 | TESTING | test strategy, coverage, flaky, mocking, e2e, test architecture | `@testing-engineer` |
+| TECH_DEBT | tech debt, clean up code, anti-patterns, slop, agent debt | `@programmer` (tech debt mode) |
 | DEVOPS | ci/cd, pipeline, docker, kubernetes, terraform, infrastructure | `@devops-engineer` |
 | SECDEVOPS | sast, dast, supply chain, sbom, secret scanning, pipeline security | `@secdevops-engineer` |
 | BUSINESS | business, requirements, stakeholders, roi, process | `@business-analyst` |
@@ -154,6 +155,17 @@ Estimated time: [X] minutes
 
 Proceed? (yes / modify / cancel)
 ```
+
+### Agentic Interviewing (Complex Tasks)
+
+For FEATURE and ORCHESTRATE routes with ambiguous requirements, use structured multi-choice questions to enhance the specification before planning:
+
+1. Identify ambiguities in the request
+2. Present 2-3 focused questions with concrete options
+3. Use answers to refine the plan
+4. Then present the refined plan for confirmation
+
+This prevents misalignment early -- before any code is written.
 
 ### Quality Gates Reference
 @.claude/templates/quality-gates.md

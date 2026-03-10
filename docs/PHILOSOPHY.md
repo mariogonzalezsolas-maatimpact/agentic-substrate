@@ -1,6 +1,6 @@
 # Philosophy: Philia Sophia - Love of Wisdom
 
-**Agentic Substrate v6.0** represents the synthesis of two engineering philosophies:
+**Agentic Substrate v7.0** represents the synthesis of two engineering philosophies:
 
 1. **Anthropic's Agent Philosophy** - Cutting-edge research on autonomous agents
 2. **VAMFI's Brahma Orchestration** - Practical workflow automation and quality gates

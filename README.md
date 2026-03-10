@@ -1,8 +1,8 @@
-# Agentic Substrate v6.0
+# Agentic Substrate v7.0
 
 **Research-first development system for Claude Code CLI**
 
-> 15 agents. 12 commands. 5 auto-invoked skills. 12 lifecycle hooks. Zero API hallucinations. Research first, code second.
+> 25 agents. 22 commands. 9 auto-invoked skills. 13 lifecycle hooks. Zero API hallucinations. Research first, code second.
 
 [English](#english) | [Espanol](#espanol)
 
@@ -32,10 +32,10 @@ That's it. `/do` classifies your intent, shows a plan, waits for confirmation, a
 
 A drop-in enhancement for [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) that installs to `~/.claude/` and transforms it into a research-first development system with:
 
-- **15 specialized agents** across 4 tiers (Orchestration, Core, Production, Growth)
-- **5 auto-invoked skills** (research, planning, validation, pattern recognition, context management)
-- **12 slash commands** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`)
-- **12 lifecycle hooks** (quality gates, auto-formatting, knowledge capture, session management)
+- **25 specialized agents** across 5 tiers (Orchestration, Core, Engineering, Infrastructure, Growth & Quality)
+- **9 auto-invoked skills** (research, planning, validation, pattern recognition, context management, architecture, API, testing, project organization)
+- **22 slash commands** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`, `/responsive-review`, `/theme-review`, `/i18n-review`, `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`)
+- **13 lifecycle hooks** (quality gates, auto-formatting, knowledge capture, session management, hawk oversight)
 - **Quality gates** with scoring rubrics (Research >= 80, Plan >= 85, Tests pass)
 - **Circuit breaker** that stops infinite loops after 3 consecutive failures
 - **Persistent memory** via knowledge-core.md across sessions
@@ -45,22 +45,23 @@ A drop-in enhancement for [Claude Code CLI](https://docs.anthropic.com/en/docs/c
 
 ## Architecture
 
-### 15 Agents, 4 Tiers, 3 Models
+### 25 Agents, 5 Tiers, 3 Models
 
 | Tier | Agents | Model | Purpose |
 |------|--------|-------|---------|
 | **Orchestration** | chief-architect | Opus | Multi-domain coordination, agent selection |
 | **Core (BUILD+FIX)** | docs-researcher, implementation-planner, brahma-analyzer, code-implementer, brahma-investigator | Opus + Sonnet | Research, plan, analyze, implement, debug |
-| **Production (SERVE)** | brahma-deployer, brahma-monitor, brahma-optimizer | Sonnet | Deploy, monitor, optimize |
-| **Growth (GROW)** | seo-strategist, business-analyst, content-strategist, product-strategist, security-auditor, ux-accessibility-reviewer | Haiku + Sonnet | SEO, business, content, product, security, UX |
+| **Engineering** | software-architect, programmer, database-architect, api-designer, testing-engineer | Opus + Sonnet | Architecture, coding, databases, APIs, testing |
+| **Infrastructure** | devops-engineer, secdevops-engineer, brahma-deployer, brahma-monitor, brahma-optimizer | Sonnet | CI/CD, security pipelines, deploy, monitor, optimize |
+| **Growth & Quality** | seo-strategist, business-analyst, content-strategist, product-strategist, security-auditor, ux-accessibility-reviewer, responsive-reviewer, theme-reviewer, i18n-reviewer | Haiku + Sonnet | SEO, business, content, product, security, UX, responsive, themes, i18n |
 
 ### Model Distribution
 
 | Model | Count | Rationale |
 |-------|-------|-----------|
-| **Opus 4.6** | 3 | Orchestration + deep reasoning (chief-architect, code-implementer, brahma-investigator) |
-| **Sonnet 4.6** | 7 | Analysis + code generation (docs-researcher, implementation-planner, brahma-analyzer, brahma-deployer, brahma-monitor, brahma-optimizer, security-auditor) |
-| **Haiku 4.5** | 5 | Checklist + content tasks (seo-strategist, business-analyst, content-strategist, product-strategist, ux-accessibility-reviewer) |
+| **Opus 4.6** | 5 | Orchestration + deep reasoning + complex coding (chief-architect, code-implementer, brahma-investigator, software-architect, programmer) |
+| **Sonnet 4.6** | 12 | Analysis + code generation + infrastructure (docs-researcher, implementation-planner, brahma-analyzer, brahma-deployer, brahma-monitor, brahma-optimizer, security-auditor, database-architect, api-designer, testing-engineer, devops-engineer, secdevops-engineer) |
+| **Haiku 4.5** | 8 | Checklist + content + review tasks (seo-strategist, business-analyst, content-strategist, product-strategist, ux-accessibility-reviewer, responsive-reviewer, theme-reviewer, i18n-reviewer) |
 
 ### Core Workflow
 
@@ -85,9 +86,12 @@ Quality gates block advancement between phases. Circuit breaker opens after 3 co
 /do review the payment module            # REVIEW -> multi-perspective
 /do optimize database queries            # OPTIMIZE -> profiling
 /do security audit on auth module        # SECURITY -> OWASP Top 10
+/do design the user management API       # API -> contract-first design
+/do review responsive layout             # RESPONSIVE -> mobile-first audit
+/do check dark mode implementation       # THEME -> theme audit
 ```
 
-`/do` auto-classifies into one of 18 routes and dispatches to the right agent.
+`/do` auto-classifies into one of 33 routes and dispatches to the right agent.
 
 ### Full Automation
 
@@ -110,9 +114,19 @@ Runs the complete pipeline: research -> plan -> analyze -> implement with qualit
 ```bash
 @chief-architect Build payment system
 @docs-researcher Research Stripe API v14
+@software-architect Design microservice architecture
+@programmer Prototype the caching layer
+@database-architect Review schema for user module
+@api-designer Design REST API for orders
+@testing-engineer Improve test coverage for auth
+@devops-engineer Set up CI/CD pipeline
+@secdevops-engineer Security audit on pipeline
 @brahma-deployer Deploy v2.5.0
 @security-auditor OWASP Top 10 audit
 @ux-accessibility-reviewer WCAG 2.2 compliance
+@responsive-reviewer Mobile layout audit
+@theme-reviewer Dark mode implementation review
+@i18n-reviewer Translation coverage check
 @seo-strategist Technical SEO audit
 @business-analyst Analyze onboarding process
 @content-strategist Create launch content strategy
@@ -210,19 +224,20 @@ powershell scripts/windows/verify-installation.ps1
 
 ### What Gets Installed
 
-65 managed files into `~/.claude/`:
+~92 managed files into `~/.claude/`:
 
 | Directory | Files | Contents |
 |-----------|-------|----------|
-| `agents/` | 15 | Agent definitions (2,481 lines total) |
-| `commands/` | 12 | Slash command definitions (1,717 lines) |
-| `skills/` | 5 | Auto-invoked skills (2,439 lines) |
-| `hooks/` | 12 | Lifecycle hooks (791 lines) |
-| `templates/` | 10 | Shared templates and overviews |
+| `agents/` | 25 | Agent definitions (5 tiers) |
+| `commands/` | 21 | Slash command definitions |
+| `skills/` | 9 | Auto-invoked skills |
+| `hooks/` | 12 | Lifecycle hooks |
+| `templates/` | 13 | Shared templates and overviews |
 | `validators/` | 2 | API matcher + circuit breaker |
 | `metrics/` | 1 | Workflow metrics tracker |
 | `data/` | 1 | MCP config template |
 | `integrations/` | 4 | LangGraph templates |
+| `rules/` | 1 | Path-specific rules |
 
 Existing data, customizations, and knowledge files are preserved on upgrades.
 
@@ -257,15 +272,16 @@ Tracks consecutive implementation failures. Opens after 3 failures to prevent in
 ```
 claude-user-memory/
 ├── .claude/                    # Core system (installed to ~/.claude/)
-│   ├── agents/                 # 15 agent definitions
-│   ├── commands/               # 12 slash commands
-│   ├── skills/                 # 5 auto-invoked skills
-│   ├── hooks/                  # 12 lifecycle hooks
+│   ├── agents/                 # 25 agent definitions
+│   ├── commands/               # 22 slash commands
+│   ├── skills/                 # 9 auto-invoked skills
+│   ├── hooks/                  # 13 lifecycle hooks
 │   ├── templates/              # Shared templates + overviews
 │   ├── validators/             # Quality gate validators
 │   ├── metrics/                # Workflow metrics tracker
 │   ├── data/                   # MCP config template
 │   ├── integrations/           # LangGraph integration templates
+│   ├── rules/                  # Path-specific rules
 │   ├── agent-teams.md          # Agent Teams guide
 │   ├── knowledge-core.md       # Persistent pattern memory
 │   └── settings.json           # Hook + permission configuration
@@ -275,7 +291,7 @@ claude-user-memory/
 │   ├── manifest.json           # File manifest for installations
 │   └── manifest-template.json  # Template for packaging
 ├── docs/
-│   ├── CHANGELOG.md            # Version history (v3.0 - v6.0)
+│   ├── CHANGELOG.md            # Version history (v3.0 - v7.0)
 │   ├── CONTRIBUTING.md         # Contributing guidelines
 │   ├── INSTALLATION-BEHAVIOR.md # Installation details
 │   ├── TROUBLESHOOTING.md      # Common issues + fixes
@@ -325,12 +341,12 @@ Based on [Anthropic research](https://www.anthropic.com/research) (2024-2025):
 
 | Document | Description |
 |----------|-------------|
-| [Agents Overview](.claude/templates/agents-overview.md) | All 15 agents, tiers, models |
+| [Agents Overview](.claude/templates/agents-overview.md) | All 25 agents, tiers, models |
 | [Workflows Overview](.claude/templates/workflows-overview.md) | Routing table, workflow patterns |
-| [Skills Overview](.claude/templates/skills-overview.md) | Auto-invoked skills reference |
+| [Skills Overview](.claude/templates/skills-overview.md) | 9 auto-invoked skills reference |
 | [Quality Gates](.claude/templates/quality-gates.md) | Scoring rubrics, circuit breaker |
 | [Agent Teams](.claude/agent-teams.md) | Parallel collaboration guide |
-| [Changelog](docs/CHANGELOG.md) | Version history (v3.0 - v6.0) |
+| [Changelog](docs/CHANGELOG.md) | Version history (v3.0 - v7.0) |
 | [Installation Behavior](docs/INSTALLATION-BEHAVIOR.md) | Data preservation details |
 | [Contributing](docs/CONTRIBUTING.md) | How to contribute |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common issues and fixes |
@@ -343,6 +359,7 @@ Based on [Anthropic research](https://www.anthropic.com/research) (2024-2025):
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| **7.0** | 2026-02-27 | 10 new agents (25 total), 5 tiers, 9 new commands (21 total), 4 new skills (9 total), Agent Report Protocol |
 | **6.0** | 2026-02-24 | Agent Teams default on, v6.0 across all references, Opus 4.6 optimization |
 | **5.4** | 2026-02-18 | SessionStart hook, `/mode` command, semantic quality gates |
 | **5.3** | 2026-02-18 | `/review` command, massive context reduction (-81% to -84%) |
@@ -362,11 +379,11 @@ MIT License - See [LICENSE](LICENSE)
 
 <a name="espanol"></a>
 
-# Agentic Substrate v6.0 (Espanol)
+# Agentic Substrate v7.0 (Espanol)
 
 **Sistema de desarrollo basado en investigacion para Claude Code CLI**
 
-> 15 agentes. 12 comandos. 5 habilidades auto-invocadas. 12 hooks de ciclo de vida. Cero alucinaciones de APIs. Investigar primero, programar despues.
+> 25 agentes. 22 comandos. 9 habilidades auto-invocadas. 13 hooks de ciclo de vida. Cero alucinaciones de APIs. Investigar primero, programar despues.
 
 ---
 
@@ -392,10 +409,10 @@ Eso es todo. `/do` clasifica tu intencion, muestra un plan, espera confirmacion 
 
 Una extension drop-in para [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) que se instala en `~/.claude/` y lo transforma en un sistema de desarrollo basado en investigacion con:
 
-- **15 agentes especializados** en 4 niveles (Orquestacion, Core, Produccion, Crecimiento)
-- **5 habilidades auto-invocadas** (investigacion, planificacion, validacion, reconocimiento de patrones, gestion de contexto)
-- **12 comandos slash** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`)
-- **12 hooks de ciclo de vida** (puertas de calidad, auto-formato, captura de conocimiento, gestion de sesion)
+- **25 agentes especializados** en 5 niveles (Orquestacion, Core, Ingenieria, Infraestructura, Crecimiento y Calidad)
+- **9 habilidades auto-invocadas** (investigacion, planificacion, validacion, reconocimiento de patrones, gestion de contexto, arquitectura, API, testing, organizacion de proyecto)
+- **22 comandos slash** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`, `/responsive-review`, `/theme-review`, `/i18n-review`, `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`)
+- **13 hooks de ciclo de vida** (puertas de calidad, auto-formato, captura de conocimiento, gestion de sesion, vigilancia hawk)
 - **Puertas de calidad** con rubricas de puntuacion (Investigacion >= 80, Plan >= 85, Tests pasan)
 - **Circuit breaker** que detiene bucles infinitos despues de 3 fallos consecutivos
 - **Memoria persistente** via knowledge-core.md entre sesiones
@@ -405,14 +422,15 @@ Una extension drop-in para [Claude Code CLI](https://docs.anthropic.com/en/docs/
 
 ## Arquitectura
 
-### 15 Agentes, 4 Niveles, 3 Modelos
+### 25 Agentes, 5 Niveles, 3 Modelos
 
 | Nivel | Agentes | Modelo | Proposito |
 |-------|---------|--------|-----------|
 | **Orquestacion** | chief-architect | Opus | Coordinacion multi-dominio |
 | **Core (BUILD+FIX)** | docs-researcher, implementation-planner, brahma-analyzer, code-implementer, brahma-investigator | Opus + Sonnet | Investigar, planificar, analizar, implementar, depurar |
-| **Produccion (SERVE)** | brahma-deployer, brahma-monitor, brahma-optimizer | Sonnet | Desplegar, monitorizar, optimizar |
-| **Crecimiento (GROW)** | seo-strategist, business-analyst, content-strategist, product-strategist, security-auditor, ux-accessibility-reviewer | Haiku + Sonnet | SEO, negocio, contenido, producto, seguridad, UX |
+| **Ingenieria** | software-architect, programmer, database-architect, api-designer, testing-engineer | Opus + Sonnet | Arquitectura, codigo, bases de datos, APIs, testing |
+| **Infraestructura** | devops-engineer, secdevops-engineer, brahma-deployer, brahma-monitor, brahma-optimizer | Sonnet | CI/CD, seguridad de pipelines, desplegar, monitorizar, optimizar |
+| **Crecimiento y Calidad** | seo-strategist, business-analyst, content-strategist, product-strategist, security-auditor, ux-accessibility-reviewer, responsive-reviewer, theme-reviewer, i18n-reviewer | Haiku + Sonnet | SEO, negocio, contenido, producto, seguridad, UX, responsive, temas, i18n |
 
 ### Flujo de Trabajo Core
 
@@ -435,7 +453,12 @@ Investigar (<2 min) -> Planificar (<3 min) -> Analizar (<2 min) -> Implementar (
 /do revisar el modulo de pagos           # REVIEW -> multi-perspectiva
 /do optimizar consultas de base de datos # OPTIMIZE -> profiling
 /do auditoria de seguridad en auth       # SECURITY -> OWASP Top 10
+/do disenar API de gestion de usuarios   # API -> diseno contract-first
+/do revisar layout responsive            # RESPONSIVE -> auditoria mobile-first
+/do verificar implementacion modo oscuro # THEME -> auditoria de tema
 ```
+
+`/do` auto-clasifica en una de 33 rutas y despacha al agente correcto.
 
 ### Automatizacion Completa
 
@@ -456,9 +479,19 @@ Investigar (<2 min) -> Planificar (<3 min) -> Analizar (<2 min) -> Implementar (
 ```bash
 @chief-architect Construir sistema de pagos
 @docs-researcher Investigar API de Stripe v14
+@software-architect Disenar arquitectura de microservicios
+@programmer Prototipar la capa de caching
+@database-architect Revisar schema del modulo de usuarios
+@api-designer Disenar API REST para pedidos
+@testing-engineer Mejorar cobertura de tests en auth
+@devops-engineer Configurar pipeline CI/CD
+@secdevops-engineer Auditoria de seguridad en pipeline
 @brahma-deployer Desplegar v2.5.0
 @security-auditor Auditoria OWASP Top 10
 @ux-accessibility-reviewer Auditoria WCAG 2.2
+@responsive-reviewer Auditoria de layout movil
+@theme-reviewer Revision de implementacion modo oscuro
+@i18n-reviewer Verificar cobertura de traducciones
 @seo-strategist Auditoria tecnica SEO
 @business-analyst Analizar proceso de onboarding
 @content-strategist Estrategia de contenidos para lanzamiento
@@ -566,11 +599,12 @@ powershell scripts/windows/verify-installation.ps1
 
 | Documento | Descripcion |
 |-----------|-------------|
-| [Agents Overview](.claude/templates/agents-overview.md) | 15 agentes, niveles, modelos |
+| [Agents Overview](.claude/templates/agents-overview.md) | 25 agentes, niveles, modelos |
 | [Workflows Overview](.claude/templates/workflows-overview.md) | Tabla de rutas, patrones |
+| [Skills Overview](.claude/templates/skills-overview.md) | 9 habilidades auto-invocadas |
 | [Quality Gates](.claude/templates/quality-gates.md) | Rubricas, circuit breaker |
 | [Agent Teams](.claude/agent-teams.md) | Guia de colaboracion paralela |
-| [Changelog](docs/CHANGELOG.md) | Historial de versiones |
+| [Changelog](docs/CHANGELOG.md) | Historial de versiones (v3.0 - v7.0) |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Problemas comunes |
 
 ---
@@ -579,6 +613,7 @@ powershell scripts/windows/verify-installation.ps1
 
 | Version | Fecha | Destacado |
 |---------|-------|-----------|
+| **7.0** | 2026-02-27 | 10 nuevos agentes (25 total), 5 niveles, 9 nuevos comandos (21 total), 4 nuevas habilidades (9 total), Agent Report Protocol |
 | **6.0** | 2026-02-24 | Agent Teams por defecto, optimizacion Opus 4.6 |
 | **5.4** | 2026-02-18 | Hook SessionStart, comando `/mode`, quality gates semanticas |
 | **5.3** | 2026-02-18 | Comando `/review`, reduccion de contexto (-84%) |
@@ -593,4 +628,4 @@ MIT License - Ver [LICENSE](LICENSE)
 
 ---
 
-**Version:** 6.0.0 | **Fecha:** 2026-02-24 | **Agentes:** 15 (3 Opus + 7 Sonnet + 5 Haiku) | **Comandos:** 12 | **Skills:** 5 | **Hooks:** 12
+**Version:** 7.0.0 | **Fecha:** 2026-02-27 | **Agentes:** 25 (5 Opus + 12 Sonnet + 8 Haiku) | **Comandos:** 21 | **Skills:** 9 | **Hooks:** 12
