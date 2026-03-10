@@ -8,6 +8,7 @@ Source repository for the Claude Code CLI enhancement system. Users install to `
 - TDD mandatory: RED -> GREEN -> REFACTOR
 - Quality gates: Research 80+, Plan 85+, Tests pass
 - Circuit breaker opens after 3 failures: /circuit-breaker reset
+- **CRITICAL: Error Self-Tracking** -- When you make a mistake (wrong code, bad assumption, incorrect tool usage, failed approach), you MUST log it immediately in `memory/errors.md`. Read this file at the start of every session. Never repeat a documented error. This is your feedback loop for continuous improvement.
 
 ## Commands (21)
 - `/do [anything]` -- Universal router with mandatory planning (RECOMMENDED)

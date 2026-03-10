@@ -876,6 +876,37 @@ ROLLBACK_EOF
     log_success "Rollback script created"
 }
 
+# Install error log template for self-tracking feedback loop
+install_error_log() {
+    local source="$CLAUDE_SOURCE/templates/errors-log.md"
+    local memory_dir="$CLAUDE_TARGET/projects"
+
+    if [ ! -f "$source" ]; then
+        log_warning "Error log template not found (skipping)"
+        return 0
+    fi
+
+    if [ "$DRY_RUN" = true ]; then
+        log_info "[DRY RUN] Would install error log template"
+        return 0
+    fi
+
+    log_info "Installing error log template for self-tracking..."
+
+    # Find all project memory directories and install errors.md if missing
+    if [ -d "$memory_dir" ]; then
+        for proj_dir in "$memory_dir"/*/memory; do
+            if [ -d "$proj_dir" ] && [ ! -f "$proj_dir/errors.md" ]; then
+                cp "$source" "$proj_dir/errors.md" 2>/dev/null && \
+                    log_info "Error log installed in: $proj_dir"
+            fi
+        done
+    fi
+
+    # Also store the template so new projects can use it
+    log_success "Error log template available at: templates/errors-log.md"
+}
+
 # Validate installation
 validate_installation() {
     if [ "$DRY_RUN" = true ]; then
@@ -1005,6 +1036,7 @@ main() {
     generate_manifest
     write_version
     generate_rollback
+    install_error_log
 
     if ! validate_installation; then
         log_error "Installation validation failed"

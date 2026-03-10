@@ -61,6 +61,7 @@
     "templates/AGENT-REPORT-PROTOCOL.md",
     "templates/skills-overview.md",
     "templates/workflows-overview.md",
+    "templates/errors-log.md",
     "data/mcp-config-template.json",
     "integrations/README.md",
     "integrations/langgraph/brahma_state.py.template",

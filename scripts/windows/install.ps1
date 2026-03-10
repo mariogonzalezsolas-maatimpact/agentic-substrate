@@ -524,6 +524,36 @@ Write-Host "Rollback complete!" -ForegroundColor Green
     Write-Success "Rollback script created"
 }
 
+function Install-ErrorLog {
+    $source = Join-Path $CLAUDE_SOURCE "templates\errors-log.md"
+    $memoryDir = Join-Path $CLAUDE_TARGET "projects"
+
+    if (-not (Test-Path $source)) {
+        Write-Warn "Error log template not found (skipping)"
+        return
+    }
+
+    if ($DryRun) {
+        Write-Info "[DRY RUN] Would install error log template"
+        return
+    }
+
+    Write-Info "Installing error log template for self-tracking..."
+
+    # Find all project memory directories and install errors.md if missing
+    if (Test-Path $memoryDir) {
+        Get-ChildItem -Path $memoryDir -Directory | ForEach-Object {
+            $projMemory = Join-Path $_.FullName "memory"
+            if ((Test-Path $projMemory) -and -not (Test-Path (Join-Path $projMemory "errors.md"))) {
+                Copy-Item -Path $source -Destination (Join-Path $projMemory "errors.md") -Force
+                Write-Info "Error log installed in: $projMemory"
+            }
+        }
+    }
+
+    Write-Success "Error log template available at: templates\errors-log.md"
+}
+
 function Test-Installation {
     if ($DryRun) {
         Write-Info "[DRY RUN] Would validate installation"
@@ -630,6 +660,7 @@ function Main {
     New-Manifest
     Write-Version
     New-RollbackScript
+    Install-ErrorLog
     Test-Installation
     Show-Summary
 }
