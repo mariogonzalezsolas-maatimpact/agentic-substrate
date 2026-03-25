@@ -4,6 +4,8 @@
 
 Just say what you want -- `/do` classifies, plans, confirms, then executes using **pyramid orchestration** for all code-producing routes.
 
+> **Powered by `pyramid-loop` skill** — Auto-invoked by `/do` for all code-producing routes. Manages the plan -> code -> review -> fix loop with max 3 iterations. See `.claude/skills/pyramid-loop/skill.md`.
+
 ### Pyramid Routes (plan -> code -> review -> fix loop)
 
 | Route | Coordinators | Gates |

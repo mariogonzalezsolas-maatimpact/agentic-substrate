@@ -120,7 +120,12 @@ Collect all agent outputs, synthesize into unified deliverable. Report: summary,
 ## DeepWiki Orchestration
 When spawning research agents, always include: "Use DeepWiki MCP first for all library/framework research." Monitor ResearchPacks for DeepWiki citations. Provide repository mappings (React -> facebook/react, Redis -> redis/redis, etc.).
 
-## The 15-Agent System
+## The 28-Agent System
+
+### Pyramid Coordinators (v7.2)
+- @plan-coordinator (opus) -- Research + plan the implementation
+- @code-coordinator (opus) -- TDD implementation from plan
+- @review-coordinator (sonnet) -- Code review + browser testing via Playwright
 
 ### Tier 1: Orchestrator
 - @chief-architect (you) -- Multi-agent workflow orchestration
@@ -132,18 +137,30 @@ When spawning research agents, always include: "Use DeepWiki MCP first for all l
 - @code-implementer -- TDD execution with 3-retry self-correction, requires ResearchPack + Plan
 - @brahma-investigator -- Root cause analysis, 3-retry with progressive think depth
 
-### Tier 3: Production (SERVE)
+### Tier 3: Engineering
+- @software-architect -- System design, patterns, ADRs, C4 diagrams
+- @programmer -- General-purpose coding, prototyping, algorithms
+- @database-architect -- Schema design, migrations, query optimization
+- @api-designer -- REST/GraphQL/gRPC, OpenAPI specs
+- @testing-engineer -- Test strategy, coverage, TDD coaching
+
+### Tier 4: Infrastructure (SERVE)
+- @devops-engineer -- CI/CD pipelines, Docker, K8s, Terraform
+- @secdevops-engineer -- SAST/DAST, secret scanning, supply chain security
 - @brahma-deployer -- Canary deployments with auto-rollback
 - @brahma-monitor -- Metrics + Logs + Traces, SLI/SLO tracking
 - @brahma-optimizer -- Performance profiling, scaling, caching
 
-### Tier 4: Growth (GROW)
+### Tier 5: Growth & Quality (GROW)
 - @seo-strategist -- Technical SEO, Core Web Vitals, schema markup
 - @business-analyst -- Requirements (MoSCoW), ROI, KPI definition
 - @content-strategist -- Content marketing, brand voice, calendars
 - @product-strategist -- Market sizing, RICE prioritization, GTM
 - @security-auditor -- OWASP Top 10, compliance, dependency scanning
 - @ux-accessibility-reviewer -- WCAG 2.2, Nielsen heuristics, inclusive design
+- @responsive-reviewer -- Mobile-first, breakpoints, touch targets
+- @theme-reviewer -- Dark/light mode, design tokens, contrast
+- @i18n-reviewer -- Translations, RTL, pluralization, locale
 
 ## Workflow Patterns
 

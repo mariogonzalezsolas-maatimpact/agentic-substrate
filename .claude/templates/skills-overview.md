@@ -1,6 +1,8 @@
 # Skills Overview
 
-11 skills that enhance agent capabilities:
+16 skills that enhance agent capabilities:
+
+### Core Workflow Skills
 
 | Skill | Triggers When | Key Function |
 |-------|--------------|--------------|
@@ -10,11 +12,26 @@
 | quality-validation | ResearchPack or Plan completed | Scores and gates: Research 80+, Plan 85+ |
 | pattern-recognition | After successful implementation | Captures patterns to knowledge-core.md |
 | context-engineering | Session start, every 50 msgs, task switch | Context rot prevention (39% improvement, 84% token reduction) |
+| error-learning | Mistake made, approach failed, user correction | Auto-captures errors, 6 categories, pattern escalation to rules |
+
+### Engineering Methodology Skills
+
+| Skill | Triggers When | Key Function |
+|-------|--------------|--------------|
 | architecture-methodology | Architecture decisions needed | C4 diagrams, ADRs, pattern evaluation, trade-off analysis |
 | api-methodology | API design decisions needed | Contract-first, OpenAPI, versioning, error design |
 | testing-methodology | Test strategy decisions needed | Test pyramid, coverage targets, mock strategy, anti-flaky |
 | project-organization | New project, onboarding, "organize" | 6-pillar codebase organization for agent navigation (<30s) |
-| error-learning | Mistake made, approach failed, user correction | Auto-captures errors, 6 categories, pattern escalation to rules |
+
+### Frontend & Design Skills (NEW in v7.2)
+
+| Skill | Triggers When | Key Function |
+|-------|--------------|--------------|
+| **ui-ux-pro-max** | UI/UX design decisions, component architecture | Design tokens, typography scales, spacing systems, layout patterns, micro-interactions, form UX, dashboard design |
+| **frontend-design** | Frontend architecture, component composition | Component patterns (compound, headless, render props), state management strategy, CSS architecture, error/loading/empty states, performance |
+| **shadcn-ui** | Project uses shadcn/ui components | Radix UI + Tailwind CSS, CVA variants, theming with CSS variables, form patterns (react-hook-form + zod), dark mode, data tables |
+| **web-accessibility** | Building user-facing web interfaces | WCAG 2.2 (A/AA/AAA), ARIA patterns, keyboard navigation, focus management, semantic HTML, accessible forms/modals, screen readers |
+| **web-design-guidelines** | Visual design decisions needed | Typography, color theory, spacing (4px grid), visual hierarchy, Gestalt principles, responsive grids, whitespace, elevation system |
 
 ## How They Work Together
 
