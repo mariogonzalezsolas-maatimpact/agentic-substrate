@@ -30,7 +30,7 @@ Agentic Substrate integrates **7 key patterns** from Anthropic's engineering phi
 **Principle**: Create dedicated space for structured thinking during complex tasks.
 
 **In Agentic Substrate**:
-- All 25 agents have "Think Protocol"
+- All 32 agents have "Think Protocol"
 - Keywords: "think", "think hard", "think harder", "ultrathink"
 - Automatic triggers for complex decisions
 - 54% improvement on complex tasks (Anthropic research)

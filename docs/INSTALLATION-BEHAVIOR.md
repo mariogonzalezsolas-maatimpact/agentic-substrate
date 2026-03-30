@@ -228,20 +228,21 @@ ls -la ~/.claude/CLAUDE.md.backup
 
 ## Manifest Version
 
-**Current**: v1.1.0
+**Current**: v1.2.0
 
-**Substrate Version**: v7.1.0
+**Substrate Version**: v7.3.0
 
-**Total Managed Files**: 75
+**Total Managed Files**: 124
 - Agents: 32
 - Skills: 22
 - Commands: 26
-- Hooks: 14
+- Hooks: 19
 - Validators: 2
 - Metrics: 1
-- Templates: 8
+- Templates: 11
+- Rules: 11
 - Data: 1 (mcp-config-template.json)
-- Integrations: 2
+- Integrations: 4
 - Config: 2 (settings.json, agent-teams.md)
 
 ## Troubleshooting

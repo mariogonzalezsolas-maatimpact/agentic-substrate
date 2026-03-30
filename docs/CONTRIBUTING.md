@@ -117,7 +117,7 @@ color: unique-color
 ```bash
 # Read the agent you want to enhance
 cat .claude/agents/docs-researcher.md
-# or any of the 25 agents in .claude/agents/
+# or any of the 32 agents in .claude/agents/
 ```
 
 ### Step 2: Identify Enhancement Opportunities

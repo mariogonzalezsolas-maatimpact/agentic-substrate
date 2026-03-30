@@ -50,11 +50,11 @@ echo ""
 # Check skills
 echo "🧠 Checking skills..."
 SKILL_COUNT=$(find "$CLAUDE_DIR/skills" -name "skill.md" 2>/dev/null | wc -l | tr -d ' ')
-if [ "$SKILL_COUNT" -eq 10 ]; then
-    check_pass "All 10 skills installed"
+if [ "$SKILL_COUNT" -eq 22 ]; then
+    check_pass "All 22 skills installed"
     check_info "$(ls -d "$CLAUDE_DIR"/skills/*/ | xargs -n1 basename | sed 's/^/    - /')"
 else
-    check_fail "Expected 10 skills, found $SKILL_COUNT"
+    check_fail "Expected 22 skills, found $SKILL_COUNT"
 fi
 echo ""
 
