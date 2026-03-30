@@ -219,6 +219,17 @@
           }
         ]
       }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"$HOME/.claude/hooks/session-end.sh\" ] && bash \"$HOME/.claude/hooks/session-end.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "permissions": {

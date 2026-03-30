@@ -9,6 +9,15 @@ INPUT=$(cat 2>/dev/null || echo "{}")
 # Detect project root
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-.}"
 
+# Detect session type from input
+SESSION_TYPE="startup"
+if command -v jq &>/dev/null; then
+    REASON=$(echo "$INPUT" | jq -r '.reason // "startup"' 2>/dev/null)
+    if [ "$REASON" = "compact" ] || [ "$REASON" = "resume" ]; then
+        SESSION_TYPE="resume"
+    fi
+fi
+
 echo "--- Session Context (auto-loaded) ---"
 
 # Git context
@@ -32,24 +41,35 @@ else
     echo "Circuit breaker: CLOSED"
 fi
 
-# Existing artifacts
-ARTIFACTS=""
-for f in "$PROJECT_DIR"/ResearchPack*.md "$PROJECT_DIR"/.claude/ResearchPack*.md; do
-    [ -f "$f" ] && ARTIFACTS="$ARTIFACTS ResearchPack" && break
-done
-for f in "$PROJECT_DIR"/ImplementationPlan*.md "$PROJECT_DIR"/.claude/ImplementationPlan*.md; do
-    [ -f "$f" ] && ARTIFACTS="$ARTIFACTS Plan" && break
-done
-[ -f "$PROJECT_DIR/.claude/knowledge-core.md" ] && ARTIFACTS="$ARTIFACTS knowledge-core"
-if [ -n "$ARTIFACTS" ]; then
-    echo "Artifacts:$ARTIFACTS"
-else
-    echo "Artifacts: none"
-fi
+# On startup: show artifacts and recent file activity
+# On resume/compact: skip (already in context from before compact)
+if [ "$SESSION_TYPE" = "startup" ]; then
+    # Existing artifacts
+    ARTIFACTS=""
+    for f in "$PROJECT_DIR"/ResearchPack*.md "$PROJECT_DIR"/.claude/ResearchPack*.md; do
+        [ -f "$f" ] && ARTIFACTS="$ARTIFACTS ResearchPack" && break
+    done
+    for f in "$PROJECT_DIR"/ImplementationPlan*.md "$PROJECT_DIR"/.claude/ImplementationPlan*.md; do
+        [ -f "$f" ] && ARTIFACTS="$ARTIFACTS Plan" && break
+    done
+    [ -f "$PROJECT_DIR/.claude/knowledge-core.md" ] && ARTIFACTS="$ARTIFACTS knowledge-core"
+    if [ -n "$ARTIFACTS" ]; then
+        echo "Artifacts:$ARTIFACTS"
+    else
+        echo "Artifacts: none"
+    fi
 
-# Recent file activity (last 2 hours)
-RECENT=$(find "$PROJECT_DIR" -type f \( -name "*.ts" -o -name "*.js" -o -name "*.py" -o -name "*.go" -o -name "*.rs" -o -name "*.md" \) -mmin -120 ! -path "*/node_modules/*" ! -path "*/.git/*" ! -path "*/compact-backups/*" 2>/dev/null | wc -l | tr -d ' ')
-echo "Files modified (last 2h): $RECENT"
+    # Recent file activity (last 2 hours)
+    RECENT=$(find "$PROJECT_DIR" -type f \( -name "*.ts" -o -name "*.js" -o -name "*.py" -o -name "*.go" -o -name "*.rs" -o -name "*.md" \) -mmin -120 ! -path "*/node_modules/*" ! -path "*/.git/*" ! -path "*/compact-backups/*" 2>/dev/null | wc -l | tr -d ' ')
+    echo "Files modified (last 2h): $RECENT"
+else
+    echo "Session: resumed ($REASON)"
+    # Check for session files to suggest /resume-session
+    SESSION_LOG="$PROJECT_DIR/.claude/session-data"
+    if [ -d "$SESSION_LOG" ] && ls "$SESSION_LOG"/*.log &>/dev/null 2>&1; then
+        echo "Hint: Run /resume-session to reload previous session context"
+    fi
+fi
 
 # Error memory auto-load
 ERRORS_FILE=""

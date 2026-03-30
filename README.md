@@ -2,7 +2,7 @@
 
 **Research-first development system for Claude Code CLI**
 
-> 32 agents. 26 commands. 22 auto-invoked skills. 18 lifecycle hooks. Pyramid orchestration. Auto error-learning. Zero API hallucinations. Research first, code second.
+> 32 agents. 26 commands. 22 auto-invoked skills. 19 lifecycle hooks. Pyramid orchestration. Auto error-learning. Zero API hallucinations. Research first, code second.
 
 [English](#english) | [Espanol](#espanol)
 
@@ -35,7 +35,7 @@ A drop-in enhancement for [Claude Code CLI](https://docs.anthropic.com/en/docs/c
 - **32 specialized agents** across 5 tiers + pyramid coordinators (Orchestration, Core, Engineering, Infrastructure, Growth & Quality)
 - **22 auto-invoked skills** (research, planning, validation, pattern recognition, context management, architecture, API, testing, project organization, error learning, pyramid loop, UI/UX Pro MAX, frontend design, shadcn/ui, web accessibility, web design guidelines, generate-docs, auto-memory-capture)
 - **26 slash commands** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`, `/responsive-review`, `/theme-review`, `/i18n-review`, `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`, `/generate-docs`, `/save-session`, `/resume-session`, `/learn`)
-- **18 lifecycle hooks** (quality gates, auto-formatting, knowledge capture, session management, hawk oversight, auto error capture, file protection, desktop notifications, post-compaction reinject, dead rule detection)
+- **19 lifecycle hooks** (quality gates, auto-formatting, knowledge capture, session management, hawk oversight, auto error capture, file protection, desktop notifications, post-compaction reinject, dead rule detection)
 - **Quality gates** with scoring rubrics (Research >= 80, Plan >= 85, Tests pass)
 - **Circuit breaker** that stops infinite loops after 3 consecutive failures
 - **Persistent memory** via knowledge-core.md across sessions
@@ -232,7 +232,7 @@ powershell scripts/windows/verify-installation.ps1
 | `agents/` | 32 | Agent definitions (5 tiers + pyramid coordinators) |
 | `commands/` | 23 | Slash command definitions |
 | `skills/` | 22 | Auto-invoked skills |
-| `hooks/` | 18 | Lifecycle hooks |
+| `hooks/` | 19 | Lifecycle hooks |
 | `templates/` | 18 | Shared templates and overviews |
 | `validators/` | 2 | API matcher + circuit breaker |
 | `metrics/` | 1 | Workflow metrics tracker |
@@ -276,7 +276,7 @@ claude-user-memory/
 │   ├── agents/                 # 32 agent definitions
 │   ├── commands/               # 26 slash commands
 │   ├── skills/                 # 22 auto-invoked skills
-│   ├── hooks/                  # 18 lifecycle hooks
+│   ├── hooks/                  # 19 lifecycle hooks
 │   ├── templates/              # Shared templates + overviews
 │   ├── validators/             # Quality gate validators
 │   ├── metrics/                # Workflow metrics tracker
@@ -386,7 +386,7 @@ MIT License - See [LICENSE](LICENSE)
 
 **Sistema de desarrollo basado en investigacion para Claude Code CLI**
 
-> 32 agentes. 26 comandos. 22 habilidades auto-invocadas. 18 hooks de ciclo de vida. Orquestacion piramidal. Auto-aprendizaje de errores. Cero alucinaciones de APIs. Investigar primero, programar despues.
+> 32 agentes. 26 comandos. 22 habilidades auto-invocadas. 19 hooks de ciclo de vida. Orquestacion piramidal. Auto-aprendizaje de errores. Cero alucinaciones de APIs. Investigar primero, programar despues.
 
 ---
 
@@ -415,7 +415,7 @@ Una extension drop-in para [Claude Code CLI](https://docs.anthropic.com/en/docs/
 - **32 agentes especializados** en 5 niveles + coordinadores piramidales (Orquestacion, Core, Ingenieria, Infraestructura, Crecimiento y Calidad)
 - **22 habilidades auto-invocadas** (investigacion, planificacion, validacion, reconocimiento de patrones, gestion de contexto, arquitectura, API, testing, organizacion de proyecto, aprendizaje de errores, pyramid loop, UI/UX Pro MAX, frontend design, shadcn/ui, web accessibility, web design guidelines, generate-docs, auto-memory-capture)
 - **26 comandos slash** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`, `/responsive-review`, `/theme-review`, `/i18n-review`, `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`, `/generate-docs`, `/save-session`, `/resume-session`, `/learn`)
-- **18 hooks de ciclo de vida** (puertas de calidad, auto-formato, captura de conocimiento, gestion de sesion, vigilancia hawk, captura automatica de errores, proteccion de archivos, notificaciones de escritorio, reinyeccion post-compactacion, deteccion de reglas muertas)
+- **19 hooks de ciclo de vida** (puertas de calidad, auto-formato, captura de conocimiento, gestion de sesion, vigilancia hawk, captura automatica de errores, proteccion de archivos, notificaciones de escritorio, reinyeccion post-compactacion, deteccion de reglas muertas)
 - **Puertas de calidad** con rubricas de puntuacion (Investigacion >= 80, Plan >= 85, Tests pasan)
 - **Circuit breaker** que detiene bucles infinitos despues de 3 fallos consecutivos
 - **Memoria persistente** via knowledge-core.md entre sesiones

@@ -20,7 +20,7 @@ Detected from project files. Update as needed.
 | `.claude/agents/` | Agent definitions | 28 |
 | `.claude/commands/` | Slash commands | 22 |
 | `.claude/skills/` | Auto-invoked skills | 16 |
-| `.claude/hooks/` | Lifecycle hooks | 18 |
+| `.claude/hooks/` | Lifecycle hooks | 19 |
 | `.claude/templates/` | Shared templates | 18 |
 | `.claude/validators/` | Quality gates | 2 |
 | `.claude/rules/` | Path-specific rules | 3 |

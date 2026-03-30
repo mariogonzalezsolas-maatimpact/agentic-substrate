@@ -72,8 +72,8 @@ echo ""
 # Check hooks
 echo "🔗 Checking hooks..."
 HOOK_COUNT=$(find "$CLAUDE_DIR/hooks" -name "*.sh" 2>/dev/null | wc -l | tr -d ' ')
-if [ "$HOOK_COUNT" -eq 18 ]; then
-    check_pass "All 18 hooks installed"
+if [ "$HOOK_COUNT" -eq 19 ]; then
+    check_pass "All 19 hooks installed"
     # Check if executable (skip on Windows where perm checks are unreliable)
     if [[ "$OSTYPE" != "msys" && "$OSTYPE" != "cygwin" ]]; then
         NON_EXEC=$(find "$CLAUDE_DIR/hooks" -name "*.sh" ! -perm -111 2>/dev/null | wc -l | tr -d ' ')
@@ -84,7 +84,7 @@ if [ "$HOOK_COUNT" -eq 18 ]; then
         fi
     fi
 else
-    check_fail "Expected 18 hooks, found $HOOK_COUNT"
+    check_fail "Expected 19 hooks, found $HOOK_COUNT"
 fi
 echo ""
 

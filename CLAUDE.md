@@ -104,7 +104,7 @@ This repository is the **source** for the Agentic Substrate. Key directories:
 | `.claude/agents/` | 32 agent definitions |
 | `.claude/skills/` | 22 skills (20 auto-invoked, 2 manual) |
 | `.claude/commands/` | 26 slash commands |
-| `.claude/hooks/` | 18 lifecycle hooks |
+| `.claude/hooks/` | 19 lifecycle hooks |
 | `.claude/templates/` | Shared templates + overview docs |
 | `.claude/rules/` | Path-specific rules (glob patterns) |
 | `.claude/validators/` | API matcher + circuit breaker |

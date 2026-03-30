@@ -3,7 +3,7 @@
   "name": "agentic-substrate",
   "displayName": "Agentic Substrate - Claude Code Enhancement",
   "version": "7.2.0",
-  "description": "The foundational layer for Claude Code superintelligence. 32 specialized agents across 5 tiers + pyramid coordinators (Orchestration, Core, Engineering, Infrastructure, Growth & Quality), 26 commands, 22 skills, 18 hooks, 11 rules (incl. language-specific for TS/Python/Go/Rust), optimized for Opus 4.6. Adds Pyramid Orchestration (plan->code->review->fix loop), 5 frontend/design skills (UI-UX-Pro-MAX, frontend-design, shadcn-ui, web-accessibility, web-design-guidelines), Research→Plan→Implement workflow, auto error-learning feedback loop, Hawk oversight pattern, Engineering agents, Infrastructure agents, Quality reviewers, multi-agent coordination, context engineering, and think protocols.",
+  "description": "The foundational layer for Claude Code superintelligence. 32 specialized agents across 5 tiers + pyramid coordinators (Orchestration, Core, Engineering, Infrastructure, Growth & Quality), 26 commands, 22 skills, 19 hooks, 11 rules (incl. language-specific for TS/Python/Go/Rust), optimized for Opus 4.6. Adds Pyramid Orchestration (plan->code->review->fix loop), 5 frontend/design skills (UI-UX-Pro-MAX, frontend-design, shadcn-ui, web-accessibility, web-design-guidelines), Research→Plan→Implement workflow, auto error-learning feedback loop, Hawk oversight pattern, Engineering agents, Infrastructure agents, Quality reviewers, multi-agent coordination, context engineering, and think protocols.",
   "server": {
     "type": "static",
     "enabled": false
@@ -89,7 +89,7 @@
       "description": "Quick commands for workflow automation"
     },
     "hooks": {
-      "count": 18,
+      "count": 19,
       "description": "Quality gates, economic viability checks, error capture, Hawk oversight, file protection, desktop notifications, post-compaction reinject, dead rule detection"
     }
   },
