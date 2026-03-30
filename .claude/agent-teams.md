@@ -348,7 +348,7 @@ Two quality gate hooks are installed for Agent Teams:
 
 All teammates MUST use the Agent Report Protocol when completing tasks:
 
-@.claude/templates/AGENT-REPORT-PROTOCOL.md
+@.claude/templates/agent-report-protocol.md
 
 ### How It Works in Teams
 

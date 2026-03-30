@@ -101,4 +101,4 @@ Before marking MCP server complete:
 - [ ] README with setup instructions and tool catalog
 
 ## Output Protocol
-@.claude/templates/AGENT-REPORT-PROTOCOL.md
+@.claude/templates/agent-report-protocol.md

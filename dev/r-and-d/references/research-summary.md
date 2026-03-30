@@ -241,7 +241,7 @@ claude-user-memory/
    - Implementation phases
    - Success metrics
 
-4. **RESEARCH-SUMMARY.md** (this document)
+4. **research-summary.md** (this document)
    - Key findings
    - Strategic recommendations
    - Next steps
@@ -406,6 +406,6 @@ claude-user-memory/
 1. `./docs/references/claude-code-official-features-2025.md`
 2. `./docs/references/claude-code-quick-reference.md`
 3. `./docs/references/integration-strategy.md`
-4. `./docs/references/RESEARCH-SUMMARY.md`
+4. `./docs/references/research-summary.md`
 
 **Status**: ✅ Research Complete - Ready for Implementation

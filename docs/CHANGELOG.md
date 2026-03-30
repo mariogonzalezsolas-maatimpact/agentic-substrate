@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **workflows-overview.md**: Added pyramid routes table, updated core workflow documentation
 - **quality-gates.md**: Added Review Gate with fix loop specification
 - **skills-overview.md**: Added pyramid-loop to skill list, updated flow diagram
-- **AGENT-REPORT-PROTOCOL.md**: Added pyramid coordinator report formats
+- **agent-report-protocol.md**: Added pyramid coordinator report formats
 - **CLAUDE.md.user-level**: Updated for pyramid orchestration references
 - **mcp-config-template.json**: Updated with pyramid coordinator mappings
 - **manifest-template.json**: Updated to 99 managed files with new pyramid assets

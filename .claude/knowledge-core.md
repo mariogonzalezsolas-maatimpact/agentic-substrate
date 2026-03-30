@@ -253,7 +253,7 @@ Prevents: test.skip abuse, generic error swallowing, mock abuse, force-installin
 
 Compact report format (<800 tokens) for all agents. Pyramid coordinators use specialized formats (<500 tokens each). Lead processes ~1500 tokens per iteration.
 
-**Files**: `.claude/templates/AGENT-REPORT-PROTOCOL.md`
+**Files**: `.claude/templates/agent-report-protocol.md`
 
 ---
 

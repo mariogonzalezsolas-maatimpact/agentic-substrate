@@ -94,4 +94,4 @@ Before marking documentation complete:
 - [ ] Reviewed for accuracy against current codebase
 
 ## Output Protocol
-@.claude/templates/AGENT-REPORT-PROTOCOL.md
+@.claude/templates/agent-report-protocol.md

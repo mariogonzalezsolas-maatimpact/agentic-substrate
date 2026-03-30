@@ -38,7 +38,7 @@ Priority 3-5 (on-demand): software-architect, database-architect, api-designer, 
 
 ## Documentation (read on demand)
 
-`.claude/templates/`: pyramid-orchestration.md, agents-overview.md, skills-overview.md, workflows-overview.md, quality-gates.md, think-protocol.md, AGENT-REPORT-PROTOCOL.md
+`.claude/templates/`: pyramid-orchestration.md, agents-overview.md, skills-overview.md, workflows-overview.md, quality-gates.md, think-protocol.md, agent-report-protocol.md
 `.claude/agent-teams.md`: Parallel collaboration with persistent teammates
 
 ## Quick Fixes

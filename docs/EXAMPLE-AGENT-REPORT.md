@@ -1,6 +1,6 @@
 # Example Agent Report
 
-This document shows a concrete example of a well-formed Agent Report from @brahma-investigator, following the protocol defined in `AGENT-REPORT-PROTOCOL.md`.
+This document shows a concrete example of a well-formed Agent Report from @brahma-investigator, following the protocol defined in `agent-report-protocol.md`.
 
 ---
 

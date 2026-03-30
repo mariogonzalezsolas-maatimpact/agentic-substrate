@@ -17,7 +17,7 @@ This directory contains comprehensive research on Claude Code CLI's official fea
 
 ## Documents
 
-### 1. RESEARCH-SUMMARY.md
+### 1. research-summary.md
 **Purpose**: Executive summary of research findings
 **Length**: 3,500 words
 **Audience**: Project stakeholders, decision-makers
@@ -177,12 +177,12 @@ Add Unique Value:
 ## Quick Start
 
 ### For Project Stakeholders
-1. Read **RESEARCH-SUMMARY.md** (10 minutes)
+1. Read **research-summary.md** (10 minutes)
 2. Review strategic direction and timeline
 3. Approve/discuss next steps
 
 ### For Implementation Team
-1. Read **RESEARCH-SUMMARY.md** (10 minutes)
+1. Read **research-summary.md** (10 minutes)
 2. Read **integration-strategy.md** (30 minutes)
 3. Scan **claude-code-official-features-2025.md** (reference)
 4. Begin Phase 1 tasks (agent conversion)
@@ -243,7 +243,7 @@ Add Unique Value:
 
 | Document | Words | Sections | Audience |
 |----------|-------|----------|----------|
-| RESEARCH-SUMMARY.md | 3,500 | 12 | Stakeholders |
+| research-summary.md | 3,500 | 12 | Stakeholders |
 | claude-code-official-features-2025.md | 8,500 | 20 | Developers |
 | claude-code-quick-reference.md | 2,500 | 18 | Users |
 | integration-strategy.md | 5,000 | 15 | Implementation |
@@ -254,7 +254,7 @@ Add Unique Value:
 ## Next Steps
 
 ### Immediate (Today)
-1. Review RESEARCH-SUMMARY.md with team
+1. Review research-summary.md with team
 2. Discuss strategic direction
 3. Approve/modify integration-strategy.md
 

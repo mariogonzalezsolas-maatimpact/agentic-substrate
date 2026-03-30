@@ -137,4 +137,4 @@ Before declaring task complete:
 
 ## Output Protocol
 
-@.claude/templates/AGENT-REPORT-PROTOCOL.md
+@.claude/templates/agent-report-protocol.md

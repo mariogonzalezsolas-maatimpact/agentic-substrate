@@ -239,7 +239,7 @@ Stop hook runs → Analyzes code changes → Identifies patterns
 ### Core Documentation (10 files, 20,000+ lines)
 
 **Research & Analysis**:
-1. `docs/references/RESEARCH-SUMMARY.md` - Latest Claude Code features
+1. `docs/references/research-summary.md` - Latest Claude Code features
 2. `docs/references/claude-code-official-features-2025.md` - Complete feature matrix
 3. `docs/references/claude-code-quick-reference.md` - Daily usage guide
 4. `docs/references/integration-strategy.md` - Migration roadmap

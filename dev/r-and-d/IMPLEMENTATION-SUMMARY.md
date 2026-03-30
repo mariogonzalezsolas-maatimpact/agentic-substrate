@@ -176,7 +176,7 @@ claude plugin install claude-user-memory
 ## Document Locations
 
 - **Full Plan**: `./IMPLEMENTATION_PLAN.md` (16,000 words)
-- **Research**: `./docs/references/RESEARCH-SUMMARY.md`
+- **Research**: `./docs/references/research-summary.md`
 - **Analysis**: `./PROJECT_ANALYSIS.md`
 
 ---

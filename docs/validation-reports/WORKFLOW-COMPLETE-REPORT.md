@@ -348,8 +348,8 @@ git push origin v3.1.0
 - `README.md` (updated)
 
 ### Working Artifacts (Archived)
-- `archive/workflow-artifacts-2025-11-01/ResearchPack.md`
-- `archive/workflow-artifacts-2025-11-01/ImplementationPlan.md`
+- `archive/workflow-artifacts-2025-11-01/RESEARCH-PACK.md`
+- `archive/workflow-artifacts-2025-11-01/IMPLEMENTATION-PLAN.md`
 - `archive/update-local-installation-v3.0-to-v3.1.sh`
 
 ### Git History

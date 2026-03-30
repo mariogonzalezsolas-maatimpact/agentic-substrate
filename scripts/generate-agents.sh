@@ -106,7 +106,7 @@ $qg
 
 ## Output Protocol
 
-@.claude/templates/AGENT-REPORT-PROTOCOL.md"
+@.claude/templates/agent-report-protocol.md"
 
   if [ "$DRY_RUN" = true ]; then
     echo "    DRY RUN: $(echo "$content" | wc -l) lines -> $out"

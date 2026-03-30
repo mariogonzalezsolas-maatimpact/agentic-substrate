@@ -127,7 +127,7 @@
     "templates/CLAUDE.md.template",
     "templates/CLAUDE.md.user-level",
     "templates/quality-gates.md",
-    "templates/AGENT-REPORT-PROTOCOL.md",
+    "templates/agent-report-protocol.md",
     "templates/skills-overview.md",
     "templates/workflows-overview.md",
     "templates/errors-log.md",

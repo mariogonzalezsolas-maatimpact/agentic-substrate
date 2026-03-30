@@ -91,4 +91,4 @@ Before marking pipeline complete:
 - [ ] Monitoring configured (freshness, row counts, error rates)
 
 ## Output Protocol
-@.claude/templates/AGENT-REPORT-PROTOCOL.md
+@.claude/templates/agent-report-protocol.md

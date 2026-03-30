@@ -146,4 +146,4 @@ Before declaring audit complete:
 
 ## Output Protocol
 
-@.claude/templates/AGENT-REPORT-PROTOCOL.md
+@.claude/templates/agent-report-protocol.md
