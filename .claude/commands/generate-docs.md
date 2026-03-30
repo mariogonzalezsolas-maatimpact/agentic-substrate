@@ -88,25 +88,20 @@ Segun las respuestas, crear la siguiente estructura adaptada:
 
 ```
 tu-proyecto/
-├── CLAUDE.md                        -> instrucciones de equipo, confirmadas
-├── CLAUDE.local.md                  -> anotaciones personales, ignoradas por git
-└── .claude/                         -> el centro de control
-    ├── settings.json                -> permisos + configuracion, confirmados
-    ├── settings.local.json          -> permisos personales, ignorados por git
-    ├── commands/                    -> comandos slash personalizados
-    │   ├── revision.md              -> /project:revision
-    │   ├── fix-issue.md             -> /project:fix-issue
-    │   └── desplegar.md             -> /project:desplegar
-    ├── rules/                       -> archivos de instrucciones modulares
-    │   ├── estilo-de-codigo.md
-    │   ├── pruebas.md
-    │   └── convenciones-api.md
-    ├── skills/                      -> flujos de trabajo invocados automaticamente
-    │   └── [nombre-skill]/
-    │       └── skill.md
-    └── agents/                      -> personas subagentes
-        ├── revisor-codigo.md
-        └── auditor-seguridad.md
+├── CLAUDE.md                    <- instrucciones de equipo, confirmadas por git
+├── CLAUDE.local.md              <- anotaciones personales, ignoradas por git
+├── .claude/
+│   ├── settings.json            <- permisos + configuracion, confirmados
+│   ├── settings.local.json      <- permisos personales, ignorados por git
+│   ├── commands/                <- comandos slash personalizados
+│   │   └── (project-specific commands)
+│   ├── rules/                   <- archivos de instrucciones modulares
+│   │   └── (coding standards, conventions, etc.)
+│   ├── skills/                  <- flujos de trabajo invocados automaticamente
+│   │   └── skill-name/
+│   │       └── skill.md
+│   └── agents/                  <- personas subagentes
+│       └── (project-specific agents)
 ```
 
 #### Adaptar contenido segun respuestas:
@@ -250,7 +245,7 @@ Proceso:
 - [ ] .claude/settings.json existe
 - [ ] Al menos 1 comando en .claude/commands/
 - [ ] Al menos 1 regla en .claude/rules/
-- [ ] .gitignore actualizado (CLAUDE.local.md, .claude/settings.local.json)
+- [ ] .gitignore actualizado (CLAUDE.local.md, .claude/settings.local.json, .claude/settings.json)
 - [ ] Resumen mostrado al usuario
 
 ## Idioma

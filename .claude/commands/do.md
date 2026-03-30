@@ -60,16 +60,16 @@ Analyze the request and assign exactly one route:
 
 | Route | Keywords / Signals | Executes |
 |-------|-------------------|----------|
-| FEATURE | add, create, build, make, develop, new feature | Pyramid (plan -> code -> review) |
-| REFACTOR | refactor, clean up code, simplify, restructure, rename | Pyramid (plan -> code -> review) |
-| TEST | write tests, add tests, test coverage, unit test, e2e | Pyramid (plan -> code -> review) |
+| FEATURE | add, create, build, make, develop, new feature | Full Pyramid (plan -> code -> review) |
+| REFACTOR | refactor, clean up code, simplify, restructure, rename | Lightweight (@programmer) |
+| TEST | write tests, add tests, test coverage, unit test, e2e | Lightweight (@programmer) |
 | RESEARCH | research, learn, understand, how does, what is, docs | `@docs-researcher` (no pyramid) |
 | PLAN | plan, design, architect, strategy, approach | `@plan-coordinator` (plan only) |
-| IMPLEMENT | implement the plan, execute, code this, finish | Pyramid (plan -> code -> review) |
-| DEBUG | why, debug, investigate, broken, error, bug | Pyramid (plan -> code -> review) |
-| MIGRATE | migrate, convert, switch from X to Y, upgrade dependency | Pyramid (plan -> code -> review) |
+| IMPLEMENT | implement the plan, execute, code this, finish | Full Pyramid (plan -> code -> review) |
+| DEBUG | why, debug, investigate, broken, error, bug | Lightweight (@programmer) |
+| MIGRATE | migrate, convert, switch from X to Y, upgrade dependency | Full Pyramid (plan -> code -> review) |
 | DEPLOY | deploy, release, ship, push to production, rollout | `@brahma-deployer` |
-| OPTIMIZE | optimize, performance, slow, faster, scale | Pyramid (plan -> code -> review) |
+| OPTIMIZE | optimize, performance, slow, faster, scale | Lightweight (@programmer) |
 | MONITOR | monitor, observe, metrics, logs, alerts, dashboard | `@brahma-monitor` |
 | INCIDENT | production down, outage, emergency, users can't, P0/P1 | `@incident-commander` + `@brahma-investigator` + `@brahma-monitor` |
 | REVIEW | review, code review, PR, pull request, audit code | `@review-coordinator` (review only) |
@@ -81,26 +81,32 @@ Analyze the request and assign exactly one route:
 | THEME | dark mode, light mode, theme, tokens, color mode | `@theme-reviewer` |
 | I18N | i18n, translate, translations, locale, internationalization, rtl | `@i18n-reviewer` |
 | ARCHITECTURE | architecture, patterns, SOLID, DDD, modules, layers, ADR | `@software-architect` |
-| CODE | code, algorithm, prototype, script, pair program, write code | Pyramid (plan -> code -> review) |
-| DATABASE | database, schema, migration, query, index, SQL, ORM | Pyramid (plan -> code -> review) |
+| CODE | code, algorithm, prototype, script, pair program, write code | Lightweight (@programmer) |
+| DATABASE | database, schema, migration, query, index, SQL, ORM | Lightweight (@programmer) |
 | API | api design, openapi, swagger, graphql, grpc, endpoints, rest design | `@api-designer` |
 | TESTING | test strategy, coverage, flaky, mocking, e2e, test architecture | `@testing-engineer` |
-| TECH_DEBT | tech debt, clean up code, anti-patterns, slop, agent debt | Pyramid (plan -> code -> review) |
+| TECH_DEBT | tech debt, clean up code, anti-patterns, slop, agent debt | Lightweight (@programmer) |
 | DEVOPS | ci/cd, pipeline, docker, kubernetes, terraform, infrastructure | `@devops-engineer` |
 | SECDEVOPS | sast, dast, supply chain, sbom, secret scanning, pipeline security | `@secdevops-engineer` |
 | BUSINESS | business, requirements, stakeholders, roi, process | `@business-analyst` |
 | CONTENT | content, blog, social media, marketing, brand | `@content-strategist` |
 | PRODUCT | product, roadmap, market, competitive, gtm, pricing | `@product-strategist` |
 | CONTEXT | context, memory, tokens, too long, clean up | `/context analyze` |
-| ORCHESTRATE | complete, full, entire, end-to-end, multi-domain | Pyramid with `@chief-architect` pre-decomposition |
+| ORCHESTRATE | complete, full, entire, end-to-end, multi-domain | Full Pyramid with `@chief-architect` pre-decomposition |
 | MCP | mcp server, model context protocol, mcp tool, mcp builder | `@mcp-builder` |
 | DATA | etl, elt, pipeline, data lake, streaming, kafka, airflow, dagster, dbt, data quality | `@data-engineer` |
 | DOCS | readme, documentation, api reference, changelog, tutorial, write docs, technical writing | `@technical-writer` |
 | SIMPLE | direct question, no action needed | Direct answer |
 
-### Pyramid Routes (code-producing)
+### Full Pyramid Routes (plan-coordinator -> code-coordinator -> review-coordinator)
 
-These routes ALWAYS use the pyramid: **FEATURE, REFACTOR, TEST, IMPLEMENT, DEBUG, MIGRATE, OPTIMIZE, CODE, DATABASE, TECH_DEBT**
+These routes use the full 3-coordinator pyramid: **FEATURE, IMPLEMENT, MIGRATE, ORCHESTRATE**
+
+### Lightweight Routes (@programmer direct dispatch)
+
+These routes skip the 3-coordinator pyramid and dispatch directly to @programmer for efficiency. They still require a plan shown to the user, but execution is a single agent, not 3 sequential coordinators: **REFACTOR, TEST, DEBUG, OPTIMIZE, CODE, DATABASE, TECH_DEBT**
+
+Lightweight routes are faster and cheaper (1 agent call vs 3+). The user can upgrade any lightweight route to full pyramid by adding "con review" / "with review".
 
 ### Direct Routes (no pyramid)
 
@@ -145,11 +151,11 @@ After brainstorming completes, the spec is passed to plan-coordinator as additio
 
 **Always show a plan before executing. No exceptions.**
 
-### For Pyramid Routes:
+### For Full Pyramid Routes (FEATURE, IMPLEMENT, MIGRATE, ORCHESTRATE):
 
 ```
 Route: [ROUTE NAME]
-Execution: Pyramid (plan -> code -> review)
+Execution: Full Pyramid (plan -> code -> review)
 Coordinators:
   - @plan-coordinator: Research + plan the implementation
   - @code-coordinator: Implement with TDD
@@ -162,6 +168,23 @@ Plan Preview:
 1. Plan Coordinator: [what will be planned]
 2. Code Coordinator: [what will be implemented]
 3. Review Coordinator: [what will be reviewed + browser tested]
+
+Proceed? (yes / modify / cancel)
+```
+
+### For Lightweight Routes (REFACTOR, TEST, DEBUG, OPTIMIZE, CODE, DATABASE, TECH_DEBT):
+
+```
+Route: [ROUTE NAME]
+Execution: Lightweight (@programmer direct)
+Agent: @programmer
+Quality Gates: Tests Pass
+Review: Optional (add "con review" / "with review" to upgrade)
+
+Plan:
+1. [What will be changed]
+2. [What tests will be written/verified]
+3. [Expected outcome]
 
 Proceed? (yes / modify / cancel)
 ```
@@ -217,6 +240,7 @@ Spawn @plan-coordinator with:
   TASK: [user's request]
   CONTEXT: [project info, relevant files]
   ITERATION: 1
+  OUTPUT FORMAT: Use Agent Report Protocol (<800 tokens). Status + Key Findings + Changes + Metrics + Blockers.
 ```
 Receive Plan Coordinator Report. Verify plan score >= 85.
 
@@ -226,6 +250,7 @@ Spawn @code-coordinator with:
   PLAN: [full plan from plan-coordinator]
   CONTEXT: [project conventions]
   ITERATION: 1
+  OUTPUT FORMAT: Use Agent Report Protocol (<800 tokens). Status + Key Findings + Changes + Metrics + Blockers.
 ```
 Receive Code Coordinator Report. Verify tests pass.
 
@@ -237,6 +262,7 @@ Spawn @review-coordinator with:
   COMMIT: [git hash]
   PROJECT TYPE: [stack]
   ITERATION: 1
+  OUTPUT FORMAT: Use Agent Report Protocol (<800 tokens). Status + Key Findings + Changes + Metrics + Blockers.
 ```
 Receive Review Coordinator Report.
 
@@ -247,6 +273,26 @@ Receive Review Coordinator Report.
 **FAIL (iteration < 3)** -> Send review findings to @plan-coordinator as fix request -> repeat 4.2 -> 4.3 -> 4.4.
 
 **FAIL (iteration = 3)** -> Report all findings to user, suggest manual intervention.
+
+---
+
+## Step 4-LITE: EXECUTE (Lightweight Routes)
+
+For lightweight routes (REFACTOR, TEST, DEBUG, OPTIMIZE, CODE, DATABASE, TECH_DEBT):
+
+Spawn @programmer directly with the plan. No coordinator chain needed.
+The programmer implements, tests, and commits in a single agent session.
+Review is optional (user can request with "con review" / "with review").
+
+```
+Spawn @programmer with:
+  TASK: [user's request]
+  PLAN: [plan shown to user in Step 2]
+  CONTEXT: [project type, conventions, relevant files]
+  OUTPUT FORMAT: Use Agent Report Protocol (<800 tokens). Status + Key Findings + Changes + Metrics + Blockers.
+```
+
+If user requested review, dispatch @review-coordinator after @programmer completes.
 
 ---
 
@@ -307,12 +353,15 @@ Proceed?
 **User**: `/do why is the login failing?`
 ```
 Route: DEBUG
-Execution: Pyramid (plan -> code -> review)
-Coordinators:
-  - @plan-coordinator: Investigate root cause, plan the fix
-  - @code-coordinator: Implement fix with regression test
-  - @review-coordinator: Verify fix + test login flow in browser
-Quality Gates: Plan (85+) -> Tests Pass -> Review (80+)
+Execution: Lightweight (@programmer direct)
+Agent: @programmer
+Quality Gates: Tests Pass
+Review: Optional (add "con review" to upgrade)
+
+Plan:
+1. Investigate root cause in auth flow
+2. Implement fix with regression test
+3. Verify all existing tests pass
 
 Proceed?
 ```

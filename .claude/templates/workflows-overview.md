@@ -6,20 +6,28 @@ Just say what you want -- `/do` classifies, plans, confirms, then executes using
 
 > **Powered by `pyramid-loop` skill** — Auto-invoked by `/do` for all code-producing routes. Manages the plan -> code -> review -> fix loop with max 3 iterations. See `.claude/skills/pyramid-loop/skill.md`.
 
-### Pyramid Routes (plan -> code -> review -> fix loop)
+### Full Pyramid Routes (plan-coordinator -> code-coordinator -> review-coordinator -> fix loop)
 
 | Route | Coordinators | Gates |
 |-------|-------------|-------|
 | FEATURE | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
-| REFACTOR | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
-| TEST | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
 | IMPLEMENT | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
-| DEBUG | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
 | MIGRATE | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
-| OPTIMIZE | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
-| CODE | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
-| DATABASE | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
-| TECH_DEBT | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
+| ORCHESTRATE | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
+
+### Lightweight Routes (@programmer direct dispatch)
+
+Lightweight routes skip the 3-coordinator pyramid and dispatch directly to @programmer for efficiency. They still require a plan shown to the user, but execution is a single agent, not 3 sequential coordinators. Users can upgrade to full pyramid with "con review" / "with review".
+
+| Route | Agent | Gates |
+|-------|-------|-------|
+| REFACTOR | @programmer | Tests Pass |
+| TEST | @programmer | Tests Pass |
+| DEBUG | @programmer | Tests Pass |
+| OPTIMIZE | @programmer | Tests Pass |
+| CODE | @programmer | Tests Pass |
+| DATABASE | @programmer | Tests Pass |
+| TECH_DEBT | @programmer | Tests Pass |
 
 ### Direct Routes (specialist agent, no pyramid)
 
@@ -163,4 +171,4 @@ Run `/context analyze` every 50 messages. `/context optimize` when switching tas
 
 ---
 
-**Updated**: 2026-03-25 | **Version**: 7.2.0 | **Routes**: 34 (10 pyramid + 24 direct)
+**Updated**: 2026-03-30 | **Version**: 7.2.1 | **Routes**: 34 (4 full pyramid + 7 lightweight + 23 direct)
