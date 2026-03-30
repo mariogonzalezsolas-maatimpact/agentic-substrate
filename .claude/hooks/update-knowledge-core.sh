@@ -5,6 +5,14 @@
 
 set -e
 
+# Guard against infinite loops when fired from Stop hook
+INPUT=$(cat 2>/dev/null || echo "{}")
+if command -v jq &>/dev/null; then
+    if [ "$(echo "$INPUT" | jq -r '.stop_hook_active // false' 2>/dev/null)" = "true" ]; then
+        exit 0
+    fi
+fi
+
 cd "${CLAUDE_PROJECT_DIR:-.}"
 
 GREEN='\033[0;32m'

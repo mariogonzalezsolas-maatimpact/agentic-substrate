@@ -118,6 +118,15 @@ This repository is the **source** for the Agentic Substrate. Key directories:
 3. Keep agent files focused -- extract shared content to templates
 4. Run `install.sh --force` or `install.ps1 -Force` to test installation
 
+## Compaction Preservation
+
+When context is auto-compacted, ALWAYS preserve:
+- The full list of files modified in this session
+- Current task status and next steps
+- Any failed approaches (FAIL entries) -- these prevent retry loops
+- Active plan or spec references (docs/specs/*.md paths)
+- Test commands and their last results
+
 ## Memory Hierarchy
 1. **Managed Policy** (admin-managed, highest priority)
 2. **Project** (this file)

@@ -8,6 +8,11 @@ if ! command -v jq &>/dev/null; then exit 0; fi
 
 INPUT=$(cat 2>/dev/null || echo "{}")
 
+# Guard against infinite loops when fired from Stop hook
+if [ "$(echo "$INPUT" | jq -r '.stop_hook_active // false' 2>/dev/null)" = "true" ]; then
+    exit 0
+fi
+
 # Extract agent output from stdin
 AGENT_NAME=$(echo "$INPUT" | jq -r '.agent_name // .subagent_name // "unknown"' 2>/dev/null)
 OUTPUT=$(echo "$INPUT" | jq -r '.output // .result // ""' 2>/dev/null)

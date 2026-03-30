@@ -207,6 +207,18 @@
           }
         ]
       }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "Bash|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"$HOME/.claude/hooks/auto-error-capture.sh\" ] && bash \"$HOME/.claude/hooks/auto-error-capture.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "permissions": {
