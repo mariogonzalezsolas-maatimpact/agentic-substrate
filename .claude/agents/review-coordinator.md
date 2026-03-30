@@ -7,6 +7,7 @@ maxTurns: 40
 skills:
   - quality-validation
 memory: project
+priority: 1
 ---
 
 # Review Coordinator

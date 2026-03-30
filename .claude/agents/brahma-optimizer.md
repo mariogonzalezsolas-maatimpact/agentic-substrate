@@ -5,6 +5,7 @@ model: sonnet
 tools: Bash, Read, Write, WebFetch, Grep
 maxTurns: 30
 memory: project
+priority: 4
 ---
 
 # Performance Optimization Specialist

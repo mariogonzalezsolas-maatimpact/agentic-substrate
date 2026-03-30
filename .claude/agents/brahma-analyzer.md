@@ -7,6 +7,7 @@ maxTurns: 20
 skills:
   - quality-validation
 memory: project
+priority: 4
 ---
 
 # Brahma Analyzer

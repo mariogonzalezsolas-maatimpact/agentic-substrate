@@ -7,6 +7,7 @@ maxTurns: 50
 skills:
   - quality-validation
 memory: project
+priority: 1
 ---
 
 # Code Coordinator

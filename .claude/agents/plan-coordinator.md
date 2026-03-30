@@ -9,6 +9,7 @@ skills:
   - quality-validation
   - research-methodology
 memory: project
+priority: 1
 ---
 
 # Plan Coordinator

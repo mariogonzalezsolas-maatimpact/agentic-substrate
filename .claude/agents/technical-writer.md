@@ -5,6 +5,7 @@ tools: Read, Write, Edit, Grep, Glob, WebFetch, WebSearch
 model: sonnet
 maxTurns: 30
 memory: project
+priority: 5
 ---
 
 # Technical Writer

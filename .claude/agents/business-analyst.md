@@ -5,6 +5,7 @@ tools: Read, Write, Edit, Glob, Grep, WebFetch, WebSearch
 model: haiku
 maxTurns: 25
 memory: project
+priority: 5
 ---
 
 # Business Analyst

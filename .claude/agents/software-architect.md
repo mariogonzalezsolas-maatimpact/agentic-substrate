@@ -5,6 +5,7 @@ tools: Read, Write, Edit, Grep, Glob, WebFetch, WebSearch
 model: opus
 maxTurns: 40
 memory: project
+priority: 3
 ---
 
 # Software Architect

@@ -5,6 +5,7 @@ tools: Read, Write, Edit, WebFetch, WebSearch, Glob, Grep
 model: haiku
 maxTurns: 25
 memory: project
+priority: 5
 ---
 
 # Content Strategist

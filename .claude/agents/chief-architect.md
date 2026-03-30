@@ -5,6 +5,7 @@ model: opus
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, WebSearch, Task
 maxTurns: 100
 memory: project
+priority: 2
 ---
 
 # Chief Architect

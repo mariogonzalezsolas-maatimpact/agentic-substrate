@@ -7,6 +7,7 @@ maxTurns: 20
 skills:
   - planning-methodology
 memory: project
+priority: 2
 ---
 
 # Implementation Planner

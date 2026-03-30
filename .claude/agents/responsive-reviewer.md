@@ -5,6 +5,7 @@ tools: Read, Write, Grep, Glob, WebFetch, WebSearch
 model: haiku
 maxTurns: 25
 memory: project
+priority: 5
 ---
 
 # Responsive Design Reviewer

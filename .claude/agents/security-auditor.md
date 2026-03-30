@@ -5,6 +5,7 @@ tools: Read, Grep, Glob, Write, WebSearch, WebFetch
 model: sonnet
 maxTurns: 25
 memory: project
+priority: 5
 ---
 
 # Security Auditor

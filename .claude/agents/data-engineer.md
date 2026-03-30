@@ -5,6 +5,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, WebSearch
 model: sonnet
 maxTurns: 30
 memory: project
+priority: 3
 ---
 
 # Data Engineer

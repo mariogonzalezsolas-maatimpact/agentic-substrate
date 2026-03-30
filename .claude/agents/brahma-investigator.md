@@ -7,6 +7,7 @@ maxTurns: 30
 skills:
   - quality-validation
 memory: project
+priority: 2
 ---
 
 # Brahma Investigator

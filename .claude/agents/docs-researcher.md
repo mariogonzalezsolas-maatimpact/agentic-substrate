@@ -7,6 +7,7 @@ maxTurns: 15
 skills:
   - research-methodology
 memory: project
+priority: 2
 ---
 
 # Documentation Researcher

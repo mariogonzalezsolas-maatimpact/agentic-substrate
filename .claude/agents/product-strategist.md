@@ -5,6 +5,7 @@ tools: Read, Write, WebSearch, WebFetch, Glob, Grep
 model: haiku
 maxTurns: 25
 memory: project
+priority: 5
 ---
 
 # Product Strategist

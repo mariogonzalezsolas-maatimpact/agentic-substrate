@@ -5,6 +5,7 @@ model: sonnet
 tools: Bash, Read, Write, Grep, WebFetch
 maxTurns: 40
 memory: project
+priority: 4
 ---
 
 # Deployment Specialist
