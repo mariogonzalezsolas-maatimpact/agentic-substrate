@@ -1,6 +1,8 @@
 ---
 name: error-learning
 description: Automatic error self-tracking and learning feedback loop. Triggers when Claude makes a mistake, fails an approach, or gets corrected by the user.
+auto_invoke: true
+tags: [error, learning, self-correction, feedback-loop, quality]
 ---
 
 # Error Learning Skill

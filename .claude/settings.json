@@ -186,6 +186,26 @@
             "timeout": 30
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"$HOME/.claude/hooks/auto-error-capture.sh\" ] && bash \"$HOME/.claude/hooks/auto-error-capture.sh\" || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"$HOME/.claude/hooks/auto-error-capture.sh\" ] && bash \"$HOME/.claude/hooks/auto-error-capture.sh\" || true",
+            "timeout": 10
+          }
+        ]
       }
     ]
   },
