@@ -20,7 +20,7 @@ When completing any task, deliver your final response in this exact structure:
 ## Agent Report: [Agent Name]
 
 **Task**: [1-line description of what was asked]
-**Status**: [COMPLETE | PARTIAL | BLOCKED | FAILED]
+**Status**: [COMPLETE | COMPLETE_WITH_CONCERNS | PARTIAL | BLOCKED | FAILED]
 **Duration**: [X] minutes
 **Confidence**: [HIGH | MEDIUM | LOW]
 
@@ -74,6 +74,7 @@ When completing any task, deliver your final response in this exact structure:
 6. **Blockers are actionable**. State what's needed to unblock, not just the problem.
 7. **Drill-down is offered, not given**. The lead requests details only when needed.
 8. **Severity is mandatory**. Every finding uses a severity tag.
+9. **COMPLETE_WITH_CONCERNS** means the task is done but has flagged issues (MEDIUM severity findings, non-blocking risks). The orchestrator should log concerns but can proceed without a fix loop.
 
 ---
 
@@ -101,7 +102,7 @@ Each finding in the Key Findings section MUST include a severity tag:
 
 ## How the Lead Consumes Reports
 
-1. **Scan status line** across all agent reports (COMPLETE/BLOCKED/FAILED)
+1. **Scan status line** across all agent reports (COMPLETE/COMPLETE_WITH_CONCERNS/BLOCKED/FAILED)
 2. **Read Key Findings** from each agent (< 30 sec per agent)
 3. **Detect cross-cutting issues** (same blocker across agents = systemic problem)
 4. **Resolve dependency chains** (Agent A blocked on Agent B's output)
@@ -132,7 +133,7 @@ In the 3-tier pyramid orchestration, each Tier 2 coordinator uses a specialized 
 ```markdown
 ## Plan Coordinator Report
 **Task**: [1-line]
-**Status**: [COMPLETE | BLOCKED]
+**Status**: [COMPLETE | COMPLETE_WITH_CONCERNS | BLOCKED]
 **Plan Score**: [X/100]
 **Research Done**: [Yes/No]
 
@@ -152,7 +153,7 @@ In the 3-tier pyramid orchestration, each Tier 2 coordinator uses a specialized 
 ```markdown
 ## Code Coordinator Report
 **Task**: [1-line]
-**Status**: [COMPLETE | PARTIAL | BLOCKED]
+**Status**: [COMPLETE | COMPLETE_WITH_CONCERNS | PARTIAL | BLOCKED]
 **Duration**: [X min]
 **Self-Corrections**: [0-3]
 
@@ -171,7 +172,7 @@ In the 3-tier pyramid orchestration, each Tier 2 coordinator uses a specialized 
 ```markdown
 ## Review Coordinator Report
 **Task**: Review of [feature]
-**Status**: [PASS | FAIL]
+**Status**: [PASS | PASS_WITH_CONCERNS | FAIL]
 **Review Score**: [X/100]
 **Iteration**: [1/2/3]
 

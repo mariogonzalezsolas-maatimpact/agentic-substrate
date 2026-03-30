@@ -16,7 +16,12 @@ fi
 
 [ -z "$FILE_PATH" ] && exit 0
 
-# Protected patterns - deterministic blocking
+# Reject paths starting with - (prevents flag injection)
+case "$FILE_PATH" in
+    -*) exit 0 ;;
+esac
+
+# Protected patterns - deterministic blocking (case-insensitive)
 PROTECTED_PATTERNS=(
     ".env"
     ".env.local"
@@ -35,7 +40,7 @@ PROTECTED_PATTERNS=(
 )
 
 for pattern in "${PROTECTED_PATTERNS[@]}"; do
-    if [[ "$FILE_PATH" == *"$pattern"* ]]; then
+    if [[ "${FILE_PATH,,}" == *"${pattern,,}"* ]]; then
         echo "BLOCKED: Cannot modify '$FILE_PATH' - matches protected pattern '$pattern'. This file is protected by the protect-files hook." >&2
         exit 2
     fi

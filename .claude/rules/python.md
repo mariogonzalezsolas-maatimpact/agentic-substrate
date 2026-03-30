@@ -1,5 +1,5 @@
 ---
-glob: "**/*.py"
+paths: ["**/*.py", "requirements.txt", "pyproject.toml", "setup.py", "setup.cfg", "Pipfile"]
 ---
 # Python Rules
 

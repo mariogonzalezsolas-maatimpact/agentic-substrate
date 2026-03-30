@@ -360,7 +360,7 @@ Based on [Anthropic research](https://www.anthropic.com/research) (2024-2025):
 
 | Version | Date | Highlights |
 |---------|------|------------|
-| **7.2** | 2026-03-25 | Pyramid orchestration (plan->code->review->fix loop), 3 pyramid coordinators, 4 new specialist agents (32 agents total), 5 frontend/design skills + generate-docs (17 total), project-architecture.md, full doc sync |
+| **7.2** | 2026-03-25 | Pyramid orchestration (plan->code->review->fix loop), 3 pyramid coordinators, 4 new specialist agents (32 agents total), 5 frontend/design skills + 3 process/quality skills + generate-docs + auto-memory-capture + nextjs-firebase-gcp + django-patterns + pyramid-loop (23 total), project-architecture.md, full doc sync |
 | **7.1** | 2026-03-10 | Auto error-learning feedback loop, Hawk oversight pattern, anti-reward-hacking rules, linked chunks, tech-debt command, scratchpad + learnings templates |
 | **7.0** | 2026-02-27 | 10 new agents (25 total), 5 tiers, 9 new commands (21 total), 4 new skills (9 total), Agent Report Protocol |
 | **6.0** | 2026-02-24 | Agent Teams default on, v6.0 across all references, Opus 4.6 optimization |
@@ -617,7 +617,7 @@ powershell scripts/windows/verify-installation.ps1
 
 | Version | Fecha | Destacado |
 |---------|-------|-----------|
-| **7.2** | 2026-03-25 | Orquestacion piramidal (plan->code->review->fix loop), 3 coordinadores piramidales, 4 nuevos agentes especialistas (32 agentes total), 5 skills de frontend/diseno, 3 skills de proceso/calidad (20 total), project-architecture.md, sincronizacion completa de docs |
+| **7.2** | 2026-03-25 | Orquestacion piramidal (plan->code->review->fix loop), 3 coordinadores piramidales, 4 nuevos agentes especialistas (32 agentes total), 5 skills de frontend/diseno, 3 skills de proceso/calidad, generate-docs, auto-memory-capture, nextjs-firebase-gcp, django-patterns, pyramid-loop (23 total), project-architecture.md, sincronizacion completa de docs |
 | **7.1** | 2026-03-10 | Auto-aprendizaje de errores, patron Hawk de supervision, reglas anti-reward-hacking, linked chunks, comando tech-debt, plantillas scratchpad + learnings |
 | **7.0** | 2026-02-27 | 10 nuevos agentes (25 total), 5 niveles, 9 nuevos comandos (21 total), 4 nuevas habilidades (9 total), Agent Report Protocol |
 | **6.0** | 2026-02-24 | Agent Teams por defecto, optimizacion Opus 4.6 |

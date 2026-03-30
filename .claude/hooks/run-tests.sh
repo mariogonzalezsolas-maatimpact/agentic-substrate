@@ -9,8 +9,6 @@
 #       "timeout": 60 }] }
 # WARNING: Only enable when your test suite runs in <30 seconds
 
-set -e
-
 cd "${CLAUDE_PROJECT_DIR:-.}"
 
 echo "🧪 Running tests..."

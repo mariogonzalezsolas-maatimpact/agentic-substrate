@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "gsc": {
+      "command": "/path/to/your/venv/python",
+      "args": ["/path/to/gsc_server.py"],
+      "env": {
+        "GSC_CREDENTIALS_PATH": "/path/to/service_account_credentials.json",
+        "GSC_OAUTH_CLIENT_SECRETS_FILE": "/path/to/client_secrets.json"
+      }
+    }
+  }
+}

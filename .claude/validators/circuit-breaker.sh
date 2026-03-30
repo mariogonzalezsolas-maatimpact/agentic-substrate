@@ -51,7 +51,7 @@ _write_circuit_file() {
     local target_count="$2"
     local tmpfile="${CIRCUIT_FILE}.tmp"
 
-    _acquire_circuit_lock || { echo "Warning: Could not acquire circuit breaker lock" >&2; }
+    _acquire_circuit_lock || { echo "Warning: Could not acquire circuit breaker lock" >&2; return 1; }
 
     # Collect all existing entries
     declare -a names=()

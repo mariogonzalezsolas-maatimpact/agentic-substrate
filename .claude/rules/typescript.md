@@ -1,5 +1,5 @@
 ---
-glob: "**/*.{ts,tsx,js,jsx}"
+paths: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "tsconfig.json", "package.json"]
 ---
 # TypeScript / JavaScript Rules
 

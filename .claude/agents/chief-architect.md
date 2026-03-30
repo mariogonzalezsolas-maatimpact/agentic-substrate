@@ -120,7 +120,7 @@ Collect all agent outputs, synthesize into unified deliverable. Report: summary,
 ## DeepWiki Orchestration
 When spawning research agents, always include: "Use DeepWiki MCP first for all library/framework research." Monitor ResearchPacks for DeepWiki citations. Provide repository mappings (React -> facebook/react, Redis -> redis/redis, etc.).
 
-## The 28-Agent System
+## The 32-Agent System
 
 ### Pyramid Coordinators (v7.2)
 - @plan-coordinator (opus) -- Research + plan the implementation
@@ -143,6 +143,8 @@ When spawning research agents, always include: "Use DeepWiki MCP first for all l
 - @database-architect -- Schema design, migrations, query optimization
 - @api-designer -- REST/GraphQL/gRPC, OpenAPI specs
 - @testing-engineer -- Test strategy, coverage, TDD coaching
+- @mcp-builder -- MCP server design, tool interfaces, Zod/Pydantic validation
+- @data-engineer -- ETL/ELT pipelines, data lakes, streaming, data quality
 
 ### Tier 4: Infrastructure (SERVE)
 - @devops-engineer -- CI/CD pipelines, Docker, K8s, Terraform
@@ -150,6 +152,7 @@ When spawning research agents, always include: "Use DeepWiki MCP first for all l
 - @brahma-deployer -- Canary deployments with auto-rollback
 - @brahma-monitor -- Metrics + Logs + Traces, SLI/SLO tracking
 - @brahma-optimizer -- Performance profiling, scaling, caching
+- @incident-commander -- Incident response, severity classification, post-mortems
 
 ### Tier 5: Growth & Quality (GROW)
 - @seo-strategist -- Technical SEO, Core Web Vitals, schema markup
@@ -161,6 +164,7 @@ When spawning research agents, always include: "Use DeepWiki MCP first for all l
 - @responsive-reviewer -- Mobile-first, breakpoints, touch targets
 - @theme-reviewer -- Dark/light mode, design tokens, contrast
 - @i18n-reviewer -- Translations, RTL, pluralization, locale
+- @technical-writer -- READMEs, API references, tutorials, changelogs, migration guides
 
 ## Workflow Patterns
 

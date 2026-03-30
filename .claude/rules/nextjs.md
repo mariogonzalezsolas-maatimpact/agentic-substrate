@@ -1,5 +1,5 @@
 ---
-glob: "**/*.{ts,tsx,js,jsx}"
+paths: ["next.config.*", "app/**", "pages/**", "**/*.tsx", "**/*.ts"]
 ---
 # Next.js Rules
 

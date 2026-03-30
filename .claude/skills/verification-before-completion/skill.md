@@ -108,6 +108,25 @@ Before reporting plan COMPLETE:
 | File created | `ls path/to/file` | Verify exists |
 | No regressions | Full test suite | Compare counts |
 
+## Test Failure Triage Protocol
+
+When tests fail during implementation, classify each failure before acting:
+
+### Classification
+1. **Run tests on base branch first** (`git stash && npm test && git stash pop` or equivalent) to establish baseline
+2. A failure is **in-branch** ONLY if it passes on the base branch but fails on your branch
+3. A failure is **pre-existing** ONLY if it also fails on the base branch (with proof)
+4. NEVER assume a failure is pre-existing without running the baseline
+
+### Actions by Classification
+- **In-branch failure**: Fix it. This is your responsibility.
+- **Pre-existing failure**: Document it (`PREEXISTING: [test name] — fails on main too`). Do NOT fix unrelated failures — they are out of scope.
+- **Ambiguous**: Run baseline. If you cannot run baseline, treat as in-branch (safer default).
+
+### Forbidden
+- Claiming "this was already broken" without baseline evidence
+- Skipping or disabling pre-existing tests to make the suite green
+
 ## Quality Checklist
 
 - [ ] Every success claim has fresh evidence

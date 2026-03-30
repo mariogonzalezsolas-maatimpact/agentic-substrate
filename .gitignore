@@ -16,3 +16,15 @@
 
 # Test artifacts
 test-results/
+
+# MCP config (contains user-specific absolute paths)
+.mcp.json
+
+# Auto-generated directories (session-specific, not source code)
+.claude/compact-backups/
+.claude/session-data/
+.claude/agent-memory/
+
+# Runtime state
+memory/errors.md
+.claude/.skill-extraction-counter

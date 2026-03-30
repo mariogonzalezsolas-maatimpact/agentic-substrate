@@ -23,12 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - **Version**: 7.1.0 -> 7.2.0
-- **Agents**: 25 -> 28 (3 new pyramid coordinators)
-- **Skills**: 10 -> 11 (added pyramid-loop)
-- **Model distribution**: 5 Opus -> 7 Opus (plan-coordinator + code-coordinator), 12 Sonnet -> 13 Sonnet (review-coordinator)
+- **Agents**: 25 -> 32 (3 new pyramid coordinators + 4 new specialists: mcp-builder, data-engineer, incident-commander, technical-writer)
+- **Skills**: 10 -> 23 (added pyramid-loop, 5 frontend/design skills, 3 process/quality skills, generate-docs, auto-memory-capture, nextjs-firebase-gcp, django-patterns)
+- **Model distribution**: 5 Opus -> 8 Opus (plan-coordinator + code-coordinator + mcp-builder), 12 Sonnet -> 16 Sonnet (review-coordinator + technical-writer + data-engineer + incident-commander)
 - **Routes**: 34 total (10 pyramid + 24 direct) - all code-producing routes now use pyramid by default
 - **`/do` command**: Rewritten for pyramid orchestration with plan -> code -> review -> fix loop
-- **CLAUDE.md**: Updated directory counts (28 agents, 11 skills)
+- **CLAUDE.md**: Updated directory counts (32 agents, 23 skills)
 - **agents-overview.md**: Added Pyramid Coordinators section, updated model distribution table
 - **workflows-overview.md**: Added pyramid routes table, updated core workflow documentation
 - **quality-gates.md**: Added Review Gate with fix loop specification
@@ -39,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **manifest-template.json**: Updated to 99 managed files with new pyramid assets
 - **install.sh / install.ps1**: Updated version to 7.2.0, added pyramid coordinator files
 - **7 templates**: Version bumped from 7.1.0 to 7.2.0 (adr-template, api-spec-template, hawk-pattern, learnings-template, perceptual-diff, scratchpad, think-protocol)
-- **knowledge-core.md**: Full refresh from v6.0 to v7.2 (28 agents, 5 tiers + pyramid)
+- **knowledge-core.md**: Full refresh from v6.0 to v7.2 (32 agents, 5 tiers + pyramid)
 
 ### Architecture
 - **3-Tier Pyramid** (default execution model):

@@ -143,6 +143,14 @@ For each step in the plan:
 - Files match plan expectations
 
 ### Phase 5: Git Commit (if all passes)
+
+**Bisectable Commits Rule**:
+- Each commit must be a logically coherent unit that can be individually reverted
+- For large implementations, break into atomic commits: types/models, business logic, tests, integration
+- Every commit must leave the codebase in a valid state (tests pass at each point)
+- Use descriptive commit messages that explain the "why", not just the "what"
+- Prefer multiple small commits over one monolithic commit -- enables `git bisect` and clean reverts
+
 ```bash
 git add [specific files]
 git commit -m "[type]: [summary]
@@ -158,7 +166,7 @@ Your report to the orchestrator MUST follow this compact format:
 ## Code Coordinator Report
 
 **Task**: [1-line: what was implemented]
-**Status**: [COMPLETE | PARTIAL | BLOCKED]
+**Status**: [COMPLETE | COMPLETE_WITH_CONCERNS | PARTIAL | BLOCKED]
 **Duration**: [X] minutes
 **Self-Corrections**: [0-3] attempts used
 

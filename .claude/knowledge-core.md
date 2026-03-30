@@ -1,7 +1,7 @@
 # Project Knowledge Core - Agentic Substrate v7.2
 
 **Last Updated**: 2026-03-25
-**Version**: 7.2.0 (28-Agent System with Pyramid Orchestration, Quality Gates, Model Mixing & Error Learning)
+**Version**: 7.2.0 (32-Agent System with Pyramid Orchestration, Quality Gates, Model Mixing & Error Learning)
 **Project**: Claude User Memory → Agentic Substrate
 
 **Purpose**: Single source of truth for architectural decisions, established patterns, and key learnings. Persistent memory for all AI agents working on the Agentic Substrate system.
@@ -54,7 +54,7 @@ Every change must be: **Surgical** (fewest files), **Reversible** (include rollb
 Never sacrifice quality for performance. Use systematic approach to achieve both. Real-world validation over synthetic benchmarks.
 
 ### Principle 6: 32-Agent Architecture with Pyramid Orchestration
-**Established**: 2025-10-18 (Expanded: 9→15 in v5.2, 15→25 in v7.0, 25→28 in v7.2, 28→32 in v7.2.1)
+**Established**: 2025-10-18 (Expanded: 9→15 in v5.2, 15→25 in v7.0, 25→32 in v7.2)
 
 The complete agent system with 32 specialized agents organized in 5 tiers + pyramid coordinators:
 
@@ -75,21 +75,24 @@ Tier 2: Core Workflow (5 agents - BUILD + FIX)
   ├─ code-implementer (opus): TDD + 3-retry self-correction
   └─ brahma-investigator (opus): Root-cause analysis
 
-Tier 3: Engineering (5 agents)
+Tier 3: Engineering (7 agents)
   ├─ software-architect (opus): System design, C4, ADRs, SOLID/DDD
   ├─ programmer (opus): General-purpose coding, algorithms, prototyping
   ├─ database-architect (sonnet): Schema design, migrations, query optimization
   ├─ api-designer (sonnet): REST/GraphQL/gRPC, OpenAPI specs
-  └─ testing-engineer (sonnet): Test strategy, coverage, TDD coaching
+  ├─ testing-engineer (sonnet): Test strategy, coverage, TDD coaching
+  ├─ mcp-builder (opus): MCP server design, tool interfaces
+  └─ data-engineer (sonnet): ETL/ELT pipelines, data lakes, streaming
 
-Tier 4: Infrastructure (5 agents - SERVE)
+Tier 4: Infrastructure (6 agents - SERVE)
   ├─ devops-engineer (sonnet): CI/CD, Docker, K8s, Terraform
   ├─ secdevops-engineer (sonnet): SAST/DAST, supply chain security
   ├─ brahma-deployer (sonnet): Canary deployment + auto-rollback
   ├─ brahma-monitor (sonnet): Metrics, Logs, Traces
-  └─ brahma-optimizer (sonnet): Profiling, optimization, scaling
+  ├─ brahma-optimizer (sonnet): Profiling, optimization, scaling
+  └─ incident-commander (sonnet): Incident response, post-mortems
 
-Tier 5: Growth & Quality (9 agents - GROW)
+Tier 5: Growth & Quality (10 agents - GROW)
   ├─ seo-strategist (haiku): Technical SEO, Core Web Vitals
   ├─ business-analyst (haiku): Requirements, ROI
   ├─ content-strategist (haiku): Brand voice, content marketing
@@ -98,10 +101,11 @@ Tier 5: Growth & Quality (9 agents - GROW)
   ├─ ux-accessibility-reviewer (haiku): WCAG 2.2, usability
   ├─ responsive-reviewer (haiku): Breakpoints, mobile-first
   ├─ theme-reviewer (haiku): Dark/light mode, design tokens
-  └─ i18n-reviewer (haiku): Translations, RTL, pluralization
+  ├─ i18n-reviewer (haiku): Translations, RTL, pluralization
+  └─ technical-writer (sonnet): READMEs, API references, tutorials
 ```
 
-**Model Distribution**: 7 Opus (orchestration + deep reasoning + complex coding) + 13 Sonnet (analysis + code + infrastructure) + 8 Haiku (checklist + content + review)
+**Model Distribution**: 8 Opus (orchestration + deep reasoning + complex coding) + 16 Sonnet (analysis + code + infrastructure) + 8 Haiku (checklist + content + review)
 
 ---
 
@@ -279,7 +283,7 @@ Prepend chunk-specific explanatory context before embedding/indexing.
 
 **Rationale**: Catches bugs before production, prevents repeated user back-and-forth, browser testing catches UI issues that code review misses
 
-**Impact**: 3 new agents (plan-coordinator, code-coordinator, review-coordinator), 1 new skill (pyramid-loop), agents 25→28, skills 10→11
+**Impact**: 3 new pyramid coordinators + 4 new specialist agents (mcp-builder, data-engineer, incident-commander, technical-writer), 13 new skills (pyramid-loop + 5 frontend/design + 3 process/quality + generate-docs + auto-memory-capture + nextjs-firebase-gcp + django-patterns), agents 25→32, skills 10→23
 
 ---
 

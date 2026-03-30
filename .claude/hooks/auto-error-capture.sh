@@ -52,6 +52,9 @@ fi
 # Extract failure details (first 3 lines containing error/fail/block)
 FAILURE_DETAILS=$(echo "$OUTPUT" | grep -iE "FAIL|BLOCKED|error|bug|wrong|incorrect" | head -3 | tr '\n' ' ' | cut -c1-200)
 
+# Sanitize markdown control characters to prevent injection when loaded at session-start
+FAILURE_DETAILS=$(printf '%s' "$FAILURE_DETAILS" | sed 's/`/\\`/g; s/\*/\\*/g; s/#/\\#/g; s/\[/\\[/g; s/\]/\\]/g')
+
 # Avoid duplicate entries (check if same error already logged today)
 TODAY=$(date +%Y-%m-%d 2>/dev/null || echo "unknown")
 if grep -q "$TODAY.*$AGENT_NAME" "$ERRORS_FILE" 2>/dev/null; then
@@ -59,12 +62,12 @@ if grep -q "$TODAY.*$AGENT_NAME" "$ERRORS_FILE" 2>/dev/null; then
     exit 0
 fi
 
-# Append the error entry
+# Append the error entry (details wrapped in code block for safety)
 cat >> "$ERRORS_FILE" << ENTRY
 
 ### [$TODAY] $AGENT_NAME failure (auto-captured)
 - **What happened**: Agent reported failure status
-- **Details**: $FAILURE_DETAILS
+- **Details**: \`$FAILURE_DETAILS\`
 - **Root cause**: To be analyzed
 - **Prevention**: Review and update this entry with the actual root cause and prevention rule
 - **Category**: other

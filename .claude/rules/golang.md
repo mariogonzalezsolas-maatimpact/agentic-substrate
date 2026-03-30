@@ -1,5 +1,5 @@
 ---
-glob: "**/*.go"
+paths: ["**/*.go", "go.mod", "go.sum"]
 ---
 # Go Rules
 

@@ -239,6 +239,5 @@
       "Read(*credentials*)",
       "Read(*secret*)"
     ]
-  },
-  "enableAllProjectMcpServers": true
+  }
 }

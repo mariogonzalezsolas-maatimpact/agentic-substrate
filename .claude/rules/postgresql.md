@@ -1,5 +1,5 @@
 ---
-glob: "**/*.{ts,tsx,js,jsx,sql}"
+paths: ["**/*.prisma", "**/*.sql", "prisma/**", "migrations/**"]
 ---
 # PostgreSQL + Prisma Rules
 
