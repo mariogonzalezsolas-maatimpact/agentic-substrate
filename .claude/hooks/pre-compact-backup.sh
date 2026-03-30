@@ -3,19 +3,17 @@
 # PreCompact hook: Preserve key context before compaction
 # Saves decisions, file modifications, and task progress
 
-set -euo pipefail
-
 BACKUP_DIR="${CLAUDE_PROJECT_DIR:-.}/.claude/compact-backups"
 TIMESTAMP=$(date -u +"%Y%m%d-%H%M%S")
 BACKUP_FILE="$BACKUP_DIR/pre-compact-$TIMESTAMP.md"
 
 # Create backup directory
-mkdir -p "$BACKUP_DIR"
+mkdir -p "$BACKUP_DIR" 2>/dev/null || { echo "Warning: Cannot create backup dir, skipping backup" >&2; exit 0; }
 
 # Read stdin (compaction context from Claude Code)
 INPUT=$(cat 2>/dev/null || echo "{}")
 
-cat > "$BACKUP_FILE" << ENDOFBACKUP
+cat > "$BACKUP_FILE" << ENDOFBACKUP || { echo "Warning: Cannot write backup file, skipping backup" >&2; exit 0; }
 # Pre-Compaction Context Backup
 **Timestamp**: $TIMESTAMP
 **Source**: PreCompact hook

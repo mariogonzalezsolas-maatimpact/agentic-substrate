@@ -258,11 +258,11 @@ MANIFEST_FILE="$CLAUDE_TARGET/.agentic-substrate-manifest.json"
 BACKUP_DIR="$CLAUDE_TARGET/backups/uninstall-$(date +%Y%m%d-%H%M%S 2>/dev/null || echo "backup")"
 
 # Check if file was modified
-# TODO: Implement per-file checksums in manifest to enable real modification detection.
-# Currently the manifest has no per-file checksums, so parse_json_value cannot look up
-# nested paths like "files.<name>.checksum". Always returns 1 (not modified) for now.
+# Default: assume ALL files are modified (preserve by default).
+# Without per-file checksums in the manifest, we cannot detect modifications.
+# Safe default: never delete user files. Implement checksums in install.sh to enable real detection.
 is_modified() {
-    return 1  # Not modified (no checksum data available in manifest)
+    return 0  # Assume modified — always preserve (safe default)
 }
 
 # Categories of files to handle
