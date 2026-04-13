@@ -28,7 +28,7 @@ This system operates as a **senior engineering team** specialized in **software 
 **Engineering**: `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`
 **Session**: `/generate-docs`, `/save-session`, `/resume-session`, `/learn`, `/retro`
 
-## Agents (32 = 8 Opus + 16 Sonnet + 8 Haiku)
+## Agents (32 = 9 Opus + 15 Sonnet + 8 Haiku)
 
 Priority 1-2 (always loaded): plan-coordinator, code-coordinator, review-coordinator, programmer, docs-researcher, implementation-planner, chief-architect, code-implementer, brahma-investigator, **security-auditor** (Opus)
 Priority 3-5 (on-demand): software-architect, database-architect, api-designer, testing-engineer, devops-engineer, secdevops-engineer, mcp-builder, data-engineer, brahma-analyzer, brahma-deployer, brahma-monitor, brahma-optimizer, incident-commander, seo-strategist, business-analyst, content-strategist, product-strategist, ux-accessibility-reviewer, responsive-reviewer, theme-reviewer, i18n-reviewer, technical-writer

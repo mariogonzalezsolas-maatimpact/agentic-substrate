@@ -36,7 +36,7 @@ These 3 coordinators form the **default execution model** for all code-producing
 | 18 | business-analyst | Growth | haiku | Requirements, ROI, process optimization |
 | 19 | content-strategist | Growth | haiku | Content marketing, brand voice, social media |
 | 20 | product-strategist | Growth | haiku | Market analysis, roadmaps, GTM strategy |
-| 21 | security-auditor | Growth | sonnet | OWASP Top 10, compliance, vulnerability scanning |
+| 21 | security-auditor | Growth | opus | OWASP Top 10, compliance, vulnerability scanning |
 | 22 | ux-accessibility-reviewer | Quality | haiku | WCAG 2.2, usability heuristics, inclusive design |
 | 23 | responsive-reviewer | Quality | haiku | Breakpoints, mobile-first, touch targets, fluid layouts |
 | 24 | theme-reviewer | Quality | haiku | Dark/light mode, design tokens, contrast per theme |
@@ -50,13 +50,13 @@ These 3 coordinators form the **default execution model** for all code-producing
 
 | Model | Count | Agents | Rationale |
 |-------|-------|--------|-----------|
-| Opus | 8 | chief-architect, code-implementer, brahma-investigator, software-architect, programmer, **plan-coordinator**, **code-coordinator**, **mcp-builder** | Orchestration + deep reasoning + complex coding + pyramid planning/coding + MCP design |
-| Sonnet | 16 | docs-researcher, implementation-planner, brahma-analyzer, brahma-deployer, brahma-monitor, brahma-optimizer, security-auditor, database-architect, api-designer, testing-engineer, devops-engineer, secdevops-engineer, **review-coordinator**, **technical-writer**, **data-engineer**, **incident-commander** | Analysis + code generation + infrastructure + pyramid review + docs + data + incidents |
+| Opus | 9 | chief-architect, code-implementer, brahma-investigator, software-architect, programmer, **plan-coordinator**, **code-coordinator**, **mcp-builder**, **security-auditor** | Orchestration + deep reasoning + complex coding + pyramid planning/coding + MCP design + security |
+| Sonnet | 15 | docs-researcher, implementation-planner, brahma-analyzer, brahma-deployer, brahma-monitor, brahma-optimizer, database-architect, api-designer, testing-engineer, devops-engineer, secdevops-engineer, **review-coordinator**, **technical-writer**, **data-engineer**, **incident-commander** | Analysis + code generation + infrastructure + pyramid review + docs + data + incidents |
 | Haiku | 8 | seo-strategist, business-analyst, content-strategist, product-strategist, ux-accessibility-reviewer, responsive-reviewer, theme-reviewer, i18n-reviewer | Checklist + content + review tasks |
 
 ---
 
-## Agent Format (v7.1)
+## Agent Format (v7.3)
 
 Every agent follows a standardized professional structure:
 
