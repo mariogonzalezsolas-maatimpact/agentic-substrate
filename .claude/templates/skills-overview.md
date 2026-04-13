@@ -1,6 +1,6 @@
 # Skills Overview
 
-39 skills that enhance agent capabilities:
+41 skills that enhance agent capabilities:
 
 ### Core Workflow Skills
 
@@ -13,7 +13,9 @@
 | pattern-recognition | After successful implementation | Captures patterns to knowledge-core.md |
 | context-engineering | Session start, every 50 msgs, task switch | Context rot prevention (39% improvement, 84% token reduction) |
 | error-learning | Mistake made, approach failed, user correction | Auto-captures errors, 6 categories, pattern escalation to rules |
-| **auto-memory-capture** | Significant decision, failed approach, non-obvious solution, compaction imminent | Captures decisions, failed approaches (FAIL format), user corrections to persistent memory |
+| **auto-memory-capture** | Significant decision, failed approach, non-obvious solution, compaction imminent | Captures decisions, failed approaches (FAIL format), user corrections to persistent memory. Compression, deduplication, budget tracking |
+| **memory-search** | Searching memory for prior decisions, failed approaches, overlapping work | Progressive disclosure search: INDEX -> SUMMARY -> DETAIL. 75-97% token savings vs read-all |
+| **folder-context** | User runs `/folder-context` or asks to generate directory context | Auto-generates lightweight CLAUDE.md in subdirectories from memory observations |
 | **generate-docs** | User asks to generate AI docs, configure .claude, setup project for AI | Agentic interview + .claude/ structure generation/migration (Spanish) |
 
 ### Engineering Methodology Skills

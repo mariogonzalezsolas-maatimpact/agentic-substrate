@@ -1,6 +1,6 @@
 ---
 name: auto-memory-capture
-description: "Automatic memory capture during work sessions. Reminds Claude to save important decisions, failed approaches, and successful patterns to the memory system. Prevents knowledge loss between sessions."
+description: "Automatic memory capture with compression, token awareness, deduplication, and budget tracking. Saves decisions, failed approaches, and patterns to persistent memory. Prevents knowledge loss and token waste."
 auto_invoke: true
 tags: [memory, capture, session, persistence, learning]
 ---
@@ -115,3 +115,117 @@ Before ending a significant work session:
 - [ ] User corrections/preferences captured as feedback memories
 - [ ] Non-obvious solutions saved for future reference
 - [ ] MEMORY.md index updated with new entries
+
+---
+
+## Enhanced Memory Structure (Compression)
+
+Memory content should match the 3-tier progressive disclosure model (see memory-search skill):
+
+### Tier 1: Index Line (MEMORY.md)
+- One line, under 150 characters
+- Must be scannable without reading the file
+- Format: `- [Title](filename.md) -- one-line hook`
+
+### Tier 2: Frontmatter (top of memory file)
+- name, description, type fields
+- description must be specific enough for relevance filtering (~1 sentence)
+- Add `tokens_estimate` field for budget tracking
+
+### Tier 3: Body (full content)
+- Structured content: fact/rule, then **Why:** and **How to apply:**
+- Keep bodies concise: aim for 100-300 tokens per memory
+- Use bullet points over prose
+- Remove redundant context that is already in the frontmatter
+
+### Compression Checklist
+
+Before writing a memory, compress it:
+- [ ] Remove filler words and hedging language
+- [ ] Replace paragraphs with bullet points
+- [ ] Merge related observations into one memory (not one per observation)
+- [ ] Ensure frontmatter description is sufficient for Layer 2 filtering
+
+## Token Cost Awareness
+
+Every memory has a token cost. Track it to stay within budget.
+
+### Token Estimation Table
+
+| Content Type | Estimated Tokens |
+|-------------|-----------------|
+| MEMORY.md index line | 15-30 tokens |
+| Frontmatter block (5 fields) | 40-80 tokens |
+| Short memory body (2-3 bullets) | 50-100 tokens |
+| Medium memory body (5-8 bullets) | 100-200 tokens |
+| Long memory body (detailed context) | 200-400 tokens |
+
+### Frontmatter Extension
+
+Add `tokens_estimate` to new memories:
+```yaml
+---
+name: example-memory
+description: "One-line description for Layer 2 filtering"
+type: feedback
+tokens_estimate: 150
+---
+```
+
+This helps the memory budget system track total token cost without reading file contents.
+
+## Deduplication Check
+
+Before writing ANY new memory, search first to prevent duplicates.
+
+### Search Before Write Protocol
+
+1. Read MEMORY.md index (Layer 1 from memory-search skill)
+2. Check if any existing title covers the same topic
+3. If a match exists:
+   - Read the existing memory file
+   - UPDATE the existing file with new information (merge, do not duplicate)
+   - Update the MEMORY.md index line if the description changed
+4. If no match exists:
+   - Create new memory file
+   - Add index line to MEMORY.md
+
+### Merge Rules
+
+When updating an existing memory:
+- Preserve the original creation context
+- Append new observations with date markers
+- Update the description if the scope expanded
+- Update tokens_estimate after changes
+- Do NOT create a second file for the same topic
+
+## Memory Budget
+
+Target constraints to keep memory manageable and token-efficient.
+
+### Budget Targets
+
+| Metric | Target | Warning | Action |
+|--------|--------|---------|--------|
+| Total memories | < 70 | 70 entries | Archive low-value memories |
+| Layer 1 total tokens | < 5,000 | 3,500 tokens | Shorten index lines |
+| Average memory size | < 200 tokens | 250 tokens | Compress verbose memories |
+| Stale memories | < 20% | 15% stale | Review and archive |
+
+### Warning at 70 Entries
+
+When MEMORY.md reaches 70 entries:
+1. Flag to the user: "Memory budget warning: 70 entries. Consider archival."
+2. Identify candidates for archival:
+   - Memories older than 90 days with no recent access
+   - Memories about completed/abandoned projects
+   - Memories superseded by newer observations
+3. Propose an archival list for user approval
+
+### Archival Process
+
+Archived memories are NOT deleted. They are moved to reduce Layer 1 cost:
+1. Move the memory file to a `memory/archive/` subdirectory
+2. Remove the index line from MEMORY.md
+3. Add one summary line to an `ARCHIVE.md` index (for recovery if needed)
+4. Archived memories can be restored if referenced again
