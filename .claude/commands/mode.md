@@ -26,6 +26,10 @@ Minimizes token usage and context consumption. Use during long sessions or when 
 - Suppress decorative formatting
 - Tool outputs summarized, not echoed in full
 - Quality gates still enforced but reported minimally
+- Short sentences (8-10 words max in explanatory text)
+- Code first, explanation only if non-obvious
+- No em dashes, smart quotes, or decorative Unicode
+- Return results, not narration of the process
 
 **Activate:** `/mode token-efficiency`
 
@@ -72,6 +76,12 @@ Acknowledge mode switch. From this point forward in the session:
 - Skip "here's what I'll do" preambles - just do it
 - Report tool results as one-line summaries
 - Quality gates: report pass/fail only, not full breakdown
+- Short sentences only (8-10 words max in English prose)
+- Code first. Explanation after, only if non-obvious
+- No inline prose in code output. Comments only where logic is unclear
+- No em dashes, smart quotes, or decorative Unicode symbols
+- Plain hyphens and straight quotes only
+- All output must be copy-paste safe
 
 **If "introspection":**
 Acknowledge mode switch. From this point forward in the session:

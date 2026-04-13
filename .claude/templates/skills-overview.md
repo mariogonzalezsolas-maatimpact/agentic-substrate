@@ -1,6 +1,6 @@
 # Skills Overview
 
-23 skills that enhance agent capabilities:
+39 skills that enhance agent capabilities:
 
 ### Core Workflow Skills
 
@@ -90,6 +90,37 @@ User: "Organize this codebase for AI agents"
   3. [Verifies build passes after reorganization]
 ```
 
+### Security & Cybersecurity Skills (NEW in v7.3)
+
+| Skill | Triggers When | Key Function |
+|-------|--------------|--------------|
+| **threat-hunting** | Threat detection, IOC analysis, Sigma rules | Sigma detection rules, MITRE ATT&CK mapping, log analysis |
+| **computer-forensics** | Post-incident investigation, evidence collection | Disk/memory forensics, timeline reconstruction, chain of custody |
+| **web-fuzzing** | Authorized pentesting, endpoint discovery | ffuf methodology, parameter/directory/vhost fuzzing |
+| **supply-chain-audit** | Dependency security review | Typosquatting, dependency confusion, SBOM, license compliance |
+| **semgrep-rules** | Custom SAST rule creation | Pattern writing, taint tracking, autofix, rule testing |
+| **static-analysis** | SAST setup and triage | Semgrep, CodeQL, Bandit, ESLint security, SARIF parsing |
+| **cloud-security** | Cloud infrastructure audit | AWS/Azure/GCP IAM, storage exposure, CIS benchmarks |
+| **container-security** | Docker/K8s security review | Image scanning, RBAC audit, pod security, Falco, network policies |
+| **api-security** | API penetration testing | OWASP API Top 10 (2023), BOLA/IDOR, GraphQL security |
+
+### SaaS & Integration Skills (NEW in v7.3)
+
+| Skill | Triggers When | Key Function |
+|-------|--------------|--------------|
+| **slack-automation** | Slack messaging, notifications, CI/CD integration | Block Kit, notification templates, MCP integration |
+| **jira-automation** | Issue tracking, sprint management | JQL queries, workflow transitions, bulk operations |
+| **salesforce-automation** | CRM operations, pipeline reporting | SOQL queries, lead/opportunity management, bulk data ops |
+
+### Development Workflow Skills (NEW in v7.3)
+
+| Skill | Triggers When | Key Function |
+|-------|--------------|--------------|
+| **changelog-generator** | Release preparation, update summaries | Git commit categorization, user-language translation |
+| **playwright-testing** | E2E testing, browser automation | Page navigation, assertions, visual regression, network mocking |
+| **finishing-branch** | Branch ready for merge/PR | Pre-merge checklist, commit cleanup, PR preparation |
+| **skill-generator** | Creating new skills from docs/knowledge | Meta-skill: converts documentation into structured skills |
+
 ## Commands
 
 - `/context analyze` - Show context health
@@ -98,4 +129,4 @@ User: "Organize this codebase for AI agents"
 
 ---
 
-**Updated**: 2026-03-30 | **Version**: 7.2.1
+**Updated**: 2026-04-13 | **Version**: 7.3.0

@@ -62,4 +62,4 @@ They complement each other: Hawk prevents errors, Circuit Breaker limits damage.
 ---
 
 **Source**: Alejandro Vidal, "Agentic Engineering" - HACKNIGHT Valencia 2026
-**Updated**: 2026-03-30 | **Version**: 7.2.1
+**Updated**: 2026-04-13 | **Version**: 7.3.0

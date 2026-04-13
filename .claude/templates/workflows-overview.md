@@ -15,15 +15,15 @@ Just say what you want -- `/do` classifies, plans, confirms, then executes using
 | MIGRATE | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
 | ORCHESTRATE | plan + code + review | Plan (85+) -> Tests Pass -> Review (80+) |
 
-### Lightweight Routes (@programmer direct dispatch)
+### Agent Dispatch Routes (specialist agent per route)
 
-Lightweight routes skip the 3-coordinator pyramid and dispatch directly to @programmer for efficiency. They still require a plan shown to the user, but execution is a single agent, not 3 sequential coordinators. Users can upgrade to full pyramid with "con review" / "with review".
+All non-pyramid routes dispatch to a specialist agent. Each agent works in isolated context with its domain expertise. Users can upgrade to full pyramid with "con review" / "with review".
 
 | Route | Agent | Gates |
 |-------|-------|-------|
 | REFACTOR | @programmer | Tests Pass |
-| TEST | @programmer | Tests Pass |
-| DEBUG | @programmer | Tests Pass |
+| TEST | @testing-engineer | Tests Pass |
+| DEBUG | @brahma-investigator | Root cause + fix |
 | OPTIMIZE | @programmer | Tests Pass |
 | CODE | @programmer | Tests Pass |
 | DATABASE | @programmer | Tests Pass |
@@ -171,4 +171,4 @@ Run `/context analyze` every 50 messages. `/context optimize` when switching tas
 
 ---
 
-**Updated**: 2026-03-30 | **Version**: 7.2.1 | **Routes**: 34 (4 full pyramid + 7 lightweight + 23 direct)
+**Updated**: 2026-04-13 | **Version**: 7.3.0 | **Routes**: 34 (4 full pyramid + 29 agent dispatch + 1 simple)

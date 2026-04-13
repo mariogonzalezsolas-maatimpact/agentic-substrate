@@ -92,21 +92,35 @@ For each changed file:
 - Are error paths covered?
 - Do types/interfaces match?
 
-#### 1.2 Security Review (OWASP Focus)
-- Input validation on all user inputs?
-- SQL/NoSQL injection patterns?
-- XSS vulnerabilities (unescaped output)?
-- Authentication/authorization checks?
-- Secrets or credentials in code?
-- Insecure deserialization?
+#### 1.2 Security Review (MANDATORY - Cybersecurity Deep Pass)
+- Input validation on all user inputs (type, length, format, range)?
+- SQL/NoSQL injection patterns (parameterized queries only)?
+- XSS vulnerabilities (context-aware output encoding)?
+- CSRF protection on state-changing operations?
+- Authentication/authorization checks on every endpoint?
+- Secrets or credentials in code (including .env files in commits)?
+- Insecure deserialization or unsafe eval/exec?
+- SSRF vectors (outbound requests with user-controlled URLs)?
+- IDOR vulnerabilities (object ownership validation)?
+- Race conditions in concurrent operations?
+- Cryptographic misuse (weak algorithms, hardcoded keys, missing salt)?
+- Dependency security (known CVEs in added/updated packages)?
+- Security headers present and correctly configured?
+- Error messages leaking sensitive information?
 
-#### 1.3 Performance Review
-- N+1 query patterns?
-- Unnecessary computation in loops?
-- Missing pagination on lists?
-- Memory leak patterns (unclosed resources)?
-- Blocking I/O in async contexts?
-- Missing caching opportunities?
+**NOTE**: Security findings are automatically CRITICAL or HIGH severity. A single unmitigated injection vector or auth bypass = automatic FAIL.
+
+#### 1.3 Performance Review (Senior Engineering Pass)
+- N+1 query patterns (check ORM usage carefully)?
+- Unnecessary computation in loops (especially with I/O)?
+- Missing pagination on lists (unbounded queries)?
+- Memory leak patterns (unclosed resources, event listener buildup)?
+- Blocking I/O in async contexts (sync fs, sleep in event loop)?
+- Missing caching opportunities (repeated expensive computations)?
+- Algorithm complexity (O(n^2) or worse when O(n log n) is possible)?
+- Database query optimization (missing indexes, full table scans)?
+- Bundle size impact (unnecessary large dependencies)?
+- Connection pooling and resource management?
 
 #### 1.4 Code Quality Review
 - Follows existing code conventions?
@@ -184,11 +198,11 @@ Score the implementation:
 
 | Dimension | Weight | Score |
 |-----------|--------|-------|
-| Correctness | 30% | [0-100] |
-| Security | 25% | [0-100] |
-| Performance | 15% | [0-100] |
+| Security | 30% | [0-100] |
+| Correctness | 25% | [0-100] |
+| Performance | 20% | [0-100] |
 | Code Quality | 15% | [0-100] |
-| Test Coverage | 15% | [0-100] |
+| Test Coverage | 10% | [0-100] |
 
 **PASS**: Weighted score >= 80 AND no critical findings
 **FAIL**: Weighted score < 80 OR any critical finding exists

@@ -1,7 +1,7 @@
-# Project Knowledge Core - Agentic Substrate v7.2
+# Project Knowledge Core - Agentic Substrate v7.3
 
-**Last Updated**: 2026-03-25
-**Version**: 7.2.1 (32-Agent System with Pyramid Orchestration, Quality Gates, Model Mixing & Error Learning)
+**Last Updated**: 2026-04-13
+**Version**: 7.3.0 (32 Agents, 39 Skills, Pyramid Orchestration, Agent-first /do, Security & SaaS Skills, Token Efficiency)
 **Project**: Claude User Memory → Agentic Substrate
 
 **Purpose**: Single source of truth for architectural decisions, established patterns, and key learnings. Persistent memory for all AI agents working on the Agentic Substrate system.
@@ -388,6 +388,8 @@ Quality gates must use `exit 1` (not `exit 0` with warnings). Add `--force` over
 
 ---
 
-**Last updated**: 2026-03-25 by Agentic Substrate v7.2 upgrade
-**Major enhancement**: v7.2 - Pyramid Orchestration, 32 agents (8 Opus + 16 Sonnet + 8 Haiku), Review Gate, fix loop
+**Last updated**: 2026-04-13 by Agentic Substrate v7.3 upgrade
+**Major enhancements**:
+- v7.2 - Pyramid Orchestration, 32 agents (8 Opus + 16 Sonnet + 8 Haiku), Review Gate, fix loop
+- v7.3 - 16 new skills (security, SaaS, workflow), agent-first /do (no Lightweight routes), token efficiency rules, global statusline
 **Next review**: Ongoing (review with each major version)

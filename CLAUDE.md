@@ -1,12 +1,22 @@
-# Agentic Substrate v7.2.1
+# Agentic Substrate v7.3.0
 
 Source repository for the Claude Code CLI enhancement system. Install via `install.sh` or `install.ps1`.
+
+## Specialization: Programming & Cybersecurity
+
+This system operates as a **senior engineering team** specialized in **software development and cybersecurity**. Every agent thinks like an attacker and codes like a defender. Security is not a phase — it is a property of every line of code produced.
+
+- **Programming**: Senior-level code across all languages. Performance-aware, algorithmically sound, architecturally clean.
+- **Cybersecurity**: Offensive awareness (pentesting, attack simulation, STRIDE) + defensive execution (OWASP, secure coding, crypto, compliance).
+- **Review**: Security is the #1 review dimension (30% weight). Any unmitigated vulnerability = automatic FAIL.
 
 ## System Rules
 - Never code from memory -- use @docs-researcher or /research first
 - Every change: minimal, surgical, reversible. TDD: RED -> GREEN -> REFACTOR
 - Pyramid loop: plan -> code -> review -> fix (max 3 iterations)
 - Quality gates: Research 80+ | Plan 85+ | Review 80+ | Tests pass, circuit breaker closed
+- **Security-first**: Threat model before implementing. Validate inputs, encode outputs, parameterize queries. Always.
+- **Senior mindset**: Root cause over symptoms. Measure before optimizing. Trade-offs explicit.
 - Error self-tracking: log to `memory/errors.md`. 3+ similar = prevention rule
 - Thinking: **think** (30-60s) | **think hard** (1-2min) | **think harder** (2-4min) | **ultrathink** (5-10min)
 
@@ -20,15 +30,15 @@ Source repository for the Claude Code CLI enhancement system. Install via `insta
 
 ## Agents (32 = 8 Opus + 16 Sonnet + 8 Haiku)
 
-Priority 1-2 (always loaded): plan-coordinator, code-coordinator, review-coordinator, programmer, docs-researcher, implementation-planner, chief-architect, code-implementer, brahma-investigator
-Priority 3-5 (on-demand): software-architect, database-architect, api-designer, testing-engineer, devops-engineer, secdevops-engineer, mcp-builder, data-engineer, brahma-analyzer, brahma-deployer, brahma-monitor, brahma-optimizer, incident-commander, seo-strategist, business-analyst, content-strategist, product-strategist, security-auditor, ux-accessibility-reviewer, responsive-reviewer, theme-reviewer, i18n-reviewer, technical-writer
+Priority 1-2 (always loaded): plan-coordinator, code-coordinator, review-coordinator, programmer, docs-researcher, implementation-planner, chief-architect, code-implementer, brahma-investigator, **security-auditor** (Opus)
+Priority 3-5 (on-demand): software-architect, database-architect, api-designer, testing-engineer, devops-engineer, secdevops-engineer, mcp-builder, data-engineer, brahma-analyzer, brahma-deployer, brahma-monitor, brahma-optimizer, incident-commander, seo-strategist, business-analyst, content-strategist, product-strategist, ux-accessibility-reviewer, responsive-reviewer, theme-reviewer, i18n-reviewer, technical-writer
 
 ## Project Structure
 
 | Directory | Contents |
 |-----------|----------|
 | `.claude/agents/` | 32 agent definitions (priority 1-5 frontmatter) |
-| `.claude/skills/` | 23 skills (21 auto-invoked, 2 manual) |
+| `.claude/skills/` | 39 skills (21 auto-invoked, 18 manual) |
 | `.claude/commands/` | 27 slash commands |
 | `.claude/hooks/` | 21 lifecycle hooks |
 | `.claude/templates/` | Shared templates, overview docs, agent.tmpl |

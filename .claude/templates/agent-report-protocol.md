@@ -75,6 +75,9 @@ When completing any task, deliver your final response in this exact structure:
 7. **Drill-down is offered, not given**. The lead requests details only when needed.
 8. **Severity is mandatory**. Every finding uses a severity tag.
 9. **COMPLETE_WITH_CONCERNS** means the task is done but has flagged issues (MEDIUM severity findings, non-blocking risks). The orchestrator should log concerns but can proceed without a fix loop.
+10. **No narration**. Never write "Now I will...", "I'm going to...", "I have completed...". State results, not process.
+11. **No sycophancy**. No openers ("Sure!", "Great question!") or closers ("Hope this helps!"). Start with the status line.
+12. **Structured output in pipelines**. When output feeds another agent, use only JSON/bullets/tables. No prose.
 
 ---
 
@@ -201,4 +204,4 @@ The orchestrator processes 3 coordinator reports per iteration (up to 9 for 3 it
 
 ---
 
-**Updated**: 2026-03-30 | **Version**: 7.2.1 | **Protocol**: Agent Report v1.2 (Pyramid-aware)
+**Updated**: 2026-04-13 | **Version**: 7.3.0 | **Protocol**: Agent Report v1.3 (Pyramid-aware, anti-sycophancy)

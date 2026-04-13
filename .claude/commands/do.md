@@ -1,6 +1,6 @@
 ---
 name: do
-description: Intelligent command router with mandatory planning. Analyzes your request, shows a plan, waits for confirmation, then executes using 3-tier pyramid orchestration (plan -> code -> review -> fix loop).
+description: "C-Level orchestrator that classifies, strategically analyzes impact, plans, and executes via specialist agents. Adapts executive lens (CTO/CISO/CPO/CMO) per domain. Parallel multi-agent dispatch for cross-domain tasks. Full pyramid for features, agent dispatch for everything else."
 ---
 
 # /do Command
@@ -13,9 +13,10 @@ description: Intelligent command router with mandatory planning. Analyzes your r
 /do [anything you want]
 ```
 
-## Flow: CLASSIFY -> PLAN -> CONFIRM -> PYRAMID EXECUTE -> REPORT
+## Flow: CLASSIFY -> STRATEGIC ANALYSIS -> PLAN -> CONFIRM -> EXECUTE -> REPORT
 
 Every `/do` invocation follows this mandatory flow. No step is skipped.
+The orchestrator acts as a **C-Level executive** - CTO for technical tasks, CMO for marketing, CPO for product, CISO for security - adapting its strategic lens to the domain of the task.
 
 ---
 
@@ -59,56 +60,100 @@ Analyze the request and assign exactly one route:
 | Route | Keywords / Signals | Executes |
 |-------|-------------------|----------|
 | FEATURE | add, create, build, make, develop, new feature | Full Pyramid (plan -> code -> review) |
-| REFACTOR | refactor, clean up code, simplify, restructure, rename | Lightweight (@programmer) |
-| TEST | write tests, add tests, test coverage, unit test, e2e | Lightweight (@programmer) |
-| RESEARCH | research, learn, understand, how does, what is, docs | `@docs-researcher` (no pyramid) |
-| PLAN | plan, design, architect, strategy, approach | `@plan-coordinator` (plan only) |
+| REFACTOR | refactor, clean up code, simplify, restructure, rename | `@programmer` agent |
+| TEST | write tests, add tests, test coverage, unit test, e2e | `@testing-engineer` agent |
+| RESEARCH | research, learn, understand, how does, what is, docs | `@docs-researcher` agent |
+| PLAN | plan, design, architect, strategy, approach | `@plan-coordinator` agent |
 | IMPLEMENT | implement the plan, execute, code this, finish | Full Pyramid (plan -> code -> review) |
-| DEBUG | why, debug, investigate, broken, error, bug | Lightweight (@programmer) |
+| DEBUG | why, debug, investigate, broken, error, bug | `@brahma-investigator` agent |
 | MIGRATE | migrate, convert, switch from X to Y, upgrade dependency | Full Pyramid (plan -> code -> review) |
-| DEPLOY | deploy, release, ship, push to production, rollout | `@brahma-deployer` |
-| OPTIMIZE | optimize, performance, slow, faster, scale | Lightweight (@programmer) |
-| MONITOR | monitor, observe, metrics, logs, alerts, dashboard | `@brahma-monitor` |
+| DEPLOY | deploy, release, ship, push to production, rollout | `@brahma-deployer` agent |
+| OPTIMIZE | optimize, performance, slow, faster, scale | `@brahma-optimizer` agent |
+| MONITOR | monitor, observe, metrics, logs, alerts, dashboard | `@brahma-monitor` agent |
 | INCIDENT | production down, outage, emergency, users can't, P0/P1 | `@incident-commander` + `@brahma-investigator` + `@brahma-monitor` |
-| REVIEW | review, code review, PR, pull request, audit code | `@review-coordinator` (review only) |
-| ROLLBACK | revert, undo, rollback, go back, restore previous | Direct (git revert + verification) |
-| SEO | seo, search engine, rankings, meta tags, schema | `@seo-strategist` |
-| SECURITY | security, vulnerability, owasp, compliance, audit | `@security-auditor` |
-| UX | ux, usability, accessibility, wcag, a11y | `@ux-accessibility-reviewer` |
-| RESPONSIVE | responsive, mobile, breakpoints, touch, viewport, fluid | `@responsive-reviewer` |
-| THEME | dark mode, light mode, theme, tokens, color mode | `@theme-reviewer` |
-| I18N | i18n, translate, translations, locale, internationalization, rtl | `@i18n-reviewer` |
-| ARCHITECTURE | architecture, patterns, SOLID, DDD, modules, layers, ADR | `@software-architect` |
-| CODE | code, algorithm, prototype, script, pair program, write code | Lightweight (@programmer) |
-| DATABASE | database, schema, migration, query, index, SQL, ORM | Lightweight (@programmer) |
-| API | api design, openapi, swagger, graphql, grpc, endpoints, rest design | `@api-designer` |
-| TESTING | test strategy, coverage, flaky, mocking, e2e, test architecture | `@testing-engineer` |
-| TECH_DEBT | tech debt, clean up code, anti-patterns, slop, agent debt | Lightweight (@programmer) |
-| DEVOPS | ci/cd, pipeline, docker, kubernetes, terraform, infrastructure | `@devops-engineer` |
-| SECDEVOPS | sast, dast, supply chain, sbom, secret scanning, pipeline security | `@secdevops-engineer` |
-| BUSINESS | business, requirements, stakeholders, roi, process | `@business-analyst` |
-| CONTENT | content, blog, social media, marketing, brand | `@content-strategist` |
-| PRODUCT | product, roadmap, market, competitive, gtm, pricing | `@product-strategist` |
+| REVIEW | review, code review, PR, pull request, audit code | `@review-coordinator` agent |
+| ROLLBACK | revert, undo, rollback, go back, restore previous | `@programmer` agent (git revert + verification) |
+| SEO | seo, search engine, rankings, meta tags, schema | `@seo-strategist` agent |
+| SECURITY | security, vulnerability, owasp, compliance, audit | `@security-auditor` agent |
+| UX | ux, usability, accessibility, wcag, a11y | `@ux-accessibility-reviewer` agent |
+| RESPONSIVE | responsive, mobile, breakpoints, touch, viewport, fluid | `@responsive-reviewer` agent |
+| THEME | dark mode, light mode, theme, tokens, color mode | `@theme-reviewer` agent |
+| I18N | i18n, translate, translations, locale, internationalization, rtl | `@i18n-reviewer` agent |
+| ARCHITECTURE | architecture, patterns, SOLID, DDD, modules, layers, ADR | `@software-architect` agent |
+| CODE | code, algorithm, prototype, script, pair program, write code | `@programmer` agent |
+| DATABASE | database, schema, migration, query, index, SQL, ORM | `@database-architect` agent |
+| API | api design, openapi, swagger, graphql, grpc, endpoints, rest design | `@api-designer` agent |
+| TESTING | test strategy, coverage, flaky, mocking, e2e, test architecture | `@testing-engineer` agent |
+| TECH_DEBT | tech debt, clean up code, anti-patterns, slop, agent debt | `@programmer` agent |
+| DEVOPS | ci/cd, pipeline, docker, kubernetes, terraform, infrastructure | `@devops-engineer` agent |
+| SECDEVOPS | sast, dast, supply chain, sbom, secret scanning, pipeline security | `@secdevops-engineer` agent |
+| BUSINESS | business, requirements, stakeholders, roi, process | `@business-analyst` agent |
+| CONTENT | content, blog, social media, marketing, brand | `@content-strategist` agent |
+| PRODUCT | product, roadmap, market, competitive, gtm, pricing | `@product-strategist` agent |
 | CONTEXT | context, memory, tokens, too long, clean up | `/context analyze` |
 | ORCHESTRATE | complete, full, entire, end-to-end, multi-domain | Full Pyramid with `@chief-architect` pre-decomposition |
-| MCP | mcp server, model context protocol, mcp tool, mcp builder | `@mcp-builder` |
-| DATA | etl, elt, pipeline, data lake, streaming, kafka, airflow, dagster, dbt, data quality | `@data-engineer` |
-| DOCS | readme, documentation, api reference, changelog, tutorial, write docs, technical writing | `@technical-writer` |
+| MCP | mcp server, model context protocol, mcp tool, mcp builder | `@mcp-builder` agent |
+| DATA | etl, elt, pipeline, data lake, streaming, kafka, airflow, dagster, dbt, data quality | `@data-engineer` agent |
+| DOCS | readme, documentation, api reference, changelog, tutorial, write docs, technical writing | `@technical-writer` agent |
 | SIMPLE | direct question, no action needed | Direct answer |
 
 ### Full Pyramid Routes (plan-coordinator -> code-coordinator -> review-coordinator)
 
 These routes use the full 3-coordinator pyramid: **FEATURE, IMPLEMENT, MIGRATE, ORCHESTRATE**
 
-### Lightweight Routes (@programmer direct dispatch)
+### Agent Routes (specialist agent dispatch)
 
-These routes skip the 3-coordinator pyramid and dispatch directly to @programmer for efficiency. They still require a plan shown to the user, but execution is a single agent, not 3 sequential coordinators: **REFACTOR, TEST, DEBUG, OPTIMIZE, CODE, DATABASE, TECH_DEBT**
+Every non-pyramid route dispatches to a specialist agent. **All work is done by agents, never by the orchestrator directly.** Each route maps to the best-fit agent for the task:
 
-Lightweight routes are faster and cheaper (1 agent call vs 3+). The user can upgrade any lightweight route to full pyramid by adding "con review" / "with review".
+- **REFACTOR, CODE, TECH_DEBT, ROLLBACK** -> `@programmer`
+- **DEBUG** -> `@brahma-investigator`
+- **TEST, TESTING** -> `@testing-engineer`
+- **OPTIMIZE** -> `@brahma-optimizer`
+- **DATABASE** -> `@database-architect`
+- **RESEARCH** -> `@docs-researcher`
+- **PLAN** -> `@plan-coordinator`
+- **DEPLOY** -> `@brahma-deployer`
+- **MONITOR** -> `@brahma-monitor`
+- **REVIEW** -> `@review-coordinator`
+- **SEO** -> `@seo-strategist`
+- **SECURITY** -> `@security-auditor`
+- **UX** -> `@ux-accessibility-reviewer`
+- **RESPONSIVE** -> `@responsive-reviewer`
+- **THEME** -> `@theme-reviewer`
+- **I18N** -> `@i18n-reviewer`
+- **ARCHITECTURE** -> `@software-architect`
+- **API** -> `@api-designer`
+- **DEVOPS** -> `@devops-engineer`
+- **SECDEVOPS** -> `@secdevops-engineer`
+- **BUSINESS** -> `@business-analyst`
+- **CONTENT** -> `@content-strategist`
+- **PRODUCT** -> `@product-strategist`
+- **MCP** -> `@mcp-builder`
+- **DATA** -> `@data-engineer`
+- **DOCS** -> `@technical-writer`
+- **INCIDENT** -> `@incident-commander` + `@brahma-investigator` + `@brahma-monitor` (parallel)
 
-### Direct Routes (no pyramid)
+### Multi-Domain Detection (Parallel Agents)
 
-These routes dispatch to a specialist directly: **RESEARCH, PLAN, DEPLOY, MONITOR, INCIDENT, REVIEW, ROLLBACK, SEO, SECURITY, UX, RESPONSIVE, THEME, I18N, ARCHITECTURE, API, TESTING, DEVOPS, SECDEVOPS, BUSINESS, CONTENT, PRODUCT, MCP, DATA, DOCS, CONTEXT, SIMPLE**
+When a request spans multiple domains, the orchestrator MUST dispatch multiple agents in parallel instead of picking one. Detection rules:
+
+| Signal in Request | Primary Agent | Add in Parallel |
+|---|---|---|
+| Touches auth/payments/PII | Any code agent | + `@security-auditor` |
+| Touches database + API | `@database-architect` | + `@api-designer` |
+| "refactor and test" | `@programmer` | + `@testing-engineer` |
+| "deploy and monitor" | `@brahma-deployer` | + `@brahma-monitor` |
+| "design and implement" | Full Pyramid | + `@software-architect` pre-analysis |
+| Business + technical | Code agent | + `@business-analyst` for requirements |
+| Content + SEO | `@content-strategist` | + `@seo-strategist` |
+| Any code change > 5 files | Code agent | + `@review-coordinator` post-check |
+
+**How it works**: Spawn parallel agents using multiple Agent tool calls in a single message. Each agent works in its own context. The orchestrator synthesizes their reports.
+
+**Example**: `/do refactoriza el modulo de auth y asegurate que sea seguro`
+- Spawns `@programmer` (refactor) + `@security-auditor` (security review) in parallel
+- Both report back
+- Orchestrator synthesizes: "Refactoring complete. Security audit found 2 issues. Here's the combined result."
 
 ### Disambiguation Priority
 
@@ -122,7 +167,41 @@ When keywords match multiple routes, use this priority:
 
 ---
 
-## Step 1.5: BRAINSTORMING GATE (FEATURE + ORCHESTRATE only)
+## Step 1.5: STRATEGIC IMPACT ANALYSIS (All routes except SIMPLE)
+
+The orchestrator thinks like the appropriate C-Level executive for the task domain:
+
+| Domain | Executive Lens | Strategic Questions |
+|--------|---------------|-------------------|
+| Code/Architecture | **CTO** | What breaks? What's the blast radius? Need security review? |
+| Security | **CISO** | What assets are at risk? Compliance impact? Need incident response? |
+| Product/UX | **CPO** | User impact? Metrics affected? Need A/B testing? |
+| Business/Content | **CMO/CEO** | Brand impact? ROI? Competitive implications? |
+| Infrastructure | **VP Engineering** | Downtime risk? Rollback plan? Need monitoring? |
+
+**Analysis output** (shown in plan):
+```
+Strategic Assessment:
+- Impact: [LOW | MEDIUM | HIGH | CRITICAL]
+- Blast Radius: [files/services/users affected]
+- Cross-domain: [additional agents needed, or "None"]
+- Proactive recommendation: [what to also do, or "None"]
+```
+
+**Auto-escalation rules**:
+- If task touches auth/payments/PII -> Auto-add `@security-auditor`
+- If task changes DB schema -> Auto-add `@database-architect` review
+- If task affects > 5 files -> Auto-add `@review-coordinator` post-check
+- If task is deploy/release -> Auto-add `@brahma-monitor` post-deploy
+
+**Proactive recommendations** (suggest but don't auto-execute):
+- "This refactor touches the API layer. Consider also running `/api-design` to verify contract stability."
+- "This feature needs user-facing UI. Consider adding `/ux-review` after implementation."
+- "You changed security headers. Consider running `/security-audit` to validate."
+
+---
+
+## Step 1.6: BRAINSTORMING GATE (FEATURE + ORCHESTRATE only)
 
 For FEATURE and ORCHESTRATE routes, a mandatory design-approval phase runs BEFORE the plan:
 
@@ -153,14 +232,22 @@ After brainstorming completes, the spec is passed to plan-coordinator as additio
 
 ```
 Route: [ROUTE NAME]
+Executive Lens: [CTO | CISO | CPO | CMO | VP Eng]
 Execution: Full Pyramid (plan -> code -> review)
-Coordinators:
+
+Strategic Assessment:
+- Impact: [LOW | MEDIUM | HIGH | CRITICAL]
+- Blast Radius: [files/services/users affected]
+- Cross-domain: [additional agents to run in parallel, or "None"]
+- Proactive recommendation: [what to also consider, or "None"]
+
+Agents:
   - @plan-coordinator: Research + plan the implementation
   - @code-coordinator: Implement with TDD
   - @review-coordinator: Code review + browser testing
+  [+ @additional-agent: reason (if cross-domain detected)]
 Quality Gates: Plan (85+) -> Tests Pass -> Review (80+)
 Fix Loop: Up to 3 iterations if reviewer finds issues
-Spec: [docs/specs/feature.md if brainstorming gate ran, or "Skipped"]
 
 Plan Preview:
 1. Plan Coordinator: [what will be planned]
@@ -170,24 +257,23 @@ Plan Preview:
 Proceed? (yes / modify / cancel)
 ```
 
-### For Lightweight Routes (REFACTOR, TEST, DEBUG, OPTIMIZE, CODE, DATABASE, TECH_DEBT):
+### For Agent Routes (all non-pyramid, non-simple routes):
 
 ```
 Route: [ROUTE NAME]
-Execution: Lightweight (@programmer direct)
-Agent: @programmer
-Quality Gates: Tests Pass
-Review: Optional (add "con review" / "with review" to upgrade)
+Execution: Agent dispatch
+Agent: [@specialist-agent]
+Quality Gates: [Agent-specific gates]
 
 Plan:
-1. [What will be changed]
-2. [What tests will be written/verified]
-3. [Expected outcome]
+1. [What the agent will do]
+2. [What verification will be performed]
+3. [Expected deliverable]
 
 Proceed? (yes / modify / cancel)
 ```
 
-### For Direct Routes:
+### For Multi-Agent Routes (INCIDENT):
 
 ```
 Route: [ROUTE NAME]
@@ -274,29 +360,24 @@ Receive Review Coordinator Report.
 
 ---
 
-## Step 4-LITE: EXECUTE (Lightweight Routes)
+## Step 4-AGENT: EXECUTE (Agent Routes)
 
-For lightweight routes (REFACTOR, TEST, DEBUG, OPTIMIZE, CODE, DATABASE, TECH_DEBT):
-
-Spawn @programmer directly with the plan. No coordinator chain needed.
-The programmer implements, tests, and commits in a single agent session.
-Review is optional (user can request with "con review" / "with review").
+**Every route dispatches to a specialist agent.** No work is done by the orchestrator directly.
 
 ```
-Spawn @programmer with:
+Spawn @[specialist-agent] with:
   TASK: [user's request]
   PLAN: [plan shown to user in Step 2]
   CONTEXT: [project type, conventions, relevant files]
   OUTPUT FORMAT: Use Agent Report Protocol (<800 tokens). Status + Key Findings + Changes + Metrics + Blockers.
 ```
 
-If user requested review, dispatch @review-coordinator after @programmer completes.
+For INCIDENT route, spawn 3 agents in parallel:
+- `@incident-commander` (coordination)
+- `@brahma-investigator` (root cause)
+- `@brahma-monitor` (observability)
 
----
-
-## Step 4-ALT: EXECUTE (Direct Routes)
-
-For non-pyramid routes, dispatch directly to the specialist agent and wait for their Agent Report.
+Each agent works in its isolated context, reports back via Agent Report Protocol.
 
 ---
 
@@ -351,10 +432,9 @@ Proceed?
 **User**: `/do why is the login failing?`
 ```
 Route: DEBUG
-Execution: Lightweight (@programmer direct)
-Agent: @programmer
-Quality Gates: Tests Pass
-Review: Optional (add "con review" to upgrade)
+Execution: Agent dispatch
+Agent: @brahma-investigator
+Quality Gates: Root cause identified, fix verified
 
 Plan:
 1. Investigate root cause in auth flow

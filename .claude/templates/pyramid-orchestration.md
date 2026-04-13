@@ -193,10 +193,10 @@ The orchestrator reads all three coordinator reports and synthesizes a single us
 ### Routes that use FULL pyramid (plan + code + review):
 FEATURE, IMPLEMENT, MIGRATE, ORCHESTRATE
 
-### Routes that use LIGHTWEIGHT execution (@programmer direct):
-REFACTOR, TEST, DEBUG, OPTIMIZE, CODE, DATABASE, TECH_DEBT
+### Routes that use AGENT DISPATCH (specialist agent):
+REFACTOR, TEST, DEBUG, OPTIMIZE, CODE, DATABASE, TECH_DEBT, RESEARCH, PLAN, and all other non-pyramid routes.
 
-Lightweight routes dispatch directly to @programmer with the plan. No coordinator chain. Faster and cheaper (1 agent call vs 3+). User can upgrade to full pyramid with "con review" / "with review".
+Each route dispatches to its specialist agent. No work done by orchestrator directly. User can upgrade to full pyramid with "con review" / "with review".
 
 ### Routes that use PARTIAL pyramid (plan + specialist):
 DEPLOY, MONITOR, INCIDENT, DEVOPS, SECDEVOPS
@@ -237,4 +237,4 @@ The pyramid is cost-effective because:
 
 ---
 
-**Updated**: 2026-03-30 | **Version**: 7.2.1 | **Protocol**: Pyramid Orchestration v1.1 (Full + Lightweight tiers)
+**Updated**: 2026-04-13 | **Version**: 7.3.0 | **Protocol**: Pyramid Orchestration v1.2 (Full Pyramid + Agent dispatch)
