@@ -1,8 +1,8 @@
-# Agentic Substrate v7.2
+# Agentic Substrate v7.3
 
 **Research-first development system for Claude Code CLI**
 
-> 32 agents. 27 commands. 23 auto-invoked skills. 21 lifecycle hooks. Pyramid orchestration. Auto error-learning. Zero API hallucinations. Research first, code second.
+> 32 agents. 27 commands. 39 skills (21 auto-invoked + 18 manual). 21 lifecycle hooks. Pyramid orchestration. Auto error-learning. Zero API hallucinations. Research first, code second.
 
 [English](#english) | [Espanol](#espanol)
 
@@ -33,7 +33,7 @@ That's it. `/do` classifies your intent, shows a plan, waits for confirmation, a
 A drop-in enhancement for [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) that installs to `~/.claude/` and transforms it into a research-first development system with:
 
 - **32 specialized agents** across 5 tiers + pyramid coordinators (Orchestration, Core, Engineering, Infrastructure, Growth & Quality)
-- **23 auto-invoked skills** (research, planning, validation, pattern recognition, context management, architecture, API, testing, project organization, error learning, pyramid loop, UI/UX Pro MAX, frontend design, shadcn/ui, web accessibility, web design guidelines, generate-docs, auto-memory-capture, nextjs-firebase-gcp)
+- **39 skills** (21 auto-invoked + 18 manual) covering research, planning, validation, pattern recognition, context management, architecture, API, testing, project organization, error learning, pyramid loop, UI/UX, frontend design, shadcn/ui, web accessibility, web design, generate-docs, auto-memory-capture, nextjs-firebase-gcp, django-patterns, and more
 - **27 slash commands** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`, `/responsive-review`, `/theme-review`, `/i18n-review`, `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`, `/generate-docs`, `/save-session`, `/resume-session`, `/learn`, `/retro`)
 - **21 lifecycle hooks** (quality gates, auto-formatting, knowledge capture, session management, hawk oversight, auto error capture, file protection, desktop notifications, post-compaction reinject, dead rule detection, implementation validation)
 - **Quality gates** with scoring rubrics (Research >= 80, Plan >= 85, Tests pass)
@@ -231,7 +231,7 @@ powershell scripts/windows/verify-installation.ps1
 |-----------|-------|----------|
 | `agents/` | 32 | Agent definitions (5 tiers + pyramid coordinators) |
 | `commands/` | 27 | Slash command definitions |
-| `skills/` | 23 | Auto-invoked skills |
+| `skills/` | 39 | Skills (21 auto-invoked + 18 manual) |
 | `hooks/` | 21 | Lifecycle hooks |
 | `templates/` | 16 | Shared templates and overviews |
 | `validators/` | 2 | API matcher + circuit breaker |
@@ -275,7 +275,7 @@ agentic-substrate/
 ├── .claude/                    # Core system (installed to ~/.claude/)
 │   ├── agents/                 # 32 agent definitions
 │   ├── commands/               # 27 slash commands
-│   ├── skills/                 # 23 auto-invoked skills
+│   ├── skills/                 # 39 skills (21 auto + 18 manual)
 │   ├── hooks/                  # 21 lifecycle hooks
 │   ├── templates/              # Shared templates + overviews
 │   ├── validators/             # Quality gate validators
@@ -344,10 +344,10 @@ Based on [Anthropic research](https://www.anthropic.com/research) (2024-2025):
 |----------|-------------|
 | [Agents Overview](.claude/templates/agents-overview.md) | All 32 agents, tiers, models |
 | [Workflows Overview](.claude/templates/workflows-overview.md) | Routing table, workflow patterns |
-| [Skills Overview](.claude/templates/skills-overview.md) | 23 auto-invoked skills reference |
+| [Skills Overview](.claude/templates/skills-overview.md) | 39 skills reference |
 | [Quality Gates](.claude/templates/quality-gates.md) | Scoring rubrics, circuit breaker |
 | [Agent Teams](.claude/agent-teams.md) | Parallel collaboration guide |
-| [Changelog](docs/CHANGELOG.md) | Version history (v3.0 - v7.2) |
+| [Changelog](docs/CHANGELOG.md) | Version history (v3.0 - v7.3) |
 | [Installation Behavior](docs/INSTALLATION-BEHAVIOR.md) | Data preservation details |
 | [Contributing](docs/CONTRIBUTING.md) | How to contribute |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common issues and fixes |
@@ -360,7 +360,8 @@ Based on [Anthropic research](https://www.anthropic.com/research) (2024-2025):
 
 | Version | Date | Highlights |
 |---------|------|------------|
-| **7.2** | 2026-03-25 | Pyramid orchestration (plan->code->review->fix loop), 3 pyramid coordinators, 4 new specialist agents (32 agents total), 5 frontend/design skills + 3 process/quality skills + generate-docs + auto-memory-capture + nextjs-firebase-gcp + django-patterns + pyramid-loop (23 total), project-architecture.md, full doc sync |
+| **7.3** | 2026-04-13 | 16 new skills (39 total: 21 auto-invoked + 18 manual), C-Level orchestrator, token efficiency improvements |
+| **7.2** | 2026-03-25 | Pyramid orchestration (plan->code->review->fix loop), 3 pyramid coordinators, 4 new specialist agents (32 agents total), 5 frontend/design skills + 3 process/quality skills + generate-docs + auto-memory-capture + nextjs-firebase-gcp + django-patterns + pyramid-loop, project-architecture.md, full doc sync |
 | **7.1** | 2026-03-10 | Auto error-learning feedback loop, Hawk oversight pattern, anti-reward-hacking rules, linked chunks, tech-debt command, scratchpad + learnings templates |
 | **7.0** | 2026-02-27 | 10 new agents (25 total), 5 tiers, 9 new commands (21 total), 4 new skills (9 total), Agent Report Protocol |
 | **6.0** | 2026-02-24 | Agent Teams default on, v6.0 across all references, Opus 4.6 optimization |
@@ -382,11 +383,11 @@ MIT License - See [LICENSE](LICENSE)
 
 <a name="espanol"></a>
 
-# Agentic Substrate v7.2 (Espanol)
+# Agentic Substrate v7.3 (Espanol)
 
 **Sistema de desarrollo basado en investigacion para Claude Code CLI**
 
-> 32 agentes. 27 comandos. 23 habilidades auto-invocadas. 21 hooks de ciclo de vida. Orquestacion piramidal. Auto-aprendizaje de errores. Cero alucinaciones de APIs. Investigar primero, programar despues.
+> 32 agentes. 27 comandos. 39 habilidades (21 auto-invocadas + 18 manuales). 21 hooks de ciclo de vida. Orquestacion piramidal. Auto-aprendizaje de errores. Cero alucinaciones de APIs. Investigar primero, programar despues.
 
 ---
 
@@ -413,7 +414,7 @@ Eso es todo. `/do` clasifica tu intencion, muestra un plan, espera confirmacion 
 Una extension drop-in para [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) que se instala en `~/.claude/` y lo transforma en un sistema de desarrollo basado en investigacion con:
 
 - **32 agentes especializados** en 5 niveles + coordinadores piramidales (Orquestacion, Core, Ingenieria, Infraestructura, Crecimiento y Calidad)
-- **23 habilidades auto-invocadas** (investigacion, planificacion, validacion, reconocimiento de patrones, gestion de contexto, arquitectura, API, testing, organizacion de proyecto, aprendizaje de errores, pyramid loop, UI/UX Pro MAX, frontend design, shadcn/ui, web accessibility, web design guidelines, generate-docs, auto-memory-capture, nextjs-firebase-gcp)
+- **39 habilidades** (21 auto-invocadas + 18 manuales) cubriendo investigacion, planificacion, validacion, reconocimiento de patrones, gestion de contexto, arquitectura, API, testing, organizacion de proyecto, aprendizaje de errores, pyramid loop, UI/UX, frontend design, shadcn/ui, web accessibility, web design, generate-docs, auto-memory-capture, nextjs-firebase-gcp, django-patterns, y mas
 - **27 comandos slash** (`/do`, `/workflow`, `/research`, `/plan`, `/implement`, `/review`, `/mode`, `/context`, `/circuit-breaker`, `/security-audit`, `/seo-audit`, `/ux-review`, `/responsive-review`, `/theme-review`, `/i18n-review`, `/architecture`, `/database`, `/api-design`, `/test-strategy`, `/devops`, `/secdevops`, `/tech-debt`, `/generate-docs`, `/save-session`, `/resume-session`, `/learn`, `/retro`)
 - **21 hooks de ciclo de vida** (puertas de calidad, auto-formato, captura de conocimiento, gestion de sesion, vigilancia hawk, captura automatica de errores, proteccion de archivos, notificaciones de escritorio, reinyeccion post-compactacion, deteccion de reglas muertas, validacion de implementacion)
 - **Puertas de calidad** con rubricas de puntuacion (Investigacion >= 80, Plan >= 85, Tests pasan)
@@ -605,10 +606,10 @@ powershell scripts/windows/verify-installation.ps1
 |-----------|-------------|
 | [Agents Overview](.claude/templates/agents-overview.md) | 32 agentes, niveles, modelos |
 | [Workflows Overview](.claude/templates/workflows-overview.md) | Tabla de rutas, patrones |
-| [Skills Overview](.claude/templates/skills-overview.md) | 23 habilidades auto-invocadas |
+| [Skills Overview](.claude/templates/skills-overview.md) | 39 habilidades |
 | [Quality Gates](.claude/templates/quality-gates.md) | Rubricas, circuit breaker |
 | [Agent Teams](.claude/agent-teams.md) | Guia de colaboracion paralela |
-| [Changelog](docs/CHANGELOG.md) | Historial de versiones (v3.0 - v7.2) |
+| [Changelog](docs/CHANGELOG.md) | Historial de versiones (v3.0 - v7.3) |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Problemas comunes |
 
 ---
@@ -617,7 +618,8 @@ powershell scripts/windows/verify-installation.ps1
 
 | Version | Fecha | Destacado |
 |---------|-------|-----------|
-| **7.2** | 2026-03-25 | Orquestacion piramidal (plan->code->review->fix loop), 3 coordinadores piramidales, 4 nuevos agentes especialistas (32 agentes total), 5 skills de frontend/diseno, 3 skills de proceso/calidad, generate-docs, auto-memory-capture, nextjs-firebase-gcp, django-patterns, pyramid-loop (23 total), project-architecture.md, sincronizacion completa de docs |
+| **7.3** | 2026-04-13 | 16 nuevas habilidades (39 total: 21 auto-invocadas + 18 manuales), orquestador C-Level, mejoras de eficiencia de tokens |
+| **7.2** | 2026-03-25 | Orquestacion piramidal (plan->code->review->fix loop), 3 coordinadores piramidales, 4 nuevos agentes especialistas (32 agentes total), 5 skills de frontend/diseno, 3 skills de proceso/calidad, generate-docs, auto-memory-capture, nextjs-firebase-gcp, django-patterns, pyramid-loop, project-architecture.md, sincronizacion completa de docs |
 | **7.1** | 2026-03-10 | Auto-aprendizaje de errores, patron Hawk de supervision, reglas anti-reward-hacking, linked chunks, comando tech-debt, plantillas scratchpad + learnings |
 | **7.0** | 2026-02-27 | 10 nuevos agentes (25 total), 5 niveles, 9 nuevos comandos (21 total), 4 nuevas habilidades (9 total), Agent Report Protocol |
 | **6.0** | 2026-02-24 | Agent Teams por defecto, optimizacion Opus 4.6 |
@@ -634,4 +636,4 @@ MIT License - Ver [LICENSE](LICENSE)
 
 ---
 
-**Version:** 7.2.1 | **Fecha:** 2026-03-25 | **Agentes:** 32 (8 Opus + 16 Sonnet + 8 Haiku) | **Comandos:** 27 | **Skills:** 23 | **Hooks:** 21
+**Version:** 7.3.0 | **Fecha:** 2026-04-13 | **Agentes:** 32 (8 Opus + 16 Sonnet + 8 Haiku) | **Comandos:** 27 | **Skills:** 39 (21 + 18) | **Hooks:** 21

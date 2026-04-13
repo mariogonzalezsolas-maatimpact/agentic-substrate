@@ -1,1 +1,0 @@
-- [Mario's Stack](user_stack.md) -- Node.js, React, Next.js, PostgreSQL, Firebase, Google Cloud

@@ -1,4 +1,4 @@
-# LangGraph Integration for Agentic Substrate v7.1
+# LangGraph Integration for Agentic Substrate v7.3
 
 Optional LangGraph templates for running the Agentic Substrate workflow as a Python state machine.
 
@@ -44,7 +44,7 @@ python brahma_graph.py
 Expected output:
 ```
 ============================================================
-Agentic Substrate v7.1 - LangGraph Core Workflow
+Agentic Substrate v7.3 - LangGraph Core Workflow
 ============================================================
   [docs-researcher] Researching: Add Redis caching to ProductService
   [implementation-planner] Planning from ResearchPack (score: 85)
@@ -157,4 +157,4 @@ builder.add_edge("trigger_growth", "ux_review")
 
 ---
 
-**Version**: 7.1.0 | **Updated**: 2026-03-10 | **Status**: Templates ready
+**Version**: 7.3.0 | **Updated**: 2026-04-13 | **Status**: Templates ready
