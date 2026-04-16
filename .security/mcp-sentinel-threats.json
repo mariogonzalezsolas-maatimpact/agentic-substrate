@@ -1,0 +1,392 @@
+{
+  "schema_version": "2.0",
+  "last_scan": "2026-04-16T19:30:00Z",
+  "scan_count": 1,
+  "claude_code_version": "2.1.111",
+  "inventory": [
+    {
+      "name": "api-methodology",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "api-security",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": ["Contains curl examples - all use api.example.com (documentation/educational, not executable)"]
+    },
+    {
+      "name": "architecture-methodology",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "auto-memory-capture",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "brainstorming-gate",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "changelog-generator",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "cloud-security",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": ["Contains aws/base64 commands - educational examples for security auditing"]
+    },
+    {
+      "name": "computer-forensics",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": ["Contains wget/base64 references - forensic analysis examples, not executable"]
+    },
+    {
+      "name": "container-security",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "context-engineering",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "django-patterns",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "error-learning",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "finishing-branch",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "folder-context",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "frontend-design",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "generate-docs",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "git-worktrees",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "jira-automation",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "mcp-sentinel",
+      "type": "skill",
+      "source": "github.com/soy-rafa/claude-mcp-sentinel",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": ["References to malicious patterns are educational/detection rules, not executable code"]
+    },
+    {
+      "name": "memory-search",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "nextjs-firebase-gcp",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "pattern-recognition",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": ["process.env references in code examples - educational pattern documentation"]
+    },
+    {
+      "name": "planning-methodology",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "playwright-testing",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "project-organization",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "pyramid-loop",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "quality-validation",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "research-methodology",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "salesforce-automation",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "semgrep-rules",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "shadcn-ui",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "skill-generator",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "slack-automation",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "static-analysis",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "supply-chain-audit",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "testing-methodology",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "threat-hunting",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "verification-before-completion",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "web-accessibility",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "web-design-guidelines",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "web-fuzzing",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    },
+    {
+      "name": "wstg",
+      "type": "skill",
+      "source": "local/agentic-substrate",
+      "first_seen": "2026-04-16",
+      "status": "clean",
+      "findings": []
+    }
+  ],
+  "mcp_servers": [],
+  "hooks_audit": {
+    "total": 21,
+    "network_access": false,
+    "credential_access": false,
+    "status": "clean",
+    "notes": "All hooks are local operations: formatting, validation, notifications, metrics. protect-files.sh guards against writing to credential/secret files."
+  },
+  "known_threats": [
+    {
+      "id": "CVE-2025-59536",
+      "severity": "high",
+      "cvss": 8.7,
+      "affects": "Claude Code (pre-patch)",
+      "description": "RCE via pre-trust hook execution and MCP consent bypass. Malicious code runs before trust dialogs appear.",
+      "status": "patched",
+      "remediation": "Update Claude Code to latest version"
+    },
+    {
+      "id": "CVE-2026-21852",
+      "severity": "medium",
+      "cvss": 5.3,
+      "affects": "Claude Code (pre-patch Dec 2025)",
+      "description": "API key exfiltration through ANTHROPIC_BASE_URL manipulation redirects traffic to attacker-controlled servers.",
+      "status": "patched",
+      "remediation": "Patched Dec 28, 2025. Update Claude Code."
+    }
+  ],
+  "community_alerts": [],
+  "scan_history": [
+    {
+      "date": "2026-04-16T19:30:00Z",
+      "skills_scanned": 43,
+      "mcp_servers_scanned": 0,
+      "hooks_scanned": 21,
+      "critical": 0,
+      "warnings": 0,
+      "clean": 43
+    }
+  ]
+}
