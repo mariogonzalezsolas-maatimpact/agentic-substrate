@@ -242,5 +242,9 @@
       "Read(*credentials*)",
       "Read(*secret*)"
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"$HOME/.claude/statusline-command.sh\""
   }
 }

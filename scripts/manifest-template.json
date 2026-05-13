@@ -145,6 +145,7 @@
     "hooks/session-end.sh",
     "hooks/session-end-metrics.sh",
     "settings.json",
+    "statusline-command.sh",
     "agent-teams.md",
     "validators/api-matcher.sh",
     "validators/circuit-breaker.sh",
@@ -205,6 +206,7 @@
     "validators/api-matcher.sh",
     "validators/circuit-breaker.sh",
     "metrics/tracker.sh",
+    "statusline-command.sh",
     "skills/diagnose/scripts/hitl-loop.template.sh",
     "skills/git-guardrails-claude-code/scripts/block-dangerous-git.sh"
   ],
@@ -246,7 +248,7 @@
     }
   },
   "metadata": {
-    "total_files": 177,
+    "total_files": 178,
     "agents": 42,
     "skills": 39,
     "commands": 27,
