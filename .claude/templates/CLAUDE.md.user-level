@@ -1,23 +1,94 @@
-# Agentic Substrate v7.2
+# Agentic Substrate v8.0 (Agentic Corp + Opus 4.7)
 # --- AGENTIC SUBSTRATE START ---
 
 ## System Rules
 - Never code from memory -- use @docs-researcher or /research first
 - Every change: minimal, surgical, reversible
 - TDD mandatory: RED -> GREEN -> REFACTOR
-- Quality gates: Plan 85+, Tests pass, Review 80+
-- Pyramid loop: plan -> code -> review -> fix (max 3 iterations)
+- Quality gates: ResearchPack 80+, Plan 85+, Tests pass, Review 80+
+- **Agentic Corp orchestration**: every /do invocation runs CEO -> VPs (board meeting) -> Leads/ICs -> vp-quality audit
+- Pyramid v7.2 (plan-coordinator -> code-coordinator -> review-coordinator) is now a SUB-PATH inside vp-strategy/vp-engineering/vp-quality
+- Fix loop: max 3 iterations across the whole hierarchy
 - Circuit breaker opens after 3 failures: /circuit-breaker reset
 - **Error Self-Tracking**: Log mistakes to `memory/errors.md`. 3+ similar errors = create prevention rule.
+- **Anti-reward-hacking**: test.skip / generic catch fallbacks / --force flags = immediate FAIL_ESCALATE, never auto-fix
 
-## Thinking Modes
-**think** (30-60s) | **think hard** (1-2min) | **think harder** (2-4min) | **ultrathink** (5-10min)
+## Agentic Corp Hierarchy (4 tiers)
+```
+TIER 0  CEO          = /do orchestrator (this thread)
+TIER 1  VPs (6)      = vp-engineering, vp-frontend, vp-quality, vp-platform, vp-strategy, vp-product
+TIER 2  Leads (4)    = backend-lead, frontend-lead, devops-lead, quality-lead (on-demand, 3+ ICs)
+TIER 3  ICs (30+)    = programmer, database-architect, security-auditor, ... (all specialists)
+```
+
+**Communication rules** (anti-deadlock):
+- Down (parent -> child): YES at dispatch
+- Up (child -> parent) BEFORE start: YES via BLOCKED + ClarificationRequest
+- Up DURING execution: NO (fail-fast, partial report)
+- Lateral (siblings): NO (coordinate via parent merge)
+- Skip-level: NO (always through parent)
+- CEO -> User: only CEO talks to user
+
+vp-quality is MANDATORY on every non-SIMPLE /do invocation.
+
+Detailed protocol: see `@hierarchical-orchestration` skill.
+
+## Thinking Modes (tier-allocated)
+| Tier | Default | Escalation |
+|------|---------|------------|
+| CEO | think hard | ultrathink for ORCHESTRATE / ARCHITECTURE / INCIDENT-P0 / MIGRATE |
+| VP | think hard | think harder for risk/prod/security |
+| Lead | think | think hard for inter-IC conflicts |
+| IC | none or think | think hard for hard debugging |
+
+Raw modes: **think** (30-60s) | **think hard** (1-2min) | **think harder** (2-4min) | **ultrathink** (5-10min)
+
+## Opus 4.7 Optimizations (active)
+- Single-message multi-Agent dispatch for parallel VPs / Leads / ICs (Board Meeting pattern)
+- Prompt cache prefixes: stable role + hierarchy FIRST, task-specific content LAST
+- 5-min cache TTL aware (back-to-back fix loops keep prefix hot)
+- 1M context only at CEO tier; lower tiers operate with scoped context
+- Structured reports v2 (JSON-lite) preferred at IC/Lead tier
+- Strict token budgets per report: VP 500, Lead 500, IC 400, Domain Plan 300
+
+Detailed: `@opus-47-optimizations` skill.
+
+## Context Curation per Tier
+Each tier filters context downward (hierarchy is a compressor, not a relay).
+Detailed: `@context-curation-boundaries` skill.
 
 ## Quick Fixes
 - Plan <85 -> add rollback procedure + complete file list
 - Review <80 -> address critical findings first
+- vp-quality FAIL_FIX (iter <3) -> fix loop continues
+- vp-quality FAIL_ESCALATE -> user intervention required
 - Circuit breaker open -> `/circuit-breaker reset`
-- Context too large -> `/context optimize`
+- Context too large -> `/context optimize` (or `/caveman` for extreme compression)
+- Want broader context view -> `/zoom-out`
+
+## Bug Diagnosis
+Hard bug or perf regression -> auto-invoke `@diagnose` skill (6-phase loop: feedback-loop -> reproduce -> hypothesise -> instrument -> fix+test -> cleanup).
+For routine bugs: vp-engineering dispatches @brahma-investigator.
+
+## Skill Highlights (post-v8.0)
+- `grill-me` -- relentless interrogation until shared understanding
+- `caveman` -- 75% token reduction mode, opt-in trigger
+- `diagnose` -- 6-phase bug methodology
+- `tdd` -- red-green-refactor with supporting docs
+- `improve-codebase-architecture` -- deepening opportunities
+- `autoresearch` -- optimize any skill via eval-driven mutations
+- `prototype` -- throwaway prototype workflow
+- `handoff` -- agent-to-agent handoff compaction
+- `write-a-skill` -- skill creation methodology
+- `git-guardrails-claude-code` -- block dangerous git ops via hooks
+- `setup-pre-commit` -- Husky + lint-staged setup
+- `zoom-out` -- broader perspective trigger
+- `review` (Matt Pocock) -- Standards + Spec parallel audit (note: collides with built-in /review)
+
+## Migration Notes from v7.2
+- `pyramid-loop` skill is DEPRECATED. Use `@hierarchical-orchestration`.
+- Legacy aliases preserved: plan-coordinator (IC under vp-strategy), code-coordinator (IC under vp-engineering), review-coordinator (IC under vp-quality).
+- All existing agents continue to work as ICs in the new hierarchy.
 
 For full documentation (commands, agents, templates, workflows), see the project's CLAUDE.md.
 

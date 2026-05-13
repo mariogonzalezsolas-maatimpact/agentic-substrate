@@ -1,6 +1,6 @@
 {
-  "manifest_version": "1.2.0",
-  "substrate_version": "7.2.1",
+  "manifest_version": "2.0.0",
+  "substrate_version": "8.0.0",
   "managed_files": [
     "agents/brahma-analyzer.md",
     "agents/brahma-deployer.md",
@@ -34,6 +34,16 @@
     "agents/mcp-builder.md",
     "agents/data-engineer.md",
     "agents/incident-commander.md",
+    "agents/vp-engineering.md",
+    "agents/vp-frontend.md",
+    "agents/vp-quality.md",
+    "agents/vp-platform.md",
+    "agents/vp-strategy.md",
+    "agents/vp-product.md",
+    "agents/backend-lead.md",
+    "agents/frontend-lead.md",
+    "agents/devops-lead.md",
+    "agents/quality-lead.md",
     "skills/context-engineering/skill.md",
     "skills/pattern-recognition/skill.md",
     "skills/planning-methodology/skill.md",
@@ -57,6 +67,35 @@
     "skills/django-patterns/skill.md",
     "skills/auto-memory-capture/skill.md",
     "skills/nextjs-firebase-gcp/skill.md",
+    "skills/hierarchical-orchestration/skill.md",
+    "skills/context-curation-boundaries/skill.md",
+    "skills/opus-47-optimizations/skill.md",
+    "skills/grill-me/skill.md",
+    "skills/caveman/skill.md",
+    "skills/handoff/skill.md",
+    "skills/write-a-skill/skill.md",
+    "skills/diagnose/skill.md",
+    "skills/diagnose/scripts/hitl-loop.template.sh",
+    "skills/prototype/skill.md",
+    "skills/prototype/LOGIC.md",
+    "skills/prototype/UI.md",
+    "skills/tdd/skill.md",
+    "skills/tdd/deep-modules.md",
+    "skills/tdd/interface-design.md",
+    "skills/tdd/mocking.md",
+    "skills/tdd/refactoring.md",
+    "skills/tdd/tests.md",
+    "skills/improve-codebase-architecture/skill.md",
+    "skills/improve-codebase-architecture/DEEPENING.md",
+    "skills/improve-codebase-architecture/INTERFACE-DESIGN.md",
+    "skills/improve-codebase-architecture/LANGUAGE.md",
+    "skills/zoom-out/skill.md",
+    "skills/git-guardrails-claude-code/skill.md",
+    "skills/git-guardrails-claude-code/scripts/block-dangerous-git.sh",
+    "skills/setup-pre-commit/skill.md",
+    "skills/review/skill.md",
+    "skills/autoresearch/skill.md",
+    "skills/autoresearch/references/eval-guide.md",
     "commands/api-design.md",
     "commands/architecture.md",
     "commands/circuit-breaker.md",
@@ -165,7 +204,9 @@
     "hooks/session-end-metrics.sh",
     "validators/api-matcher.sh",
     "validators/circuit-breaker.sh",
-    "metrics/tracker.sh"
+    "metrics/tracker.sh",
+    "skills/diagnose/scripts/hitl-loop.template.sh",
+    "skills/git-guardrails-claude-code/scripts/block-dangerous-git.sh"
   ],
   "protected_paths": [
     "data/",
@@ -181,7 +222,8 @@
     "plugins/",
     "ide/",
     ".circuit-breaker-state",
-    ".DS_Store"
+    ".DS_Store",
+    "AGENTIC-CORP-VALIDATION.md"
   ],
   "special_handling": {
     "pattern-index.json": {
@@ -204,17 +246,18 @@
     }
   },
   "metadata": {
-    "total_files": 138,
-    "agents": 32,
-    "skills": 23,
+    "total_files": 177,
+    "agents": 42,
+    "skills": 39,
     "commands": 27,
     "hooks": 21,
     "validators": 2,
     "metrics": 1,
-    "templates": 11,
+    "templates": 12,
     "rules": 13,
     "data": 1,
     "integrations": 4,
-    "config": 2
+    "config": 2,
+    "notes": "v8.0 adds 10 agents (6 VPs + 4 Leads) and 16 new skills (3 Agentic Corp + 13 external). VPs/Leads use model: opus for Tier 1/2 coordination."
   }
 }
