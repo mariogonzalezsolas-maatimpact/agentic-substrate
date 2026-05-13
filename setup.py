@@ -7,7 +7,7 @@ import sys
 import os
 import shutil
 
-VERSION = "7.3.0"
+VERSION = "8.0.0"
 INSTALL_DIR = os.path.join(os.path.expanduser("~"), ".claude")
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 

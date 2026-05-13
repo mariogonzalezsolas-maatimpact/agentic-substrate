@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# Agentic Substrate v7.3 - Robust Cross-Platform Installation
+# Agentic Substrate v8.0 - Robust Cross-Platform Installation
 # Works on: macOS, Linux, WSL, Windows (Git Bash/MSYS2), minimal containers, with/without Python
-# Optimized for Claude Opus 4.6 with 32 agents (incl. pyramid coordinators) across 5 tiers
+# Optimized for Claude Opus 4.7 with Agentic Corp 4-tier hierarchy (CEO -> VPs -> Leads -> ICs)
+# 42 agents (6 VPs + 4 Leads + 32 ICs) + 58 skills (16 new in v8.0)
 
-VERSION="7.3.0"
+VERSION="8.0.0"
 
 # ============================================================================
 # GLOBAL VARIABLES

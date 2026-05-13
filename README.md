@@ -1,10 +1,58 @@
-# Agentic Substrate v7.3
+# Agentic Substrate v8.0 (Agentic Corp + Opus 4.7)
 
-**Research-first development system for Claude Code CLI**
+**Research-first development system for Claude Code CLI with 4-tier corporate hierarchy**
 
-> 32 agents. 27 commands. 42 skills (23 auto-invoked + 19 manual). 21 lifecycle hooks. Pyramid orchestration. Auto error-learning. Zero API hallucinations. Research first, code second.
+> 42 agents (6 VPs + 4 Leads + 32 ICs). 27 commands. 58 skills (16 new in v8.0). 21 lifecycle hooks. **Agentic Corp orchestration** (CEO -> VPs -> Leads -> ICs). Mandatory vp-quality audit on every /do. Opus 4.7 optimized. Auto error-learning. Zero API hallucinations. Research first, code second.
 
 [English](#english) | [Espanol](#espanol)
+
+---
+
+## What is new in v8.0
+
+The legacy 3-tier pyramid (plan -> code -> review coordinators) is replaced by a 4-tier corporate hierarchy. Every `/do` invocation runs a Board Meeting of parallel VPs, executes via Leads/ICs, and routes the consolidated diff through `vp-quality` for a mandatory audit before reporting.
+
+```
+TIER 0  CEO          = /do orchestrator (main thread)
+TIER 1  VPs (6)      = vp-engineering, vp-frontend, vp-quality,
+                       vp-platform, vp-strategy, vp-product
+TIER 2  Leads (4)    = backend-lead, frontend-lead, devops-lead, quality-lead
+                       (on-demand, when 3+ ICs needed in a domain)
+TIER 3  ICs (32+)    = all specialist agents (programmer, security-auditor, ...)
+```
+
+### New agents (10)
+**Tier 1 VPs**: vp-engineering, vp-frontend, vp-quality, vp-platform, vp-strategy, vp-product
+**Tier 2 Leads** (on-demand): backend-lead, frontend-lead, devops-lead, quality-lead
+
+### New skills (16)
+- **Agentic Corp orchestration (3)**: `hierarchical-orchestration`, `context-curation-boundaries`, `opus-47-optimizations`
+- **Matt Pocock skills (12)**: `grill-me`, `caveman`, `handoff`, `write-a-skill`, `diagnose`, `prototype`, `tdd`, `improve-codebase-architecture`, `zoom-out`, `git-guardrails-claude-code`, `setup-pre-commit`, `review`
+- **autoresearch** (Karpathy-inspired skill optimizer)
+
+### Opus 4.7 optimizations (active)
+- Single-message multi-Agent dispatch for parallel VPs / Leads / ICs (Board Meeting pattern)
+- Prompt cache prefixes: stable role + hierarchy FIRST, task-specific content LAST
+- 5-min cache TTL aware (back-to-back fix loops keep prefix hot)
+- 1M context only at CEO tier; lower tiers operate with scoped context
+- Strict token budgets per report: VP 500, Lead 500, IC 400, Domain Plan 300
+
+### Cost note
+With Opus everywhere + strict pyramid, expect ~5-10x cost increase per /do vs v7.3. Configurable later by switching ICs to Sonnet.
+
+### Communication rules (anti-deadlock)
+- Down (parent -> child): YES at dispatch
+- Up (child -> parent) BEFORE start: YES via BLOCKED + ClarificationRequest
+- Up DURING execution: NO (fail-fast, partial report)
+- Lateral (siblings): NO (coordinate via parent merge)
+- Skip-level: NO (always through parent)
+- CEO -> User: only CEO talks to user
+
+### Migration from v7.3
+- `pyramid-loop` skill is DEPRECATED. Use `hierarchical-orchestration` instead.
+- Legacy coordinator names preserved as aliases (plan-coordinator is now an IC under vp-strategy, code-coordinator under vp-engineering, review-coordinator under vp-quality).
+- All existing agents continue to work as ICs in the new hierarchy.
+- /do command rewritten end-to-end.
 
 ---
 
